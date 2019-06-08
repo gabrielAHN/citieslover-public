@@ -14,7 +14,7 @@ msg = MIMEMultipart('alternative')
 msg['Subject'] = "SUBJECT HEADER"
 msg['From'] = email_configs.EMAIL_ADDRESS
 
-msg['To'] = 'gh15hidalgo@gmail.com'
+msg['To'] = 'EMAIL OF SENDER'
 
 doc, tag, text = Doc().tagtext()
 doc.asis('<!DOCTYPE html>')
