@@ -7,7 +7,6 @@ from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 
 users = pd.read_csv('emails.csv')
-#users =users[users['first_name']=='Gabriel']
 emails = users['email']
 names = users['first_name']
 
