@@ -1,6 +1,6 @@
 # City Lover
 
-City Lover is a newsletter built from scrpaing a bunch of city centric articles, and formatting them into an html page. To see the real page visit **[City Lover](https://www.gabrielhn.com/topics/city/)**
+City Lover is a newsletter built from scraping a bunch of city centric articles, and formatting them into an html page. To see the real page visit **[City Lover](https://www.gabrielhn.com/topics/city/)**
 
 ##Use##
 ```
