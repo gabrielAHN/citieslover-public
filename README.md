@@ -1,5 +1,15 @@
-# Newsletter through Scraping
-Hello this respository allows you to scrape select web pages using selenium, scrape the data, formate it into html, and send that formated data through email to who ever you want. The pages are changable, and the configs for the email are left blank on purpose for you to place your info. Try it out and enjoy! 
+# City Lover
 
-To download the webdriver, info about selenium visit: https://www.seleniumhq.org/
-To find out more about the python package that writes html visit: https://www.yattag.org/
+City Lover is a newsletter built from scrpaing a bunch of city centric articles, and formatting them into an html page. To see the real page visit **[City Lover](https://www.gabrielhn.com/topics/city/)**
+
+##Use##
+```
+python -B main.py
+```
+
+###Setup###
+```
+python3 -m venv venv
+source venv/bin/activate
+pip3 install -r requirements.txt
+```
