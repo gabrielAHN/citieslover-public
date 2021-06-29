@@ -4,8 +4,6 @@ from backend.website_scrape import (
         axios, umc
     )
 
-
-
 website_dict = [
     {
         'source': 'Monocle',
@@ -45,11 +43,11 @@ website_dict = [
         'type': 'blog',
         'scraped_function': streetsblog,
         'image': 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQm06X4'
-              '-kgmtexgJpGSv8RLLBu86D7KkMISeaSVNP1vNtn7nggAIg&s',
+                 '-kgmtexgJpGSv8RLLBu86D7KkMISeaSVNP1vNtn7nggAIg&s',
         'image_size':   '70px',
         'website': 'https://nyc.streetsblog.org/category/issues-campaigns/transit/'
      },
-    {   
+    {
         'source': 'Smartcities',
         'type': 'news',
         'scraped_function': rss_parser,

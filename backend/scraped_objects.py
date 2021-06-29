@@ -21,7 +21,7 @@ def article_objects():
                     articles=website_info['scraped_function'](website_info['website']),
                     article_type=website_info['type'],
                     image=website_info['image'],
-                    image_size= website_info['image_size'],
+                    image_size=website_info['image_size'],
                 )
             )
         for website_info in website_dict
@@ -29,4 +29,3 @@ def article_objects():
     ]
     random.shuffle(articles)
     return articles
-

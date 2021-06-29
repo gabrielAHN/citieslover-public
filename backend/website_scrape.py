@@ -35,8 +35,8 @@ def rss_parser(website):
         items = items[:5]
     articles = [
         article_object(
-            title= item.find('title').text,
-            url= item.find('link').text,
+            title=item.find('title').text,
+            url=item.find('link').text,
         )
         for item in items
         if item.find('title')
@@ -54,8 +54,8 @@ def govtech(website):
         items = items[:5]
     articles = [
         article_object(
-            title= item.find('a').text,
-            url= item.find('a')['href']
+            title=item.find('a').text,
+            url=item.find('a')['href']
         )
         for item in items
     ]
@@ -71,8 +71,8 @@ def streetsblog(website):
         items = items[:5]
     articles = [
         article_object(
-            title= item.find('h2', {'class': 'entry-title'}).text,
-            url= item.find('a')['href']
+            title=item.find('h2', {'class': 'entry-title'}).text,
+            url=item.find('a')['href']
         )
         for item in items
     ]
@@ -81,8 +81,11 @@ def streetsblog(website):
 
 
 def transitcenter(website):
-    header = {'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3)'
-     'AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.61 Safari/537.36'}
+    header = {
+        'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3)'
+        'AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.61'
+        'Safari/537.36'
+     }
     content = get_response_header(website, header)
     soup = BeautifulSoup(content, 'html.parser')
     items = soup.find_all('div', {'class': 'container wide is-widescreen'})
@@ -90,8 +93,8 @@ def transitcenter(website):
         items = items[:5]
     articles = [
         article_object(
-            title= section.text,
-            url= section['href']
+            title=section.text,
+            url=section['href']
         )
         for item in items
         for section in item.find_all(
@@ -110,8 +113,8 @@ def the_city(website):
         items = items[:5]
     articles = [
         article_object(
-            title= item.find('title').text,
-            url= item.find('link')['href']
+            title=item.find('title').text,
+            url=item.find('link')['href']
         )
         for item in items
         if item.find('title')
@@ -129,8 +132,8 @@ def int_transport(website):
         items = items[:5]
     articles = [
         article_object(
-            title= item.find('h3').text,
-            url= item.find('a')['href']
+            title=item.find('h3').text,
+            url=item.find('a')['href']
         )
         for item in items
         if item.find('h3')
@@ -148,8 +151,8 @@ def spur(website):
         items = items[:5]
     articles = [
         article_object(
-            title= item.find('h2').text,
-            url= item.find('a')['href']
+            title=item.find('h2').text,
+            url=item.find('a')['href']
         )
         for item in items
         if item.find('h2')
@@ -167,8 +170,8 @@ def parking_mobility(website):
         items = items[:5]
     articles = [
         article_object(
-            title= item.find('h2').text,
-            url= item.find('a')['href']
+            title=item.find('h2').text,
+            url=item.find('a')['href']
         )
         for item in items
         if item.find('h2')
@@ -186,8 +189,8 @@ def axios(website):
         items = items[:5]
     articles = [
         article_object(
-            title= item.text,
-            url= item.get('href')
+            title=item.text,
+            url=item.get('href')
         )
         for item in items
         if item
@@ -209,8 +212,8 @@ def umc(website):
         items = items[:5]
     articles = [
         article_object(
-            title= item.find('h2').text,
-            url= '{}{}'.format(url, item.find('a')['href'])
+            title=item.find('h2').text,
+            url='{}{}'.format(url, item.find('a')['href'])
         )
         for item in items
         if item.find('h2')

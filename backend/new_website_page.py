@@ -6,6 +6,7 @@ color_dict = {
     'news': '#0f75bc'
 }
 
+
 def create_updated_website(articles):
     html = ""
     html += get_top_html()
@@ -19,13 +20,13 @@ def get_icon_dict(articles):
         'podcast_icon': [],
         'news_icon': [],
         'article_icon': [],
-        'blog_icon':[]
+        'blog_icon': []
     }
     for icon in icon_dict:
         [
-        icon_dict[icon].append(article.source)
-        for article in articles
-        if article.article_type in icon
+            icon_dict[icon].append(article.source)
+            for article in articles
+            if article.article_type in icon
         ]
     return str(icon_dict)
 
@@ -120,7 +121,7 @@ def get_article_html(articles):
                     <div id="{0}_articles" style="display: none;">
                         {4}
                     </div>
-                </div>""".format(articles[i].source, color_dict[articles[i].article_type], articles[i].image, articles[i].image_size, get_article_list(articles[i].articles))  
+                </div>""".format(articles[i].source, color_dict[articles[i].article_type], articles[i].image, articles[i].image_size, get_article_list(articles[i].articles))
     return html
 
 
@@ -194,4 +195,3 @@ def get_bottom_html(articles):
     </script>
     {% endblock %}"""
     return html
-
