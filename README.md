@@ -4,12 +4,12 @@ City Lover is a newsletter built from scraping a bunch of city centric articles,
 
 ![website](/website_example.png)
 
-##Use
+## Use
 ```
 python main.py
 ```
 
-##Setup
+## Setup
 ```
 python3 -m venv venv
 source venv/bin/activate
