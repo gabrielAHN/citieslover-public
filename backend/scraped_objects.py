@@ -1,3 +1,5 @@
+import random
+
 from backend.website_info import website_dict
 
 
@@ -25,5 +27,6 @@ def article_objects():
         for website_info in website_dict
         if website_info['scraped_function'](website_info['website'])
     ]
+    random.shuffle(articles)
     return articles
 

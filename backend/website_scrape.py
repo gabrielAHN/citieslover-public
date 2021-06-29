@@ -25,11 +25,13 @@ def get_response_header(website, header):
 def rss_parser(website):
     try:
         content = get_response(website)
-        root = ET.fromstring(content)
+        root = BeautifulSoup(content, "xml")
     except ET.ParseError as err:
         return []
-    items = root.findall('*/item')
-    if len(items) > 5:
+    items = root.findAll("item")
+    if not items:
+        return []
+    elif len(items) > 5:
         items = items[:5]
     articles = [
         article_object(
@@ -37,8 +39,8 @@ def rss_parser(website):
             url= item.find('link').text,
         )
         for item in items
-        if item.find('title').text
-        and item.find('link').text
+        if item.find('title')
+        and item.find('link')
     ]
     if articles:
         return articles
@@ -112,8 +114,107 @@ def the_city(website):
             url= item.find('link')['href']
         )
         for item in items
-        if item.find('title').text
+        if item.find('title')
         and item.find('link')
+    ]
+    if articles:
+        return articles
+
+
+def int_transport(website):
+    content = get_response(website)
+    soup = BeautifulSoup(content, 'html.parser')
+    items = soup.find_all('article')
+    if len(items) > 5:
+        items = items[:5]
+    articles = [
+        article_object(
+            title= item.find('h3').text,
+            url= item.find('a')['href']
+        )
+        for item in items
+        if item.find('h3')
+        and item.find('a')
+    ]
+    if articles:
+        return articles
+
+
+def spur(website):
+    content = get_response(website)
+    soup = BeautifulSoup(content, 'html.parser')
+    items = soup.find_all('article')[1:]
+    if len(items) > 5:
+        items = items[:5]
+    articles = [
+        article_object(
+            title= item.find('h2').text,
+            url= item.find('a')['href']
+        )
+        for item in items
+        if item.find('h2')
+        and item.find('a')
+    ]
+    if articles:
+        return articles
+
+
+def parking_mobility(website):
+    content = get_response(website)
+    soup = BeautifulSoup(content, 'html.parser')
+    items = soup.find_all('div', {'class', 'blog-post-info'})
+    if len(items) > 5:
+        items = items[:5]
+    articles = [
+        article_object(
+            title= item.find('h2').text,
+            url= item.find('a')['href']
+        )
+        for item in items
+        if item.find('h2')
+        and item.find('a')
+    ]
+    if articles:
+        return articles
+
+
+def axios(website):
+    content = get_response(website)
+    soup = BeautifulSoup(content, 'html.parser')
+    items = soup.find_all('a', {'class', 'title-link gtm-content-click'})
+    if len(items) > 5:
+        items = items[:5]
+    articles = [
+        article_object(
+            title= item.text,
+            url= item.get('href')
+        )
+        for item in items
+        if item
+        and item.get('href')
+    ]
+    if articles:
+        return articles
+
+
+def umc(website):
+    url = 'https://urbanmobilitycompany.com'
+    content = get_response(website)
+    soup = BeautifulSoup(content, 'html.parser')
+    items = soup.find('ul', {'class', "grid svelte-1dt5b9d"})
+    if not items:
+        return None
+    items = items.find_all('li')
+    if len(items) > 5:
+        items = items[:5]
+    articles = [
+        article_object(
+            title= item.find('h2').text,
+            url= '{}{}'.format(url, item.find('a')['href'])
+        )
+        for item in items
+        if item.find('h2')
+        and item.find('a')['href']
     ]
     if articles:
         return articles
