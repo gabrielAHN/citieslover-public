@@ -6,7 +6,7 @@ City Lover is a newsletter built from scraping a bunch of city centric articles,
 
 ## Use
 ```
-python main.py
+python website_update.py
 ```
 
 ## Setup
