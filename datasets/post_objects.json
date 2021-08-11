@@ -1,0 +1,614 @@
+{
+  "govtech": [
+    {
+      "source": "govtech",
+      "title": "Colorado Electric Company Inks $850M Shuttle Bus Deal",
+      "url": "https://www.govtech.com/transportation/colorado-electric-company-inks-850m-shuttle-bus-deal",
+      "post_time": "2021-08-11"
+    },
+    {
+      "source": "govtech",
+      "title": "San Diego Signal Modernization To Guide Mobility Efforts",
+      "url": "https://www.govtech.com/fs/san-diego-signal-modernization-to-guide-mobility-efforts",
+      "post_time": "2021-08-09"
+    },
+    {
+      "source": "govtech",
+      "title": "Naperville, Ill., May Drop Electric Vehicle Charging Fees",
+      "url": "https://www.govtech.com/fs/naperville-ill-may-drop-electric-vehicle-charging-fees",
+      "post_time": "2021-08-09"
+    },
+    {
+      "source": "govtech",
+      "title": "Sacramento, Calif., Plans For Nearly 4K Ev Chargers By 2025",
+      "url": "https://www.govtech.com/fs/sacramento-calif-plans-for-nearly-4k-ev-chargers-by-2025",
+      "post_time": "2021-08-06"
+    },
+    {
+      "source": "govtech",
+      "title": "Chattanooga, Tenn., To Explore The Many Uses Of Traffic Data",
+      "url": "https://www.govtech.com/fs/chattanooga-tenn-to-explore-the-many-uses-of-traffic-data",
+      "post_time": "2021-08-05"
+    }
+  ],
+  "cityjournal": [
+    {
+      "source": "cityjournal",
+      "title": "Is Inflation Here To Stay?",
+      "url": "http://feedproxy.google.com/~r/city-journal/~3/MfBqpUnlNPE/is-inflation-here-to-stay",
+      "post_time": "2021-08-11"
+    },
+    {
+      "source": "cityjournal",
+      "title": "Golden State Reckoning",
+      "url": "http://feedproxy.google.com/~r/city-journal/~3/x3stja1Ucd0/will-california-recall-election-change-anything",
+      "post_time": "2021-08-11"
+    },
+    {
+      "source": "cityjournal",
+      "title": "Intersectional Amex",
+      "url": "http://feedproxy.google.com/~r/city-journal/~3/QOt7FZ8S0Ks/american-express-company-critical-race-theory-training-program",
+      "post_time": "2021-08-11"
+    },
+    {
+      "source": "cityjournal",
+      "title": "A Threat To Charitable Giving",
+      "url": "http://feedproxy.google.com/~r/city-journal/~3/eH4sOq5E7eo/regulating-the-charitable-tax-deduction",
+      "post_time": "2021-08-10"
+    },
+    {
+      "source": "cityjournal",
+      "title": "Individual Choices, Not Lockdowns",
+      "url": "http://feedproxy.google.com/~r/city-journal/~3/Q5XKtMf7j8A/individual-choices-not-lockdowns",
+      "post_time": "2021-08-10"
+    }
+  ],
+  "intelligenttransport": [
+    {
+      "source": "intelligenttransport",
+      "title": "Moscow Metro Training Second Team Of Female Drivers",
+      "url": "https://www.intelligenttransport.com/transport-news/127397/moscow-metro-training-female-drivers/",
+      "post_time": "2021-08-11"
+    },
+    {
+      "source": "intelligenttransport",
+      "title": "Paddington Crossrail Station Handed Over To Tfl",
+      "url": "https://www.intelligenttransport.com/transport-news/127459/paddington-crossrail/",
+      "post_time": "2021-08-11"
+    },
+    {
+      "source": "intelligenttransport",
+      "title": "No On-Demand Transportation, No Maas!",
+      "url": "https://www.intelligenttransport.com/transport-articles/126779/no-on-demand-transportation-no-maas/",
+      "post_time": "2021-08-11"
+    },
+    {
+      "source": "intelligenttransport",
+      "title": "Sfmta Completes New Transit Lanes In San Francisco",
+      "url": "https://www.intelligenttransport.com/transport-news/127402/sfmta-transit-lanes/",
+      "post_time": "2021-08-10"
+    },
+    {
+      "source": "intelligenttransport",
+      "title": "New Data Published To Support Safe Operation Of Autonomous Vehicles In Adverse Weather",
+      "url": "https://www.intelligenttransport.com/transport-news/127381/autonomous-vehicles-adverse-weather/",
+      "post_time": "2021-08-10"
+    }
+  ],
+  "urbanmobilitycompany": [
+    {
+      "source": "urbanmobilitycompany",
+      "title": "Hydrogen\u2019S Future Role In Mobility",
+      "url": "https://www.autonomy.paris/en/long-reads/hydrogens-future-role-in-mobility/",
+      "post_time": "2021-07-15"
+    },
+    {
+      "source": "urbanmobilitycompany",
+      "title": "Hydrogen\u2019S Future Role In Mobility",
+      "url": "https://www.autonomy.paris/en/long-reads/hydrogens-future-role-in-mobility/",
+      "post_time": "2021-07-15"
+    },
+    {
+      "source": "urbanmobilitycompany",
+      "title": "Vve: Towards An Eco-Mobility City",
+      "url": "https://www.autonomy.paris/en/long-reads/vve-a-tool-to-kickstart-the-ecomobility-transition-of-communities/",
+      "post_time": "2021-07-15"
+    }
+  ],
+  "monocle": [
+    {
+      "source": "monocle",
+      "title": "Tall Stories 269: Paul And Babe, Bemidji",
+      "url": "https://omny.fm/shows/monocle-24-the-urbanist/tall-stories-269-paul-and-babe-bemidji",
+      "post_time": "2021-08-09"
+    },
+    {
+      "source": "monocle",
+      "title": "Reading The City",
+      "url": "https://omny.fm/shows/monocle-24-the-urbanist/reading-the-city-1",
+      "post_time": "2021-08-09"
+    },
+    {
+      "source": "monocle",
+      "title": "Tall Stories 268: Ljubljana Mosque",
+      "url": "https://omny.fm/shows/monocle-24-the-urbanist/tall-stories-268-ljubljana-mosque",
+      "post_time": "2021-08-02"
+    },
+    {
+      "source": "monocle",
+      "title": "School\u2019S Out",
+      "url": "https://omny.fm/shows/monocle-24-the-urbanist/school-s-out",
+      "post_time": "2021-07-29"
+    },
+    {
+      "source": "monocle",
+      "title": "Tall Stories 267: Danube-Auen National Park, Vienna",
+      "url": "https://omny.fm/shows/monocle-24-the-urbanist/tall-stories-267-danube-auen-national-park-vienna",
+      "post_time": "2021-07-26"
+    }
+  ],
+  "smartcities": [
+    {
+      "source": "smartcities",
+      "title": "Nyc Meatpacking District To Adopt Open Streets Permanently",
+      "url": "https://www.smartcitiesdive.com/news/nyc-meatpacking-district-to-adopt-open-streets-permanently/604693/",
+      "post_time": "2021-08-11"
+    },
+    {
+      "source": "smartcities",
+      "title": "'An Enormous Lift': Biden'S Goal Of 50% Ev Sales By 2030 Will Test Supply Chains, Utilities, Experts Say",
+      "url": "https://www.smartcitiesdive.com/news/an-enormous-lift-bidens-goal-of-50-ev-sales-by-2030-will-test-supply-c/604796/",
+      "post_time": "2021-08-11"
+    },
+    {
+      "source": "smartcities",
+      "title": "Postmates Strikes Nearly $1M Deal With Seattle Over Gig Worker Claims",
+      "url": "https://www.smartcitiesdive.com/news/postmates-strikes-nearly-1m-deal-with-seattle-over-gig-worker-claims/604733/",
+      "post_time": "2021-08-10"
+    },
+    {
+      "source": "smartcities",
+      "title": "E-Scooter Company Skip Files For Chapter 7 Bankruptcy",
+      "url": "https://www.smartcitiesdive.com/news/e-scooter-company-skip-files-for-chapter-7-bankruptcy/604678/",
+      "post_time": "2021-08-10"
+    },
+    {
+      "source": "smartcities",
+      "title": "The Pandemic Changed Car Ownership. How Can Cities Adapt?",
+      "url": "https://www.smartcitiesdive.com/news/the-pandemic-changed-car-ownership-how-can-cities-adapt/604497/",
+      "post_time": "2021-08-09"
+    }
+  ],
+  "Axios": [
+    {
+      "source": "Axios",
+      "title": "New Covid Restrictions Could Slow Air Travel",
+      "url": "https://www.axios.com/new-covid-restrictions-could-slow-air-travel-63709eef-5dc0-42c5-8a00-4dcdbae15c44.html",
+      "post_time": "2021-08-11"
+    },
+    {
+      "source": "Axios",
+      "title": "Cars Are Back To Being Depreciating Assets",
+      "url": "https://www.axios.com/car-prices-depreciating-inflation-884699e1-3d96-4272-8914-9e227e0787b2.html",
+      "post_time": "2021-08-09"
+    },
+    {
+      "source": "Axios",
+      "title": "Self-Driving Cars Would Be Nowhere Without Hd Maps",
+      "url": "https://www.axios.com/self-driving-cars-digital-maps-a1eced04-e36a-4f11-877a-766beef1bce4.html",
+      "post_time": "2021-08-09"
+    },
+    {
+      "source": "Axios",
+      "title": "This Parking Garage Is A High-Tech Research Lab",
+      "url": "https://www.axios.com/this-parking-garage-is-a-high-tech-research-lab-c0aebcc8-15dd-4bab-a8bd-2097547e9c5a.html",
+      "post_time": "2021-08-11"
+    },
+    {
+      "source": "Axios",
+      "title": "United Becomes First Major U.S. Airline To Mandate Vaccines For Employees",
+      "url": "https://www.axios.com/united-airlines-vaccine-mandates-8e04e66a-ea55-4ca1-846d-680f49f5d2a4.html",
+      "post_time": "2021-08-06"
+    }
+  ],
+  "strongtowns": [
+    {
+      "source": "strongtowns",
+      "title": "Bad Benches (And Other Park Problems)",
+      "url": "http://podcast.strongtowns.org/e/bad-benches-and-other-park-problems/",
+      "post_time": "2021-08-02"
+    },
+    {
+      "source": "strongtowns",
+      "title": "Fighting An Urban Highway Expansion In Shreveport",
+      "url": "http://podcast.strongtowns.org/e/fighting-an-urban-highway-expansion-in-shreveport/",
+      "post_time": "2021-07-26"
+    },
+    {
+      "source": "strongtowns",
+      "title": "Johnny Sanphillippo: The Trajectory Of Suburbia",
+      "url": "http://podcast.strongtowns.org/e/johnny-sanphillippo-the-trajectory-of-suburbia/",
+      "post_time": "2021-07-19"
+    }
+  ],
+  "humantransit": [
+    {
+      "source": "humantransit",
+      "title": "San Francisco: Go Forward By Going Back?",
+      "url": "http://feedproxy.google.com/~r/humantransit/TCwW/~3/V-AxCfTpFro/san-francisco-whats-the-best-way-to-restore-service.html",
+      "post_time": "2021-07-15"
+    }
+  ],
+  "secondave": [
+    {
+      "source": "secondave",
+      "title": "Lieber Replaces Foye, Feinberg Departs Transit As N.Y. Senate Fails To Act On Cuomo Mta Plan",
+      "url": "http://feedproxy.google.com/~r/SecondAveSagas/~3/Bqv0in9N9Ls/",
+      "post_time": "2021-08-02"
+    }
+  ],
+  "bikeleague": [
+    {
+      "source": "bikeleague",
+      "title": "Updating What It Takes To Be A Bicycle Friendly Community",
+      "url": "https://www.bikeleague.org/content/updating-what-it-takes-be-bicycle-friendly-community",
+      "post_time": "2021-08-09"
+    },
+    {
+      "source": "bikeleague",
+      "title": "League Cycling Instructor Seminar With Bike Cleveland",
+      "url": "https://www.bikeleague.org/content/league-cycling-instructor-seminar-bike-cleveland",
+      "post_time": "2021-08-09"
+    },
+    {
+      "source": "bikeleague",
+      "title": "This Is It: Take Action On The Bib",
+      "url": "https://www.bikeleague.org/content/it-take-action-bib",
+      "post_time": "2021-08-05"
+    },
+    {
+      "source": "bikeleague",
+      "title": "Bikes In The Bipartisan Infrastructure Bill",
+      "url": "https://www.bikeleague.org/content/bikes-bipartisan-infrastructure-bill",
+      "post_time": "2021-08-02"
+    },
+    {
+      "source": "bikeleague",
+      "title": "The Story Behind A Bfa: Bellingham, Washington",
+      "url": "https://www.bikeleague.org/content/story-behind-bfa-bellingham-washington",
+      "post_time": "2021-07-30"
+    }
+  ],
+  "govlove": [
+    {
+      "source": "govlove",
+      "title": "#459 Govlove In Love With Holly Krejci, Seattle, Wa",
+      "url": "https://elgl.org/podcast-govlove-in-love-with-holly-krejci-seattle-wa/",
+      "post_time": "2021-08-10"
+    },
+    {
+      "source": "govlove",
+      "title": "#458 Onboarding New Employees With Benjamin Mead-Harvey",
+      "url": "https://elgl.org/podcast-onboarding-new-employees-with-benjamin-mead-harvey/",
+      "post_time": "2021-08-06"
+    },
+    {
+      "source": "govlove",
+      "title": "#457 Distraction Free Messaging With Brad Dunn, Whispir",
+      "url": "https://elgl.org/podcast-distraction-free-messaging-with-brad-dunn-whispir/",
+      "post_time": "2021-08-03"
+    },
+    {
+      "source": "govlove",
+      "title": "#456 Fires, Floods, & Taxicabs With Jeffrey Roth, New York, Ny",
+      "url": "https://elgl.org/podcast-fires-floods-taxicabs-with-jeffrey-roth-new-york-ny/",
+      "post_time": "2021-07-30"
+    },
+    {
+      "source": "govlove",
+      "title": "#455 Service Design & Innovation With Anna Chung, Mbta",
+      "url": "https://elgl.org/podcast-service-design-innovation-with-anna-chung-mbta/",
+      "post_time": "2021-07-28"
+    }
+  ],
+  "allthingsurban": [
+    {
+      "source": "allthingsurban",
+      "title": "Stories Of Young Urbanists: Meet Erica Belcher",
+      "url": "https://www.allthingsurban.net/blog/Stories-of-Young-Urbanists-Meet-Erica-Belcher",
+      "post_time": "2021-07-17"
+    }
+  ],
+  "transitcenter": [
+    {
+      "source": "transitcenter",
+      "title": "Welcome Jerome Horne, Transitcenter\u2019S New Director Of Transit Leadership Development",
+      "url": "https://transitcenter.org/welcome-jerome-horne-transitcenters-new-director-of-transit-leadership-development/",
+      "post_time": "2021-08-10"
+    },
+    {
+      "source": "transitcenter",
+      "title": "Governor Polis\u2019S Misplaced Transit Priorities",
+      "url": "https://transitcenter.org/governor-poliss-misplaced-transit-priorities/",
+      "post_time": "2021-07-30"
+    },
+    {
+      "source": "transitcenter",
+      "title": "No Go Zone: Behind The Plan To Shrink The Bus System In Denton, Texas",
+      "url": "https://transitcenter.org/no-go-zone-behind-the-plan-to-shrink-the-bus-system-in-denton-texas/",
+      "post_time": "2021-07-21"
+    },
+    {
+      "source": "transitcenter",
+      "title": "How Transit Agencies Are Changing Their Approach To Public Safety",
+      "url": "https://transitcenter.org/how-transit-agencies-are-changing-their-approach-to-public-safety/",
+      "post_time": "2021-07-13"
+    }
+  ],
+  "spur": [
+    {
+      "source": "spur",
+      "title": "Spur-Sponsored Housing Bills Continue To Move In The State Legislature",
+      "url": "/news/2021-08-03/spur-sponsored-housing-bills-continue-move-state-legislature",
+      "post_time": "2021-08-03"
+    },
+    {
+      "source": "spur",
+      "title": "Progress On Keeping The Water Flowing",
+      "url": "/news/2021-07-16/progress-keeping-water-flowing",
+      "post_time": "2021-07-16"
+    }
+  ],
+  "itetalk": [
+    {
+      "source": "itetalk",
+      "title": "Moving A Public Agency Into The Future Of Active Transportation",
+      "url": "https://www.spreaker.com/user/ite-talks-transportation/public-agency-and-active-transportation",
+      "post_time": "2021-08-02"
+    }
+  ],
+  "metromag": [
+    {
+      "source": "metromag",
+      "title": "Transdev Commits To Diamante Level Partnership With Latinos In Transit",
+      "url": "https://www.metro-magazine.com/10149232/transdev-commits-to-diamante-level-partnership-with-latinos-in-transit",
+      "post_time": "2021-08-11"
+    },
+    {
+      "source": "metromag",
+      "title": "Chargepoint Acquires Viriciti",
+      "url": "https://www.metro-magazine.com/10149225/chargepoint-acquires-viriciti",
+      "post_time": "2021-08-11"
+    },
+    {
+      "source": "metromag",
+      "title": "Denver\u00e2\u20ac\u2122S Rtd Adopts New Strategic Plan",
+      "url": "https://www.metro-magazine.com/10149223/denvers-rtd-adopts-new-strategic-plan",
+      "post_time": "2021-08-11"
+    },
+    {
+      "source": "metromag",
+      "title": "Mich.'S Theride Taps Mv For Paratransit Services",
+      "url": "https://www.metro-magazine.com/10149219/mich-s-theride-taps-mv-for-paratransit-services",
+      "post_time": "2021-08-11"
+    },
+    {
+      "source": "metromag",
+      "title": "Transit Agency Fleets Save Millions By Switching To Propane",
+      "url": "https://www.metro-magazine.com/10147741/transit-agency-fleets-save-millions-by-switching-to-propane",
+      "post_time": "2021-08-11"
+    }
+  ],
+  "streetsblog": [
+    {
+      "source": "streetsblog",
+      "title": "The Slow Walk: Mta Has Not Met With Environmental Leaders Vital To Congestion Pricing \u2014 But Feds Blame Mta For That",
+      "url": "https://nyc.streetsblog.org/2021/08/06/the-slow-walk-mta-has-not-met-with-environmental-leaders-vital-to-congestion-pricing-but-feds-blame-mta-for-that/",
+      "post_time": "2021-08-06"
+    },
+    {
+      "source": "streetsblog",
+      "title": "See It: Cop-Motorist Mayhem On Fordham Road In The Bronx",
+      "url": "https://nyc.streetsblog.org/2021/08/05/see-it-cop-motorist-mayhem-on-fordham-road-in-the-bronx/",
+      "post_time": "2021-08-05"
+    },
+    {
+      "source": "streetsblog",
+      "title": "Komanoff: With Cuomo Sidelined, The Mta Must Get Congestion Pricing Done",
+      "url": "https://nyc.streetsblog.org/2021/08/04/komanoff-with-cuomo-sidelined-the-mta-must-get-congestion-pricing-done/",
+      "post_time": "2021-08-04"
+    },
+    {
+      "source": "streetsblog",
+      "title": "Parking Madness: Bronx Electeds Oppose Dedicated Bus Lane That Would Help Tens Of Thousands Of Straphangers",
+      "url": "https://nyc.streetsblog.org/2021/07/30/parking-madness-bronx-electeds-oppose-dedicated-bus-lane-that-would-help-tens-of-thousands-of-straphangers/",
+      "post_time": "2021-07-30"
+    },
+    {
+      "source": "streetsblog",
+      "title": "Infrastructure Deal \u2018Worst Ratio For Transit Funding Since Nixon\u2019",
+      "url": "https://usa.streetsblog.org/2021/07/30/infrastructure-deal-worst-ratio-for-transit-funding-since-nixon/",
+      "post_time": "2021-07-30"
+    }
+  ],
+  "thecityfix": [
+    {
+      "source": "thecityfix",
+      "title": "The State Of Electric School Bus Adoption In The Us",
+      "url": "http://feedproxy.google.com/~r/thecityfix/posts/~3/w-S0kf7MQmY/",
+      "post_time": "2021-08-05"
+    },
+    {
+      "source": "thecityfix",
+      "title": "Sparking Inclusive Urban Transformation In These Revolutionary Times",
+      "url": "http://feedproxy.google.com/~r/thecityfix/posts/~3/kWFZ84pSi20/",
+      "post_time": "2021-07-26"
+    },
+    {
+      "source": "thecityfix",
+      "title": "Lessons From Durban\u2019S Approach To Water Resilience",
+      "url": "http://feedproxy.google.com/~r/thecityfix/posts/~3/fYYLSTGFG_c/",
+      "post_time": "2021-07-19"
+    }
+  ],
+  "talkingheadways": [
+    {
+      "source": "talkingheadways",
+      "title": "Episode 95: Mondays At The Overhead Wire - Moving At The Speed Of Congress",
+      "url": "https://streetsblog.libsyn.com/episode-95-mondays-at-the-overhead-wire-moving-at-the-speed-of-congress",
+      "post_time": "2021-08-10"
+    },
+    {
+      "source": "talkingheadways",
+      "title": "Episode 345: The Heat Is On",
+      "url": "https://streetsblog.libsyn.com/episode-345-the-heat-is-on",
+      "post_time": "2021-08-05"
+    },
+    {
+      "source": "talkingheadways",
+      "title": "Episode 344: No More Transit Hunger Games",
+      "url": "https://streetsblog.libsyn.com/episode-344-no-more-transit-hunger-games",
+      "post_time": "2021-07-29"
+    },
+    {
+      "source": "talkingheadways",
+      "title": "Episode 343: This Food Pyramid Would Be All Cars",
+      "url": "https://streetsblog.libsyn.com/episode-343-this-food-pyramid-would-be-all-cars",
+      "post_time": "2021-07-22"
+    },
+    {
+      "source": "talkingheadways",
+      "title": "Episode 342: Man'S Best Friend On Transit",
+      "url": "https://streetsblog.libsyn.com/episode-342-mans-best-friend-on-transit",
+      "post_time": "2021-07-15"
+    }
+  ],
+  "parkingmobility": [
+    {
+      "source": "parkingmobility",
+      "title": "Tackling Tncs:  Curb And Congestion Management In Las Vegas",
+      "url": "https://www.parking-mobility.org/2021/08/10/tackling-tncs-curb-and-congestion-management-in-las-vegas/",
+      "post_time": "2021-08-10"
+    },
+    {
+      "source": "parkingmobility",
+      "title": "The Mighty B17 And Its Secret For Success: The Checklist",
+      "url": "https://www.parking-mobility.org/2021/08/09/the-mighty-b17-and-its-secret-for-success-the-checklist/",
+      "post_time": "2021-08-09"
+    },
+    {
+      "source": "parkingmobility",
+      "title": "The Electrifying Future: Experts Speak",
+      "url": "https://www.parking-mobility.org/2021/08/08/the-electrifying-future-experts-speak/",
+      "post_time": "2021-08-08"
+    },
+    {
+      "source": "parkingmobility",
+      "title": "Road Trip? Perfect.",
+      "url": "https://www.parking-mobility.org/2021/08/05/42452/",
+      "post_time": "2021-08-05"
+    },
+    {
+      "source": "parkingmobility",
+      "title": "Rfps Just Not That Into You: Finding That Special Someone",
+      "url": "https://www.parking-mobility.org/2021/08/04/rfps-just-not-that-into-you-finding-that-special-someone/",
+      "post_time": "2021-08-04"
+    }
+  ],
+  "nextcity": [
+    {
+      "source": "nextcity",
+      "title": "Former Refugees\u2019 St. Cloud Startup Fosters Sober Living, Independence",
+      "url": "https://nextcity.org/daily/entry/former-refugees-st.-cloud-startup-fosters-sober-living-independence",
+      "post_time": "2021-08-11"
+    },
+    {
+      "source": "nextcity",
+      "title": "The Open-Streets Tug-Of-War Stretches Coast To Coast",
+      "url": "https://nextcity.org/daily/entry/the-open-streets-tug-of-war-stretches-coast-to-coast",
+      "post_time": "2021-08-11"
+    },
+    {
+      "source": "nextcity",
+      "title": "Q&Amp;A: Oneten\u2019S Maurice Jones On Bridging The Racial Wealth Gap With Better Jobs",
+      "url": "https://nextcity.org/daily/entry/qa-onetens-maurice-jones-on-bridging-the-racial-wealth-gap-with-better-jobs",
+      "post_time": "2021-08-11"
+    },
+    {
+      "source": "nextcity",
+      "title": "New Tool Puts Racial Equity At The Center Of Community Funding",
+      "url": "https://nextcity.org/daily/entry/new-tool-puts-racial-equity-at-the-center-of-community-funding",
+      "post_time": "2021-08-10"
+    },
+    {
+      "source": "nextcity",
+      "title": "An Unusual Community Land Trust In Colorado Is Making Its Mark",
+      "url": "https://nextcity.org/daily/entry/an-unusual-community-land-trust-in-colorado-is-making-its-mark",
+      "post_time": "2021-08-10"
+    }
+  ],
+  "planetizen": [
+    {
+      "source": "planetizen",
+      "title": "Report: How L.A.'S Transportation System Fails Women",
+      "url": "https://www.planetizen.com/news/2021/08/114315-report-how-las-transportation-system-fails-women",
+      "post_time": "2021-08-11"
+    },
+    {
+      "source": "planetizen",
+      "title": "Delivering Clean Water To The Many In Need",
+      "url": "https://www.planetizen.com/news/2021/08/114329-delivering-clean-water-many-need",
+      "post_time": "2021-08-11"
+    },
+    {
+      "source": "planetizen",
+      "title": "Miami Herald: Collapsed Florida Residential Building Had Major Defects, Violated Code",
+      "url": "https://www.planetizen.com/news/2021/08/114328-miami-herald-collapsed-florida-residential-building-had-major-defects-violated",
+      "post_time": "2021-08-11"
+    },
+    {
+      "source": "planetizen",
+      "title": "Developer Accuses L.A.'S Eviction Moratorium Of Illegal Taking, Files Lawsuit",
+      "url": "https://www.planetizen.com/news/2021/08/114324-developer-accuses-las-eviction-moratorium-illegal-taking-files-lawsuit",
+      "post_time": "2021-08-11"
+    },
+    {
+      "source": "planetizen",
+      "title": "Opposition To Laguardia Airtrain Plan Emerges After Cuomo Resigns",
+      "url": "https://www.planetizen.com/news/2021/08/114326-opposition-laguardia-airtrain-plan-emerges-after-cuomo-resigns",
+      "post_time": "2021-08-11"
+    }
+  ],
+  "datasmart": [
+    {
+      "source": "datasmart",
+      "title": "Data-Smart City Pod: Episode Ten",
+      "url": "https://datasmart.ash.harvard.edu/news/article/data-smart-city-pod-episode-ten",
+      "post_time": "2021-08-11"
+    },
+    {
+      "source": "datasmart",
+      "title": "#Thisweekindata August 6, 2021",
+      "url": "https://datasmart.ash.harvard.edu/news/article/thisweekindata-august-6-2021",
+      "post_time": "2021-08-06"
+    },
+    {
+      "source": "datasmart",
+      "title": "Dashboard Tells The Story Of Northeastern Illinois\u2019 Transit Recovery",
+      "url": "https://datasmart.ash.harvard.edu/news/article/dashboard-tells-story-northeastern-illinois-transit-recovery",
+      "post_time": "2021-08-03"
+    },
+    {
+      "source": "datasmart",
+      "title": "#Thisweekindata July 30, 2021",
+      "url": "https://datasmart.ash.harvard.edu/news/article/thisweekindata-july-30-2021",
+      "post_time": "2021-07-30"
+    },
+    {
+      "source": "datasmart",
+      "title": "Data-Smart City Pod: Episode Nine",
+      "url": "https://datasmart.ash.harvard.edu/news/article/data-smart-city-pod-episode-nine",
+      "post_time": "2021-07-21"
+    }
+  ]
+}
