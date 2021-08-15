@@ -6,7 +6,18 @@ City Lover is a newsletter built from scraping a bunch of city centric articles,
 
 ## Use
 ```
-python website_update.py
+# Test scrape for source
+python main.py --test_source <source_id>
+
+# Commands create datasets for jobs and post
+python main.py --create_datasets all
+
+# Commands create dataset for job
+python main.py --create_datasets job
+
+# Commands create dataset for post
+python main.py --create_datasets post
+
 ```
 
 ## Setup
