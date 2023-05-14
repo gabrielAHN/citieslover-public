@@ -1,26 +1,35 @@
 from scrapers.newsletter_scrapers import (
     rss_parser, apple_parser, allthingsurban,
-    govtech, transitcenter, streetsblog, umc,
-    parking_mobility, axios, spur
+    govtech, transitcenter, streetsblog, parking_mobility,
+    axios, spur, micromobilitypodcast,
+    zag, transloc, commutifi
 )
 from scrapers.jobs_scrapers import (
     planetizen_jobs, allthingsurban_jobs,
-    apany_jobs, nextcity_jobs, govlove_jobs
+    apany_jobs, govlove_jobs, beta_nyc_jobs,
+    nyc_planning_jobs, carto_jobs, transitcenter_job,
+    uber_jobs, via_jobs, mobilitydata_jobs,
+    citymapper_jobs, lever_jobs
 )
 
 
-website_info = {
-    'citymapper': {
+website_info = [
+    {
+        'id': 'citymapper',
         'name': 'Citymapper',
         'type': ['job'],
         'image_size':   '60px',
         'image': 'https://logovectorseek.com/wp-content/uploads/2020/11/citymapper-logo-vector.png',
-        'feature_post': True        
-     },
-    'planetizen': {
+        'jobs': {
+            'scrape_function': citymapper_jobs,
+            'website': 'https://apply.workable.com/api/v3/accounts/citymapper/jobs',
+        }
+    },
+    {
+        'id': 'planetizen',
         'name': 'Planetizen',
-        'type': ['news'],
-        'image_size':   '60px',
+        'type': ['news', 'job'],
+        'image_size':   '120px',
         'image': 'https://simplycareer.com/wp-content/uploads/2015/05/planetizen-425x215.png',
         'newsletter': {
             'scrape_function': rss_parser,
@@ -29,22 +38,24 @@ website_info = {
         'jobs': {
             'scrape_function': planetizen_jobs,
             'website': 'https://www.planetizen.com/jobs',
-        }        
-     },
-    'thecityfix': {
+        }
+    },
+    {
+        'id': 'thecityfix',
         'name': 'TheCityFix',
         'type': ['article'],
-        'image_size':   '35px',
+        'image_size':   '115px',
         'image': 'https://thecityfixlearn.org/sites/default/files/18_Logo_TheCityFix_Learn.png',
         'newsletter': {
             'scrape_function': rss_parser,
             'website': 'https://feeds.feedburner.com/thecityfix/posts'
         }
-     },
-    'allthingsurban': {
+    },
+    {
+        'id': 'allthingsurban',
         'name': 'All Things Urban',
-        'type': ['blog'],
-        'image_size':   '35px',
+        'type': ['blog', 'job'],
+        'image_size':   '115px',
         'image': 'https://all-things-urban.storage.googleapis.com/static/images/social.jpg',
         'newsletter': {
             'scrape_function': allthingsurban,
@@ -54,29 +65,31 @@ website_info = {
             'scrape_function': allthingsurban_jobs,
             'website': 'https://www.allthingsurban.net/career'
         }
-     },
-    'monocle': {
+    },
+    {
+        'id': 'monocle',
         'name': 'Monocle',
         'type': ['podcast'],
         'image_size': '70px',
         'image': 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSmKMTL7s8pHWi3lGcPnbXw5_bP4VXZIP2PgdXV5wr-u7tlTtgf',
         'newsletter': {
-                'scrape_function': rss_parser,
-                'website': 'https://www.omnycontent.com/d/playlist/e6127ab7-b81e-456b-893c-a8d600215365/7903d81a-7481-40dd-85ff'
-                           '-a8db009e611f/ff59014c-a954-4271-8920-a8db009e612d/podcast.rss '
-        } 
+                'scrape_function': apple_parser,
+                'website': 'https://podcasts.apple.com/us/podcast/the-urbanist/id474763572'
+        }
     },
-    'smartcities': {
+    {
+        'id': 'smartcities',
         'name': 'Smartcities',
         'type': ['news'],
         'image': 'https://leadingcities2014.files.wordpress.com/2019/09/smartcities_logo_black.png',
-        'image_size':   '18px',
+        'image_size':   '130px',
         'newsletter': {
             'scrape_function': rss_parser,
             'website': 'https://www.smartcitiesdive.com/feeds/news/'
         }
     },
-    'datasmart': {
+    {
+        'id': 'datasmart',
         'name': 'Datasmart',
         'type': ['article'],
         'image': 'https://pbs.twimg.com/profile_images/877596367555874817/EsB6Sxl4.jpg',
@@ -86,7 +99,8 @@ website_info = {
             'website': 'https://datasmart.ash.harvard.edu/feeds'
         }
     },
-    'strongtowns': {
+    {
+        'id': 'strongtowns',
         'name': 'Strongtowns',
         'type': ['podcast'],
         'image': 'https://pbcdn1.podbean.com/imglogo/image-logo/2312128/Blue_Stripe_Square_edit.png',
@@ -96,7 +110,8 @@ website_info = {
             'website': 'https://feed.podbean.com/podcast.strongtowns.org/feed.xml'
         }
     },
-    "itetalk": {
+    {
+        'id': 'itetalk',
         'name': 'Itetalk',
         'type': ['podcast'],
         'image': 'https://d3wo5wojvuv7l.cloudfront.net/t_square_limited_320/images.spreaker.com/original/d933ad68df9d533175abe3a002d22ede.jpg',
@@ -106,17 +121,19 @@ website_info = {
             'website': 'https://www.spreaker.com/show/1744465/episodes/feed'
         }
     },
-    "metromag": {
+    {
+        'id': 'metromag',
         'name': 'Metro Mag',
         'type': ['news'],
         'image': 'https://fleetimages.bobitstudios.com/upload/metro-magazine/met-og-__-1200x630-s.png',
-        'image_size':   '55px',
+        'image_size':   '135px',
         'newsletter': {
             'scrape_function': rss_parser,
             'website': 'https://www.metro-magazine.com/rss'
         }
     },
-    "talkingheadways": {
+    {
+        'id': 'talkingheadways',
         'name': 'Talking Headways',
         'type': ['podcast'],
         'image': 'https://ssl-static.libsyn.com/p/assets/3/3/e/8/33e8d0ffe911533c/talking_headways_v7.png',
@@ -126,17 +143,19 @@ website_info = {
             'website': 'https://streetsblog.libsyn.com/rss'
         }
     },
-    "secondave": {
+    {
+        'id': 'secondave',
         'name': 'Second Ave Sagas',
         'type': ['blog'],
         'image': 'http://bkabak.wpengine.com/wp-content/uploads/2019/10/saslogo960x200.jpg',
-        'image_size':   '20px',
+        'image_size':   '130px',
         'newsletter': {
             'scrape_function': rss_parser,
             'website': 'http://feeds.feedburner.com/SecondAveSagas'
         }
     },
-    "cityjournal": {
+    {
+        'id': 'cityjournal',
         'name': 'City Journal',
         'type': ['news'],
         'image': 'https://upload.wikimedia.org/wikipedia/commons/4/48/City_Journal_logo.png',
@@ -146,7 +165,8 @@ website_info = {
             'website': 'http://feeds.feedburner.com/city-journal'
         }
     },
-    "bikeleague": {
+    {
+        'id': 'bikeleague',
         'name': 'Bike League',
         'type': ['blog'],
         'image': 'https://www.bikeleague.org/sites/all/themes/lab/images/league-logo.png',
@@ -156,9 +176,10 @@ website_info = {
             'website': 'https://www.bikeleague.org/blog/feed'
         }
     },
-    "govlove": {
+    {
+        'id': 'govlove',
         'name': 'GovLove',
-        'type': ['podcast'],
+        'type': ['podcast', 'job'],
         'image': 'https://storage.googleapis.com/proudcity/elglor/uploads/2018/02/cropped-elgl-icon-blue.png',
         'image_size':   '40px',
         'newsletter': {
@@ -170,7 +191,8 @@ website_info = {
             'website': 'https://elgljobs.com/jobs/?categories[]=Data%20%26%20Analysis&categories[]=Innovation&categories[]=Planning'
         }
     },
-    "nextcity": {
+    {
+        'id': 'nextcity',
         'name': 'Next City',
         'type': ['news'],
         'image': 'https://nextcity.org/images/events/Next_City_Orange_Logo.png',
@@ -178,15 +200,18 @@ website_info = {
         'newsletter': {
             'scrape_function': rss_parser,
             'website': 'https://nextcity.org/feeds/daily'
-        },
-        'jobs': {
-            'scrape_function': nextcity_jobs,
-            'website': 'https://jobs.nextcity.org/'
         }
+        # Bad Job results
+        # ,
+        # 'jobs': {
+        #     'scrape_function': nextcity_jobs,
+        #     'website': 'https://jobs.nextcity.org/'
+        # }
     },
-    "apany": {
+    {
+        'id': 'apany',
         'name': 'NY APA',
-        'type': ['jobs'],
+        'type': ['job'],
         'image': 'https://planning-org-uploaded-media.s3.amazonaws.com/uploads/PROFILE_PHOTOS/7816568a-17ef-47c6-8291-2cda62b13910.png',
         'image_size':   '40px',
         'jobs': {
@@ -194,68 +219,68 @@ website_info = {
             'website': 'https://www.nyplanning.org/career-development/jobs/'
         }
     },
-    "govtech": {
+    {
+        'id': 'govtech',
         'name': 'Govtech',
         'type': ['news'],
         'image': 'https://assets.website-files.com/59dfccba14d0c50001317351/5a625dd96f429200014442c3_gt.jpg',
-        'image_size':   '70px',
+        'image_size':   '130px',
         'newsletter': {
             'scrape_function': govtech,
             'website': 'https://www.govtech.com/transportation/'
         }
     },
-    "transitcenter": {
+    {
+        'id': 'transitcenter',
         'name': 'Transitcenter',
-        'type': ['blog'],
+        'type': ['blog', 'job'],
         'image': 'https://d3n8a8pro7vhmx.cloudfront.net/circulatesd/pages/1101/attachments/original/1553274530/transit-center-logo.png?1553274530',
-        'image_size':   '30px',
+        'image_size':   '130px',
         'newsletter': {
             'scrape_function': transitcenter,
             'website': 'https://transitcenter.org/blog/'
+        },
+        'jobs': {
+            'scrape_function': transitcenter_job,
+            'website': 'https://transitcenter.org/careersattransitcenter/'
         }
     },
-    "streetsblog": {
+    {
+        'id': 'streetsblog',
         'name': 'Streetsblog',
         'type': ['blog'],
         'image': 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQm06X4'
-              '-kgmtexgJpGSv8RLLBu86D7KkMISeaSVNP1vNtn7nggAIg&s',
-        'image_size':   '70px',
+        '-kgmtexgJpGSv8RLLBu86D7KkMISeaSVNP1vNtn7nggAIg&s',
+        'image_size':   '120px',
         'newsletter': {
             'scrape_function': streetsblog,
             'website': 'https://nyc.streetsblog.org/category/issues-campaigns/transit/'
         }
     },
-    "intelligenttransport": {
+    {
+        'id': 'intelligenttransport',
         'name': 'Intelligent Transport',
         'type': ['news'],
         'image': 'https://www.intelligenttransport.com/wp-content/themes/it19/images/IT-Logo@2x.png',
-        'image_size':   '40px',
+        'image_size':   '120px',
         'newsletter': {
             'scrape_function': rss_parser,
             'website': 'https://feeds.feedburner.com/IntelligentTransport'
         }
     },
-    "urbanmobilitycompany": {
-        'name': 'Urban Mobility Company',
-        'type': ['blog'],
-        'image': 'https://www.autonomy.paris/wp-content/uploads/2021/03/Screenshot_2021-03-18-Urban-Mobilty-Daily-Urban-Mobility-Company.png',
-        'image_size':   '40px',
-        "newsletter": {
-            'scrape_function': umc,
-            'website': 'https://urbanmobilitycompany.com/content/daily'
-        }
-    },
-    "parkingmobility": {
+    {
+        'id': 'parkingmobility',
         'name': 'Parking Mobility',
         'type': ['article'],
         'image': 'https://www.parking-mobility.org/wp-content/themes/ipi/images/IPMI_LOGO-R_RGB_220x96.png',
-        'image_size':   '30px',
+        'image_size':   '120px',
         "newsletter": {
             'scrape_function': parking_mobility,
             'website': 'https://www.parking-mobility.org/news-publications/ipmi-blog/'
-        } 
+        }
     },
-    "humantransit": {
+    {
+        'id': 'humantransit',
         'name': 'Human Transit',
         'type': ['blog'],
         'image': 'https://humantransit.org/wp-content/uploads/HT-favicon@16x.png',
@@ -265,18 +290,20 @@ website_info = {
             'website': 'https://feeds.feedburner.com/humantransit/TCwW'
         }
     },
-    "metrospectives": {
+    {
+        'id': 'metrospectives',
         'name': 'METROspectives',
         'type': ['podcast'],
         'image': 'https://fleetimages.bobitstudios.com/upload/podcasts/metrospectives'
                 '/metrospectives-cover-__-315x315-r.png',
-        'image_size':  '40px',
+        'image_size':  '90px',
         "newsletter": {
             'scrape_function': rss_parser,
             'website': 'https://anchor.fm/s/18836658/podcast/rss'
         }
     },
-    "Axios": {
+    {
+        'id': 'Axios',
         'name': 'Axios',
         'type': ['news'],
         'image': 'https://assets.axios.com/203e9f932cc97836ac2ff4c6c982676c.png',
@@ -286,17 +313,19 @@ website_info = {
             'website': 'https://www.axios.com/economy-business/transportation/?page=1'
         }
     },
-    "spur": {
+    {
+        'id': 'spur',
         'name': 'Spur',
         'type': ['article'],
-        'image': 'https://pbs.twimg.com/profile_images/1283457372699017216/v0M0jO2G_400x400.jpg',
+        'image': 'https://www.aaonetwork.org/sites/default/files/orgs_images/SPUR-only-Logo_black.gif',
         'image_size':   '60px',
         "newsletter": {
             'scrape_function': spur,
             'website': 'https://www.spur.org/news'
         }
     },
-    "thetransitauthority": {
+    {
+        'id': 'thetransitauthority',
         'name': 'The Transit Authority',
         'type': ['podcast'],
         'image': 'https://media.glassdoor.com/sqll/264289/american-public-transportation-association-squarelogo.png',
@@ -306,15 +335,189 @@ website_info = {
             'website': 'https://podcasts.apple.com/us/podcast/the-transit-authority/id1512818062'
         }
     },
-    "themobilitypodcast": {
+    {
+        'id': 'themobilitypodcast',
         'name': 'The Mobility Podcast',
         'type': ['podcast'],
         'image': 'https://is3-ssl.mzstatic.com/image/thumb/Podcasts113/v4/74/07/46/7407463c-0bef-b30a-edb7-68915c5ade7c'
-                '/mza_6209235826687352097.jpg/1200x1200bb.jpg',
-        'image_size':   '40px',
+                 '/mza_6209235826687352097.jpg/1200x1200bb.jpg',
+        'image_size':   '70px',
         "newsletter": {
             'scrape_function': apple_parser,
             'website': 'https://podcasts.apple.com/us/podcast/the-mobility-podcast/id1301517009'
         }
+    },
+    {
+        'id': 'micromobilitynewsletter',
+        'name': 'The Micromobility Newsletter',
+        'type': ['blog'],
+        'image': 'https://cdn.substack.com/image/fetch/w_96,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2'
+                 'Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2Fb50394d7-f3de-45b5-'
+                 '9087-542005d1cef0_256x256.png',
+        'image_size':   '40px',
+        "newsletter": {
+            'scrape_function': rss_parser,
+            'website': 'https://micromobility.substack.com/feed'
+        }
+    },
+    {
+        'id': 'micromobilitypodcast',
+        'name': 'The Micromobility Podcast',
+        'type': ['podcast'],
+        'image': 'https://cdn.substack.com/image/fetch/w_96,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2'
+                 'Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2Fb50394d7-f3de-45b5-'
+                 '9087-542005d1cef0_256x256.png',
+        'image_size':   '40px',
+        "newsletter": {
+            'scrape_function': micromobilitypodcast,
+            'website': 'https://micromobility.io/podcast'
+        }
+    },
+    {
+        'id': 'zag',
+        'name': 'Zag',
+        'type': ['news'],
+        'image': 'https://zagdaily.com/wp-content/uploads/2021/10/Zag-Daily.jpg',
+        'image_size':   '40px',
+        "newsletter": {
+            'scrape_function': zag,
+            'website': 'https://zagdaily.com/category/trends/'
+        }
+    },
+    {
+        'id': 'nyc_plannning',
+        'name': 'NYC Planning',
+        'type': ['job'],
+        'image': 'https://planning-org-uploaded-media.s3.amazonaws.com/uploads/PROFILE_PHOTOS/95ba7dce-738f-465b-917a-e457760cb7b1.png',
+        'image_size':   '40px',
+        'jobs': {
+            'scrape_function': nyc_planning_jobs,
+            'website': 'https://www.nyc.gov/assets/planning/libs/JSON/Careers/careers.json'
+        }
+    },
+    {
+        'id': 'transloc',
+        'name': 'transloc',
+        'type': ['podcast'],
+        'image': 'https://biz.prlog.org/transloc/logo.png',
+        'image_size':   '130px',
+        "newsletter": {
+            'scrape_function': transloc,
+            'website': 'https://transloc.com/the-movement-podcast/'
+        }
+    },
+    {
+        'id': 'commutifi',
+        'name': 'Commutifi',
+        'type': ['podcast'],
+        'image': 'https://uploads-ssl.webflow.com/6006f47f5b6ed87abfdb7d41/6006f67241d3345f61b36142_logo-teal%402x.png',
+        'image_size':   '130px',
+        "newsletter": {
+            'scrape_function': commutifi,
+            'website': 'https://www.commutifi.com/category/podcast'
+        }
+    },
+    {
+        'id': 'carto',
+        'name': 'Carto',
+        'type': ['job'],
+        'image': 'https://mma.prnewswire.com/media/695160/CARTO_Logo.jpg',
+        'image_size':   '40px',
+        'jobs': {
+            'scrape_function': carto_jobs,
+            'website': 'https://carto.com/careers/'
+        }
+    },
+    {
+        'id': 'cityage_podcast',
+        'name': 'The CityAge Podcast',
+        'type': ['podcast'],
+        'image': 'https://m.media-amazon.com/images/I/51-1+SKPvCL._SL500_.jpg',
+        'image_size':   '90px',
+        'newsletter': {
+            'scrape_function': apple_parser,
+            'website': 'https://podcasts.apple.com/ca/podcast/the-cityage-podcast/id1621156635'
+        }
+    },
+    {
+        'id': 'uber',
+        'name': 'Uber',
+        'type': ['job'],
+        'image': 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/cc/Uber_logo_2018.png/640px-Uber_logo_2018.png',
+        'image_size':   '90px',
+        'jobs': {
+            'scrape_function': uber_jobs,
+            'website': 'https://www.uber.com/api/loadSearchJobsResults?localeCode=en'
+        }
+    },
+    {
+        'id': 'via',
+        'name': 'Via',
+        'type': ['job', 'podcast'],
+        'image': 'https://assets-global.website-files.com/609196881a69bf7486cbfd01/60919d5d15b7324b8aa8d9d8_via-logo.svg',
+        'image_size':   '90px',
+        'newsletter': {
+            'scrape_function': apple_parser,
+            'website': 'https://podcasts.apple.com/us/podcast/modeshift/id1644748349'
+        },
+        'jobs': {
+            'scrape_function': via_jobs,
+            'website': 'https://boards-api.greenhouse.io/v1/boards/via/jobs?content=true'
+        }
+    },
+    {
+        'id': 'modernmobility',
+        'name': 'Modern Mobility Podcast',
+        'type': ['podcast'],
+        'image': 'https://deow9bq0xqvbj.cloudfront.net/image-logo/11422003/ModMob_Podcast_Cover_Art-headphones-resized.jpg',
+        'image_size':   '90px',
+        'newsletter': {
+            'scrape_function': apple_parser,
+            'website': 'https://podcasts.apple.com/us/podcast/the-modern-mobility-podcast/id1559679341'
+        }
+    },
+    {
+        'id': 'mobilitydata',
+        'name': 'Mobility Data',
+        'type': ['job'],
+        'image': 'https://mobilitydata.org/app/uploads/2021/04/cropped-flaticon_logo-18.png',
+        'image_size':   '90px',
+        'jobs': {
+            'scrape_function': mobilitydata_jobs,
+            'website': 'https://careers.mobilitydata.org/?_gl=1*stwnoe*_ga*MTk2MDgxODQ5MS4xNjgwODg5NzYw*_ga_55GPMF0W9Z*MTY4MjczNzU3MC4xMC4xLjE2ODI3Mzc1NzAuMC4wLjA.'
+        }
+    },
+    {
+        'id': 'mobilitydata',
+        'name': 'Mobility Data',
+        'type': ['job'],
+        'image': 'https://mobilitydata.org/app/uploads/2021/04/cropped-flaticon_logo-18.png',
+        'image_size':   '90px',
+        'jobs': {
+            'scrape_function': mobilitydata_jobs,
+            'website': 'https://careers.mobilitydata.org/?_gl=1*stwnoe*_ga*MTk2MDgxODQ5MS4xNjgwODg5NzYw*_ga_55GPMF0W9Z*MTY4MjczNzU3MC4xMC4xLjE2ODI3Mzc1NzAuMC4wLjA.'
+        }
+    },
+    {
+        'id': 'goswift',
+        'name': 'Swiftly',
+        'type': ['job'],
+        'image': 'https://store.lmknowledgehub.com/storage/swift/G1lc1nfABW8ZhO2Kdu0WP2o0TqbqN8CVnjoquQn8.png',
+        'image_size': '90px',
+        'jobs': {
+            'scrape_function': lever_jobs,
+            'website': 'https://jobs.lever.co/goswift'
+        }
+    },
+    {
+        'id': 'betanyc',
+        'name': 'Beta NYC',
+        'type': ['job'],
+        'image': 'https://beta.nyc/wp-content/uploads/BetaNYC-site-logo-33.png',
+        'image_size': '90px',
+        'jobs': {
+            'scrape_function': beta_nyc_jobs,
+            'website': 'https://beta.nyc/blog/'
+        }
     }
-}
+]

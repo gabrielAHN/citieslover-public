@@ -1,9 +1,15 @@
+import re
+import urllib3
 import xml.etree.ElementTree as ET
+
 
 from bs4 import BeautifulSoup
 
 from scrapers.clean_strings import *
 from scrapers.website_requests import *
+
+
+urllib3.disable_warnings()
 
 
 class article_object:
@@ -16,12 +22,15 @@ class article_object:
 def rss_parser(url):
     try:
         response = get_response(url)
-        root = BeautifulSoup(response.content, "xml")
+        root = ET.fromstring(response.content)
     except ET.ParseError as err:
         return []
-    items = root.findAll("item")
+    
+    items = root.find('channel').findall("item")
+
     if not items:
         return []
+
     articles = [
         article_object(
             title=item.find('title').text,
@@ -29,8 +38,6 @@ def rss_parser(url):
             datetime=item.find('pubDate').text,
         )
         for item in items
-        if item.find('title')
-        and item.find('link')
     ]
     if articles:
         return articles
@@ -200,8 +207,29 @@ def axios(url):
         return articles
 
 
-def umc(url):
+def micromobilitypodcast(url):
+    website = 'https://micromobility.io{}'
     response = get_response(url)
+    soup = BeautifulSoup(response.content, 'html.parser')
+    articles = soup.find_all('article')
+    if not articles:
+        return []
+    articles = [
+        article_object(
+            title=article.find('a').text,
+            url=website.format(article.find('a').get('href')),
+            datetime=article.find('time').text
+        )
+        for article in articles
+    ]
+    if articles:
+        return articles
+
+
+def zag(url):
+    response = get_response(url)
+    if not response:
+        return []
     soup = BeautifulSoup(response.content, 'html.parser')
     articles = soup.find_all('article')
     if not articles:
@@ -210,10 +238,61 @@ def umc(url):
         article_object(
             title=article.find('h2').text,
             url=article.find('a').get('href'),
-            datetime=article.find('span', {'class', "published"}).text
+            datetime='today'
+        )
+        for article in articles[1:]
+    ]
+    if articles:
+        return articles
+
+
+def transloc(url):
+    header = {
+        'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3)'
+        'AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.61 '
+        'Safari/537.36'
+    }
+    content = get_response_header(url, header)
+    soup = BeautifulSoup(content, 'html.parser')
+    articles = soup.find_all('div', {"class", "esg-entry-content eg-blog-posts-content"})
+    if not articles:
+        return []
+    articles = [
+        article_object(
+            title=article.find('a').text,
+            url=article.find('a').get('href'),
+            datetime=article.find('div', {'class', re.compile(r'esg-content eg-post-\d+ eg-blog-posts-element-3')}).text
         )
         for article in articles
     ]
     if articles:
         return articles
 
+
+def commutifi(url):
+    website = 'https://www.commutifi.com/{}'
+    response = get_response(url)
+    soup = BeautifulSoup(response.content, 'html.parser')
+    articles = soup.find_all('a', {"class", "resource-item ver-2 w-inline-block"})
+    links = [
+        website.format(article.get('href'))
+        for article in articles
+    ]
+    articles = []
+
+    for link in links:
+        try:
+            response = get_response(link)
+            soup = BeautifulSoup(response.content, 'html.parser')
+            title = soup.find('h1', {'class', "heading-no-bot-margin"}).text
+            articles.append(
+                article_object(
+                title=title.split(':')[1].strip(),
+                url=link,
+                datetime=soup.find('div', {'class', 'subtitle _10-top-margin w-condition-invisible'}).text
+                )
+            )
+        except:
+            continue
+    if articles:
+        return articles

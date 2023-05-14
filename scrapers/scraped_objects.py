@@ -1,89 +1,97 @@
-import random
-
-from datetime import timedelta, date
 from websites.websites_info import website_info
-from datasets.data_parsing import create_brand_data, get_dataset
+from datasets.data_parsing import get_dataset
 from scrapers.jobs_scrapers import job_object
 
 
 class scrape_object:
-    def __init__(self, source, source_type, scrape_object):
+    def __init__(self, source, name, source_type, scrape_object):
         self.source = source
+        self.name = name
         self.source_type = source_type
         self.scrape_object = scrape_object
 
 
-def get_scrape_objects(data_date):
-    create_brand_data(website_info)
+def get_scrape_objects(data_date, source_id='', source_type=''):
+    scrape_objects = []
 
-    newsletter_objects = [
-        scrape_object(
-            source=website,
-            source_type=website_info[website]['type'],
-            scrape_object=article
+    all_websites = website_info
+
+    if source_id:
+        all_websites = [
+            website
+            for website in all_websites
+            if website['id'] == source_id
+        ]
+    if source_type:
+        all_websites = [
+            website
+            for website in all_websites
+            if source_type in website.keys()
+        ]
+    
+    if not source_type or source_type == 'newsletter':
+        scrape_objects.extend(
+                [
+                    scrape_object(
+                        source=website['id'],
+                        name=website['name'],
+                        source_type=website['type'],
+                        scrape_object=article
+                    )
+                for website in all_websites
+                for article in limit_objects(
+                    get_items_list(website.get('newsletter', []), data_date)
+                )
+                if article
+                ]
         )
-        for website in website_info
-        for article in get_items_list(website_info[website].get('newsletter', []), data_date)
-        if article
-    ]
-    jobs_objects = [
-        scrape_object(
-            source=website,
-            source_type='job',
-            scrape_object=job
+    if not source_type or source_type == 'jobs':
+        scrape_objects.extend(
+            [
+            scrape_object(
+                source=website['id'],
+                name=website['name'],
+                source_type='job',
+                scrape_object=job
+            )
+            for website in all_websites
+            for job in get_items_list(website.get('jobs', []), data_date)
+            if job
+            ]
         )
-        for website in website_info
-        for job in get_items_list(website_info[website].get('jobs', []), data_date)
-        if job
-    ]
-    job_features = [
+    
+    scrape_objects.extend(
+        [
         scrape_object(
-            source=jobs,
+            source=job_feature['id'],
+            name=job_feature['name'],
             source_type='job',
             scrape_object=job_object(
-                title=job.get('title'),
-                company=jobs,
-                location=job.get('location'),
-                url=job.get('url'),
-                datetime='today'
+                title=job_feature.get('title'),
+                company=job_feature['id'],
+                location=job_feature.get('location'),
+                url=job_feature.get('url'),
+                datetime='today',
+                job_type=job_feature.get('job_type')
             )
         )
-        for jobs in get_dataset('job_features').keys()
-        for job in get_dataset('job_features')[jobs]
-    ]
-    scrape_objects = jobs_objects + newsletter_objects + job_features
+        for job_feature in get_dataset('job_features')
+        if [
+            website
+            for website in all_websites
+            if website['id'] == job_feature['id']
+        ]
+    ])
     return scrape_objects
 
 
-def get_test_scrape_objects(source_id, data_date):
-    filter_website_info = {
-        website: website_info[website]
+def get_website_id():
+    all_websites = [
+        website['id']+'\n'
         for website in website_info
-        if website == source_id
-    }
-    newsletter_objects = [
-        scrape_object(
-            source=website,
-            source_type=filter_website_info[website]['type'],
-            scrape_object=article
-        )
-        for website in filter_website_info
-        for article in get_items_list(filter_website_info[website].get('newsletter', []), data_date)
-        if article
     ]
-    jobs_objects = [
-        scrape_object(
-            source=website,
-            source_type='job',
-            scrape_object=job
-        )
-        for website in filter_website_info
-        for job in get_items_list(filter_website_info[website].get('jobs', []), data_date)
-        if job
-    ]
-    scrape_objects = jobs_objects + newsletter_objects
-    return scrape_objects
-
+    all_websites = ''.join(all_websites)
+    return all_websites
 
 def get_items_list(website, data_date):
     if not website:
@@ -95,8 +103,14 @@ def get_items_list(website, data_date):
     items = filter_latest(items, data_date)
     return items
 
+def limit_objects(website_objects):
+    if len(website_objects) > 5:
+        return website_objects[:5]
+    return website_objects
 
 def filter_latest(items, data_date):
+    if not items:
+        return items
     items = [
         item
         for item in items

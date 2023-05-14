@@ -63,6 +63,11 @@ def get_datetime(url_date):
     except ValueError:
         pass
     try:
+        url_date = datetime.strptime(url_date.lower(), "%d %B %Y").date()
+        return url_date
+    except ValueError:
+        pass
+    try:
         url_date = datetime.strptime(url_date, "%Y-%m-%d").date()
         return url_date
     except ValueError:
