@@ -1,6 +1,6 @@
 # CityLover
 
-Citylover 💚a place where you can find jobs 💼 and news 📰 for all those looking for anything related to urbanism  🌆.
+Citylover 💚a place where you can find jobs 💼 and news 📰 for all those looking for anything related to urbanism 🌆.
 
 This script scrapes different websites and uploads to S3 Buckets to be rendered here **[City Lover](https://www.gabrielhn.com/citylover/)**
 
