@@ -4,6 +4,11 @@ from datetime import datetime, date, timedelta
 from dateutil.relativedelta import relativedelta
 
 
+COUNTRY_BLACKLIST =[
+    'Tel Aviv', 'Sofia', 'Israel', 'Sofia', 'China',
+    'Poland'
+]
+
 BAD_STRINGS = [
     "See omnystudio.com/policies/listener for privacy information.",
     "Continue reading on TheCityFix.com.",
@@ -17,7 +22,11 @@ REPLACEMENT_PAIRS = [
     ("&nbsp;", ' '),
     ("&#39;", "'"),
     ("&#039;", "'"),
-    ("&quot;", "'")
+    ("&quot;", "'"),
+    ("FTE/FTC", ""),
+    ("Hybrid—", "Hybrid"),
+    ("Remote—", "Remote"),
+    ("On-site—", "On-site")
 ]
 
 AGO_REGEX = re.compile(r'\d+ (day|week|month)s? ago')
@@ -26,10 +35,19 @@ DAY_REGEX = re.compile(r'(?P<amount>\d+) (?P<days>days?) ago')
 WEEK_REGEX = re.compile(r'(?P<amount>\d+) (?P<week>weeks?) ago')
 MONTH_REGEX = re.compile(r'(?P<amount>\d+) (?P<month>months?) ago')
 
+def country_black_list(source_location):
+    match = [
+        country 
+        for country in COUNTRY_BLACKLIST
+        if country in source_location
+    ]
+    if not match:
+        return True
 
 
 def clean_string(string):
     string = re.sub(r'<.*?>', '', string)
+    string = re.sub(r'\—$', '', string)
     for pairs in REPLACEMENT_PAIRS:
         string = string.replace(pairs[0], pairs[1])
     for remove in BAD_STRINGS:

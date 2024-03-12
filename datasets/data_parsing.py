@@ -11,13 +11,13 @@ date_file = os.path.dirname(os.path.abspath(__file__))
 
 def create_datasets(scrape_objects):
     jobs_data = create_jobs_data(scrape_objects)
-    import_to_s3('citylover-data/jobs_data.json', jobs_data)
+    import_to_s3('citieslover-data/jobs_data.json', jobs_data)
 
     post_data = create_post_data(scrape_objects)
-    import_to_s3('citylover-data/post_data.json', post_data)
+    import_to_s3('citieslover-data/post_data.json', post_data)
 
     brand_dict = create_brand_data(website_info)
-    import_to_s3('citylover-data/brand_dict.json', brand_dict)
+    import_to_s3('citieslover-data/brand_dict.json', brand_dict)
 
 
 def create_jobs_data(scrape_objects):
@@ -26,11 +26,7 @@ def create_jobs_data(scrape_objects):
         key=lambda x: x.scrape_object.datetime,
         reverse=True
     )
-    # for job in scrape_objects:
-    #     if 'job' in job.source_type:
-    #         print(job.source)
-    #         print(job.scrape_object)
-    #         print(job.source_type)
+
     jobs_data = [
         {
             'source': job.source,
@@ -38,6 +34,7 @@ def create_jobs_data(scrape_objects):
             'title': job.scrape_object.title,
             'company': job.scrape_object.company,
             'location': job.scrape_object.location,
+            'country': job.scrape_object.country,
             'url': job.scrape_object.url,
             'post_time': str(job.scrape_object.datetime),
             'job_type': job.scrape_object.job_type

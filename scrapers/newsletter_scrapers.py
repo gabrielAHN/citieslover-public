@@ -19,15 +19,20 @@ class article_object:
         self.datetime = get_datetime(datetime)
 
 
-def rss_parser(url):
+def rss_parser(url, name=''):
     try:
         response = get_response(url)
         root = ET.fromstring(response.content)
     except ET.ParseError as err:
         return []
     
-    items = root.find('channel').findall("item")
-
+    items = root.find('channel')
+    
+    if not items:
+        return []
+    
+    items = items.findall("item")
+    
     if not items:
         return []
 
@@ -43,8 +48,10 @@ def rss_parser(url):
         return articles
 
 
-def apple_parser(url):
+def apple_parser(url, name=''):
     response = get_response(url)
+    if not response:
+        return []
     soup = BeautifulSoup(response.content, 'html.parser')
     articles = soup.find_all('li', {'class', 'tracks__track tracks__track--podcast'})
     if not articles:
@@ -61,10 +68,14 @@ def apple_parser(url):
         return articles
 
 
-def allthingsurban(url):
+def allthingsurban(url, name=''):
     website = 'https://www.allthingsurban.net{}'
 
     response = get_response(url)
+    if not response:
+        return []
+    if response.status_code != 200:
+        return []
     soup = BeautifulSoup(response.content, 'html.parser')
     articles = soup.find_all('div', {'class': 'blog-item'})
     if not articles:
@@ -83,14 +94,16 @@ def allthingsurban(url):
         return articles
 
 
-def govtech(url):
+def govtech(url, name=''):
     header = {
         'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3)'
         'AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.61 '
         'Safari/537.36'
     }
-    content = get_response_header(url, header)
-    soup = BeautifulSoup(content, 'html.parser')
+    response = get_response_header(url, header)
+    if not response:
+        return []
+    soup = BeautifulSoup(response.content, 'html.parser')
     articles = soup.find_all('div', {'class': "ListA-items-item"})
     if not articles:
         return []
@@ -106,7 +119,7 @@ def govtech(url):
         return articles
 
 
-def streetsblog(url):
+def streetsblog(url, name=''):
     response = get_response(url)
     soup = BeautifulSoup(response.content, 'html.parser')
     articles = soup.find_all('article')
@@ -125,14 +138,17 @@ def streetsblog(url):
         return articles
 
 
-def transitcenter(website):
+def transitcenter(url, name=''):
     header = {
         'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3)'
         'AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.61 '
         'Safari/537.36'
     }
-    content = get_response_header(website, header)
-    soup = BeautifulSoup(content, 'html.parser')
+    response = get_response_header(url, header)
+    if not response:
+        return []
+    soup = BeautifulSoup(response.content, 'html.parser')
+
     articles = soup.find_all('div', {'class': 'container wide is-widescreen'})
     if not articles:
         return []
@@ -149,12 +165,15 @@ def transitcenter(website):
         return articles
 
 
-def spur(url):
+def spur(url, name=''):
     response = get_response(url)
+    if not response:
+        return []
     soup = BeautifulSoup(response.content, 'html.parser')
     articles = soup.find_all('div', {'class', 'content'})[2:]
     if not articles:
         return []
+
     articles = [
         article_object(
             title=article.find('h2').text,
@@ -162,13 +181,18 @@ def spur(url):
             datetime=article.find('time').text
         )
         for article in articles
+        if article.find('time')
+        and article.find('a')
+        and article.find('h2')
     ]
     if articles:
         return articles
 
 
-def parking_mobility(url):
+def parking_mobility(url, name=''):
     response = get_response(url)
+    if not response:
+        return []
     soup = BeautifulSoup(response.content, 'html.parser')
     articles = soup.find_all('div', {'class', 'blog-post-info'})
     if not articles:
@@ -185,8 +209,10 @@ def parking_mobility(url):
         return articles
 
 
-def axios(url):
+def axios(url, name=''):
     response = get_response(url)
+    if not response:
+        return []
     soup = BeautifulSoup(response.content, 'html.parser')
     articles = soup.find_all('amp-layout')
     if not articles:
@@ -207,9 +233,11 @@ def axios(url):
         return articles
 
 
-def micromobilitypodcast(url):
+def micromobilitypodcast(url, name=''):
     website = 'https://micromobility.io{}'
     response = get_response(url)
+    if not response:
+        return []
     soup = BeautifulSoup(response.content, 'html.parser')
     articles = soup.find_all('article')
     if not articles:
@@ -226,7 +254,7 @@ def micromobilitypodcast(url):
         return articles
 
 
-def zag(url):
+def zag(url, name=''):
     response = get_response(url)
     if not response:
         return []
@@ -246,14 +274,16 @@ def zag(url):
         return articles
 
 
-def transloc(url):
+def transloc(url, name=''):
     header = {
         'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3)'
         'AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.61 '
         'Safari/537.36'
     }
-    content = get_response_header(url, header)
-    soup = BeautifulSoup(content, 'html.parser')
+    response = get_response_header(url, header)
+    if not response:
+        return []
+    soup = BeautifulSoup(response.content, 'html.parser')
     articles = soup.find_all('div', {"class", "esg-entry-content eg-blog-posts-content"})
     if not articles:
         return []
@@ -269,9 +299,11 @@ def transloc(url):
         return articles
 
 
-def commutifi(url):
+def commutifi(url, name=''):
     website = 'https://www.commutifi.com/{}'
     response = get_response(url)
+    if not response:
+        return []
     soup = BeautifulSoup(response.content, 'html.parser')
     articles = soup.find_all('a', {"class", "resource-item ver-2 w-inline-block"})
     links = [
@@ -297,15 +329,16 @@ def commutifi(url):
     if articles:
         return articles
 
-
-def electronomous(url):
+def electronomous(url, name=''):
     header = {
         'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3)'
         'AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.61 '
         'Safari/537.36'
     }
-    content = get_response_header(url, header)
-    soup = BeautifulSoup(content, 'html.parser')
+    response = get_response_header(url, header)
+    if not response:
+        return []
+    soup = BeautifulSoup(response.content, 'html.parser')
     articles = soup.find_all('h1', {'class',"elementor-heading-title elementor-size-default"})
     
     if not articles:

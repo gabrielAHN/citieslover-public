@@ -6,25 +6,15 @@ from scrapers.newsletter_scrapers import (
 )
 from scrapers.jobs_scrapers import (
     planetizen_jobs, allthingsurban_jobs,
-    apany_jobs, govlove_jobs, beta_nyc_jobs,
-    nyc_planning_jobs, carto_jobs, transitcenter_job,
-    uber_jobs, via_jobs, mobilitydata_jobs,
-    citymapper_jobs, lever_jobs, smartgrowamerica_jobs
+    govlove_jobs,ito_jobs, voi_jobs, dbf_jobs,
+    nyc_planning_jobs, transitcenter_job,
+    uber_jobs, mobilitydata_jobs,
+    lever_jobs, smartgrowamerica_jobs,
+    greenhouse_jobs, lever_jobs, optibus_jobs,
 )
 
 
 website_info = [
-    {
-        'id': 'citymapper',
-        'name': 'Citymapper',
-        'type': ['job'],
-        'image_size':   '60px',
-        'image': 'https://logovectorseek.com/wp-content/uploads/2020/11/citymapper-logo-vector.png',
-        'jobs': {
-            'scrape_function': citymapper_jobs,
-            'website': 'https://apply.workable.com/api/v3/accounts/citymapper/jobs',
-        }
-    },
     {
         'id': 'planetizen',
         'name': 'Planetizen',
@@ -44,8 +34,8 @@ website_info = [
         'id': 'thecityfix',
         'name': 'TheCityFix',
         'type': ['article'],
-        'image_size':   '115px',
-        'image': 'https://thecityfixlearn.org/sites/default/files/18_Logo_TheCityFix_Learn.png',
+        'image_size':   '90px',
+        'image': 'https://thecityfix.com/wp-content/themes/thecityfix/images/EMB2011_TheCityFix_header.png',
         'newsletter': {
             'scrape_function': rss_parser,
             'website': 'https://feeds.feedburner.com/thecityfix/posts'
@@ -208,17 +198,17 @@ website_info = [
         #     'website': 'https://jobs.nextcity.org/'
         # }
     },
-    {
-        'id': 'apany',
-        'name': 'NY APA',
-        'type': ['job'],
-        'image': 'https://planning-org-uploaded-media.s3.amazonaws.com/uploads/PROFILE_PHOTOS/7816568a-17ef-47c6-8291-2cda62b13910.png',
-        'image_size':   '40px',
-        'jobs': {
-            'scrape_function': apany_jobs,
-            'website': 'https://www.nyplanning.org/career-development/jobs/'
-        }
-    },
+    # {
+    #     'id': 'apany',
+    #     'name': 'NY APA',
+    #     'type': ['job'],
+    #     'image': 'https://planning-org-uploaded-media.s3.amazonaws.com/uploads/PROFILE_PHOTOS/7816568a-17ef-47c6-8291-2cda62b13910.png',
+    #     'image_size':   '40px',
+    #     'jobs': {
+    #         'scrape_function': apany_jobs,
+    #         'website': 'https://www.nyplanning.org/career-development/jobs/'
+    #     }
+    # },
     {
         'id': 'govtech',
         'name': 'Govtech',
@@ -424,8 +414,8 @@ website_info = [
         'image': 'https://mma.prnewswire.com/media/695160/CARTO_Logo.jpg',
         'image_size':   '40px',
         'jobs': {
-            'scrape_function': carto_jobs,
-            'website': 'https://carto.com/careers/'
+            'scrape_function': lever_jobs,
+            'website': 'https://jobs.lever.co/cartodb'
         }
     },
     {
@@ -461,8 +451,8 @@ website_info = [
             'website': 'https://podcasts.apple.com/us/podcast/modeshift/id1644748349'
         },
         'jobs': {
-            'scrape_function': via_jobs,
-            'website': 'https://boards-api.greenhouse.io/v1/boards/via/jobs?content=true'
+            'scrape_function': greenhouse_jobs,
+            'website': 'https://boards.greenhouse.io/via'
         }
     },
     {
@@ -474,17 +464,6 @@ website_info = [
         'newsletter': {
             'scrape_function': apple_parser,
             'website': 'https://podcasts.apple.com/us/podcast/the-modern-mobility-podcast/id1559679341'
-        }
-    },
-    {
-        'id': 'mobilitydata',
-        'name': 'Mobility Data',
-        'type': ['job'],
-        'image': 'https://mobilitydata.org/app/uploads/2021/04/cropped-flaticon_logo-18.png',
-        'image_size':   '90px',
-        'jobs': {
-            'scrape_function': mobilitydata_jobs,
-            'website': 'https://careers.mobilitydata.org/?_gl=1*stwnoe*_ga*MTk2MDgxODQ5MS4xNjgwODg5NzYw*_ga_55GPMF0W9Z*MTY4MjczNzU3MC4xMC4xLjE2ODI3Mzc1NzAuMC4wLjA.'
         }
     },
     {
@@ -543,14 +522,190 @@ website_info = [
         }
     },
     {
-        'id': 'betanyc',
-        'name': 'Beta NYC',
+        'id': 'revel',
+        'name': 'Revel',
         'type': ['job'],
-        'image': 'https://beta.nyc/wp-content/uploads/BetaNYC-site-logo-33.png',
+        'image': 'https://s4-recruiting.cdn.greenhouse.io/external_greenhouse_job_boards/logos/400/075/500/resized/revel_greenhouse.png',
         'image_size': '90px',
         'jobs': {
-            'scrape_function': beta_nyc_jobs,
-            'website': 'https://beta.nyc/blog/'
+            'scrape_function': greenhouse_jobs,
+            'website': 'https://boards.greenhouse.io/revel'
+        }
+    },
+    {
+        'id': 'streetlightdata',
+        'name': 'Street Light Data',
+        'type': ['job'],
+        'image': 'https://lever-client-logos.s3.amazonaws.com/0046318a-573c-41a8-8de0-52fda3259340-1546914822777.png',
+        'image_size': '90px',
+        'jobs': {
+            'scrape_function': lever_jobs,
+            'website': 'https://jobs.lever.co/streetlightdata'
+        }
+    },
+    {
+        'id': 'lime',
+        'name': 'Lime',
+        'type': ['job'],
+        'image': 'https://lever-client-logos.s3.amazonaws.com/04d69456-1062-431c-bf70-177b55749515-1571247003987.png',
+        'image_size': '90px',
+        'jobs': {
+            'scrape_function': lever_jobs,
+            'website': 'https://jobs.lever.co/lime'
+        }
+    },
+    {
+        'id': 'urbanfootprint',
+        'name': 'Urban Footprint',
+        'type': ['job'],
+        'image': 'https://s4-recruiting.cdn.greenhouse.io/external_greenhouse_job_boards/logos/400/646/400/resized/UF_Logo_-_1200x628_(1).png',
+        'image_size': '90px',
+        'jobs': {
+            'scrape_function': greenhouse_jobs,
+            'website': 'https://boards.greenhouse.io/urbanfootprint'
+        }
+    },
+    {
+        'id': 'mbta',
+        'name': 'MBTA',
+        'type': ['job'],
+        'image': 'https://lever-client-logos.s3-us-west-2.amazonaws.com/753da791-a783-4cb5-b37d-ce85a22dc7bd-1596468426966.png',
+        'image_size': '90px',
+        'jobs': {
+            'scrape_function': lever_jobs,
+            'website': 'https://jobs.lever.co/mbta/'
+        }
+    },
+    {
+        'id': 'optibus',
+        'name': 'Optibus',
+        'type': ['job'],
+        'image': 'https://www.optibus.com/wp-content/uploads/2021/12/optibus-dark-logo.svg',
+        'image_size': '90px',
+        'jobs': {
+            'scrape_function': optibus_jobs,
+            'website': 'https://www.optibus.com/company/careers/jobs/'
+        }
+    },
+    {
+        'id': 'itoworld',
+        'name': 'Ito World',
+        'type': ['job'],
+        'image': 'https://www.itoworld.com/wp-content/uploads/2019/09/logo-2019-01-e1624962387164.png',
+        'image_size': '90px',
+        'jobs': {
+            'scrape_function': ito_jobs,
+            'website': 'https://itoworld.bamboohr.com/careers/list'
+        }
+    },
+    {
+        'id': 'voi',
+        'name': 'Voi',
+        'type': ['job'],
+        'image': 'https://www.voi.com/wp-content/uploads/2019/07/voi_logo_coral.png',
+        'image_size': '90px',
+        'jobs': {
+            'scrape_function': voi_jobs,
+            'website': 'https://careers.voi.com/jobs?department=Research+%26+Development&query='
+        }
+    },
+    {
+        'id': 'tier',
+        'name': 'Tier',
+        'type': ['job'],
+        'image': 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/32/TIER_Mobility_Logo_%28blau%2C_2021%29.svg/1200px-TIER_Mobility_Logo_%28blau%2C_2021%29.svg.png',
+        'image_size': '90px',
+        'jobs': {
+            'scrape_function': greenhouse_jobs,
+            'website': 'https://boards.greenhouse.io/tiermobility'
+        }
+    },
+    {
+        'id': 'veo',
+        'name': 'Veo',
+        'type': ['job'],
+        'image': 'https://s4-recruiting.cdn.greenhouse.io/external_greenhouse_job_boards/logos/400/297/800/resized/veo_logo_black.png?1622840779',
+        'image_size': '90px',
+        'jobs': {
+            'scrape_function': greenhouse_jobs,
+            'website': 'https://boards.greenhouse.io/veocorporatecareers'
+        }
+    },
+    {
+        'id': 'populus',
+        'name': 'Populus',
+        'type': ['job'],
+        'image': 'https://images.squarespace-cdn.com/content/v1/5fc6dab681da8a590dace76d/1608170071061-NYJKZQQBQHK4IHASGYNR/Populus_SecondaryLogo_Dark.png',
+        'image_size': '90px',
+        'jobs': {
+            'scrape_function': greenhouse_jobs,
+            'website': 'https://boards.greenhouse.io/populus'
+        }
+    },
+    {
+        'id': 'blablacar',
+        'name': 'Blablacar',
+        'type': ['job'],
+        'image': 'https://lever-client-logos.s3.us-west-2.amazonaws.com/e3520345-0a28-449b-8485-23082ade0c1f-1623869719522.png',
+        'image_size': '90px',
+        'jobs': {
+            'scrape_function': lever_jobs,
+            'website': 'https://jobs.lever.co/blablacar'
+        }
+    },
+    {
+        'id': 'dott',
+        'name': 'Dott',
+        'type': ['job'],
+        'image': 'https://lever-client-logos.s3.us-west-2.amazonaws.com/f11eb4df-5f0d-4027-8616-f0ae67765b48-1607421366657.png',
+        'image_size': '90px',
+        'jobs': {
+            'scrape_function': lever_jobs,
+            'website': 'https://jobs.lever.co/dott'
+        }
+    },
+    {
+        'id': 'digitalbluefoam',
+        'name': 'Digital Blue Foam',
+        'type': ['job'],
+        'image': 'https://assets-global.website-files.com/64c79ac5be374c3df952fa71/64e6109eb0e64d7926970b5b_dbf.svg',
+        'image_size': '90px',
+        'jobs': {
+            'scrape_function': dbf_jobs,
+            'website': 'https://www.digitalbluefoam.com/company/career'
+        }
+    },
+    {
+        'id': 'transitunplugged',
+        'name': 'Transit Unplugged',
+        'type': ['podcast'],
+        'image': 'https://i0.wp.com/transitunplugged.com/wp-content/uploads/2023/10/logo-low-res.png',
+        'image_size': '90px',
+        'jobs': {
+            'scrape_function': apple_parser,
+            'website': 'https://podcasts.apple.com/us/podcast/transit-unplugged/id1308238228'
+        }
+    },
+    {
+        'id': 'waroncars',
+        'name': 'The War on Cars',
+        'type': ['podcast'],
+        'image': 'https://thewaroncars.org/wp-content/uploads/2018/10/woc_C.jpg',
+        'image_size': '90px',
+        'jobs': {
+            'scrape_function': apple_parser,
+            'website': 'https://podcasts.apple.com/us/podcast/the-war-on-cars/id1437755068'
+        }
+    },
+    {
+        'id': 'smartcitieschronicles',
+        'name': 'Smart Cities Chronicles',
+        'type': ['podcast'],
+        'image': 'https://is1-ssl.mzstatic.com/image/thumb/Podcasts125/v4/88/2c/cd/882ccd3c-7246-aa82-9992-cf6eb13d34a2/mza_3654834813016531476.png/626x0w.webp',
+        'image_size': '90px',
+        'jobs': {
+            'scrape_function': apple_parser,
+            'website': 'https://podcasts.apple.com/us/podcast/smart-cities-chronicles/id1448411504'
         }
     }
 ]
