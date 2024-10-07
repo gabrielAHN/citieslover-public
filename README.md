@@ -4,7 +4,7 @@ Cities Lover 💚 a place where you can find jobs 💼 and news 📰 for all tho
 
 This script scrapes different websites and uploads to S3 Buckets to be rendered here **[Cities Lover](https://www.gabrielhn.com/citieslover/)**
 
-![website](/citieslover-hover.gif)
+![website](/citieslover.gif)
 
 ## Setup
 ```
@@ -15,15 +15,18 @@ pip3 install -r requirements.txt
 
 ## Use
 ```
-# Test scrape for differet source
-python main.py --test_source <source_id>
+# Test scrape for a specific source
+python -m cities_scrape_data test_source --source <source_id> [--response] [--threads <number_of_threads>]
 
-# Test scrape by source type
-python main.py --test_source <jobs or newsletter>
+# Test scrape by source type (e.g., jobs, podcasts, articles)
+python -m cities_scrape_data test_by_type --type <jobs or newsletter> [--response] [--threads <number_of_threads>]
 
-# Get all sources id
-python main.py get_websites
+# Test scraping all data sources
+python -m cities_scrape_data test_all [--response] [--threads <number_of_threads>]
 
-# Create files to be Uploaded to S3 Bucket
-python main.py create_datasets
+# Create datasets to be uploaded to the S3 Bucket
+python -m cities_scrape_data create_datasets [--threads <number_of_threads>]
+
+# Get websites info
+python -m cities_scrape_data get_websites
 ```
