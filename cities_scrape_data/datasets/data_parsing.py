@@ -7,13 +7,13 @@ from ..util.util import import_to_s3
 
 def create_datasets(scrape_objects):
     jobs_data = create_jobs_data(scrape_objects)
-    import_to_s3('citieslover-data/jobs_data_test.json', jobs_data)
+    import_to_s3('citieslover-data/jobs_data.json', jobs_data)
     
     post_data = create_post_data(scrape_objects)
-    import_to_s3('citieslover-data/post_data_test.json', post_data)
+    import_to_s3('citieslover-data/post_data.json', post_data)
 
     brand_dict = create_brand_data(website_info)
-    import_to_s3('citieslover-data/brand_dict_test.json', brand_dict)
+    import_to_s3('citieslover-data/brand_dict.json', brand_dict)
 
     print("Datasets created ✅")
 
