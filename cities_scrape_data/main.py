@@ -1,5 +1,6 @@
 import sys
 import argparse
+import os
 
 from .datasets.data_parsing import create_datasets
 from .scrapers.scraped_objects import get_scrape_objects
@@ -13,6 +14,8 @@ def create_scrape_datasets(max_threads=5):
 
 
 def main():
+    print(f"PYTHONPATH: {sys.path}")
+    print(f"Current working directory: {os.getcwd()}")
     parser = argparse.ArgumentParser()
 
     subparsers = parser.add_subparsers(
