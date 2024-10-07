@@ -1,19 +1,25 @@
 import re
-from scrapers.clean_strings import clean_string
+from ...util.util import clean_string
 
+COUNTRY_BLACKLIST = [
+    'Tel Aviv', 'India', 'Sofia'
+    'Poland'
+]
 
 USA_COUNTRY_REGEX = re.compile(r'(\(usa\)| us(a)?|united states)')
 USA_STATE_REGEX = re.compile(
     r'(houston|washington|newark|new york|nyc|portland|san (francisco|josé)'
     r'|, (ma|mn|va|ny|ca|dc|il|co)$|california)|seattle|austin|dallas'
-    r'|buena park|san franciso|indianapolis|fort collins|sacramento'
-    r'|los angeles|atlanta|springfield|washington|virginia|new jersey')
+    r'|buena park|san franciso|indianapolis|fort collins|sacramento|miami'
+    r'|los angeles|atlanta|springfield|washington|virginia|new jersey|leawood'
+    r'|brooklyn|san diego|nashville|baltimore|phoenix|salt lake city|raleigh')
 
 UK_COUNTRY_REGEX = re.compile(r'united kingdom|uk')
 UK_STATE_REGEX = re.compile(r'(london|cambridge)')
 
 CANADA_COUNTRY_REGEX = re.compile(r'canada|^ca$')
-CANADA_STATE_REGEX = re.compile(r'(vancouver|ottawa|montr(é|e)al(,)?)')
+CANADA_STATE_REGEX = re.compile(
+    r'(ontario|quebec|vancouver|ottawa|montr(é|e)al(,)?|toronto)')
 
 FRANCE_COUNTRY_REGEX = re.compile(r'france')
 FRANCE_STATE_REGEX = re.compile(r'(lille|ottawa|paris(,)?)')
@@ -44,6 +50,15 @@ MEXICO_CITY_COUNTRY_REGEX = re.compile(r'mexico( city)?')
 BRAZIL_COUNTRY_REGEX = re.compile(r'(são paulo|brazil)')
 
 URUGUAY_COUNTRY_REGEX = re.compile(r'uruguay')
+
+def country_black_list(source_location):
+    match = [
+        country
+        for country in COUNTRY_BLACKLIST
+        if country.lower() in source_location.lower()
+    ]
+    if not match:
+        return True
 
 
 def remote_or_hybrid_standard(location):
@@ -274,13 +289,15 @@ def country_standardizer(locations):
                 location_list.append(brazil_country)
             if uruguay_country:
                 location_list.append(uruguay_country)
+            if 'lithuania' in clean_location:
+                location_list.append('Lithuania')
             if 'tokyo' in clean_location:
                 location_list.append('Japan')
             if 'israel' in clean_location:
                 location_list.append('Israel')
             if 'norway' in clean_location:
                 location_list.append('Norway')
-            if 'warsaw' in clean_location:
+            if 'warsaw' in clean_location or 'poland' in clean_location:
                 location_list.append('Poland')
             if 'hungary' in clean_location:
                 location_list.append('Hungary')
@@ -294,6 +311,10 @@ def country_standardizer(locations):
                 location_list.append('China')
             if 'switzerland' in clean_location:
                 location_list.append('Switzerland')
+            if 'portugal' in clean_location:
+                location_list.append('Portugal')
+            if 'india' in clean_location:
+                location_list.append('India')
             if remote_or_hybrid:
                 location_list.append(remote_or_hybrid)
 
