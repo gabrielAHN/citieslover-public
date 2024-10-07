@@ -1,23 +1,21 @@
-import os
 import json
 import random
-import boto3
 
-from websites.websites_info import website_info
-
-
-date_file = os.path.dirname(os.path.abspath(__file__))
+from ..websites.websites_info import website_info
+from ..util.util import import_to_s3
 
 
 def create_datasets(scrape_objects):
     jobs_data = create_jobs_data(scrape_objects)
-    import_to_s3('citieslover-data/jobs_data.json', jobs_data)
-
+    import_to_s3('citieslover-data/jobs_data_test.json', jobs_data)
+    
     post_data = create_post_data(scrape_objects)
-    import_to_s3('citieslover-data/post_data.json', post_data)
+    import_to_s3('citieslover-data/post_data_test.json', post_data)
 
     brand_dict = create_brand_data(website_info)
-    import_to_s3('citieslover-data/brand_dict.json', brand_dict)
+    import_to_s3('citieslover-data/brand_dict_test.json', brand_dict)
+
+    print("Datasets created ✅")
 
 
 def create_jobs_data(scrape_objects):
@@ -54,6 +52,7 @@ def create_post_data(scrape_objects):
             'source_name': post.name,
             'title': post.scrape_object.title,
             'url': post.scrape_object.url,
+            'type': post.source_type,
             'post_time': str(post.scrape_object.datetime)
         }
         for post in scrape_objects
@@ -68,45 +67,12 @@ def create_brand_data(website_info):
     brand_data = {
         brand['id']: {
             'name': brand['name'],
-            'type': brand['type'],
+            'type': list(set([
+                scraper['type']
+                for scraper in brand['scrapers']
+            ])),
             'image': brand['image'],
-            'image_size': brand['image_size']
         }
         for brand in website_info
     }
     return json.dumps(brand_data, indent=2)
-
-
-def get_dataset(file_type):
-    file = "{}/{}.json".format(date_file, file_type)
-    try:
-        with open(file) as f:
-            data = json.load(f)
-            return data
-    except IOError:
-        return None
-
-
-def limit_objects(website_objects):
-    if len(website_objects) > 5:
-        return website_objects[:5]
-    return website_objects
-
-
-def randomize_dict(data_dict):
-    keys = list(data_dict.keys())
-    random.shuffle(keys)
-    data_dict = {
-        key: data_dict[key]
-        for key in keys
-    }
-    return data_dict
-
-
-def import_to_s3(file, data, bucket='ghn-public-data'):
-    s3 = boto3.resource('s3')
-    s3object = s3.Object(bucket, file)
-
-    s3object.put(
-        Body=data
-    )
