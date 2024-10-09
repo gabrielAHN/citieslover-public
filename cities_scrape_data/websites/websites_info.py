@@ -54,7 +54,7 @@ website_info = [
     {
         'id': 'monocle',
         'name': 'Monocle',
-        'image': 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSmKMTL7s8pHWi3lGcPnbXw5_bP4VXZIP2PgdXV5wr-u7tlTtgf',
+        'image': 'https://img.monocle.com/radio/shows/defaults/the-urbanist_tile-6564b4a0c56d9.jpg',
         'scrapers': [
             {
                 'scrape_function': apple_parser,
@@ -643,7 +643,7 @@ website_info = [
     {
         'id': 'urbanfootprint',
         'name': 'Urban Footprint',
-        'image': 'https://s4-recruiting.cdn.greenhouse.io/external_greenhouse_job_boards/logos/400/646/400/resized/UF_Logo_-_1200x628_(1).png',
+        'image': 'https://urbanfootprint.com/wp-content/uploads/2022/06/UrbanFootprint_Logo@2x.png',
         'scrapers': [
                 {
                     'scrape_function': greenhouse_jobs,
@@ -688,7 +688,7 @@ website_info = [
     {
         'id': 'itoworld',
         'name': 'Ito World',
-        'image': 'https://www.itoworld.com/wp-content/uploads/2019/09/logo-2019-01-e1624962387164.png',
+        'image': 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRqX4ny_KpkEgtdPbWqcBzeETqJ0IB7utegAg&s',
         'scrapers': [
                 {
                     'scrape_function': ito_jobs,
