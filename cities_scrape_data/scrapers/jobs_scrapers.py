@@ -224,13 +224,13 @@ def govlove_jobs(response, name='', id=''):
             datetime=job.find('div', {'class', "listing-item__date"}).text,
             job_type=job_typer(job.find('a', {'class', "link"}).text,
                                job.find('a', {'class', "link"}).text, [
-                'gov_work']
+                'gov_lovers']
             )
         )
         for job in jobs
         if job.find('a', {'class', "link"})
         and job_typer(job.find('a', {'class', "link"}).text,
-                      job.find('a', {'class', "link"}).text, ['gov_work']
+                      job.find('a', {'class', "link"}).text, ['gov_lovers']
                       )
     ]
     if jobs:
@@ -251,10 +251,10 @@ def nyc_planning_jobs(response, name='', id=''):
             url=website+job.get('link'),
             datetime=None,
             job_type=job_typer(
-                job.get('name'), 'NYC Planning Department', ['gov_work'])
+                job.get('name'), 'NYC Planning Department', ['gov_lovers'])
         )
         for job in jobs
-        if job_typer(job.get('name'), 'NYC Planning Department', ['gov_work'])
+        if job_typer(job.get('name'), 'NYC Planning Department', ['gov_lovers'])
     ]
     if jobs:
         return jobs
