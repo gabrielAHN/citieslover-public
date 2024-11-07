@@ -62,7 +62,7 @@ def create_post_data(scrape_objects):
             'post_time': str(post.scrape_object.datetime)
         }
         for post in scrape_objects
-        if 'jobs' not in post.source_type
+        if 'jobs' != post.source_type
         and not hasattr(post.scrape_object, 'company')
     ]
     random.shuffle(post_data)
