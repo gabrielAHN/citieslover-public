@@ -79,3 +79,12 @@ def import_to_s3(file, data, bucket=os.getenv('AWS_BUCKET_NAME')):
     )
     s3object = s3.Object(bucket, file)
     s3object.put(Body=data)
+
+
+def write_json_files(file_name, data):
+
+    os.makedirs(os.path.dirname("cities_scrape_data/datasets/.local/"), exist_ok=True)
+    
+    with open(f"cities_scrape_data/datasets/.local/{file_name}", "w") as json_file:
+        json_file.write(data)
+

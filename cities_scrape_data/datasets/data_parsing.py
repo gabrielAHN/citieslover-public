@@ -2,18 +2,24 @@ import json
 import random
 
 from ..websites.websites_info import website_info
-from ..util.util import import_to_s3
+from ..util.util import import_to_s3, write_json_files
 
 
-def create_datasets(scrape_objects):
+def create_datasets(scrape_objects, local):
     jobs_data = create_jobs_data(scrape_objects)
-    import_to_s3('citieslover-data/jobs_data.json', jobs_data)
-    
     post_data = create_post_data(scrape_objects)
-    import_to_s3('citieslover-data/post_data.json', post_data)
-
     brand_dict = create_brand_data(website_info)
-    import_to_s3('citieslover-data/brand_dict.json', brand_dict)
+    
+    if local:
+        print('Creating datasets locally...')
+        write_json_files('jobs_data.json', jobs_data)
+        write_json_files('post_data.json', post_data)
+        write_json_files('brand_dict.json', brand_dict)
+    else:
+        print('Creating datasets in S3...')
+        import_to_s3('citieslover-data/jobs_data.json', jobs_data)
+        import_to_s3('citieslover-data/post_data.json', post_data)
+        import_to_s3('citieslover-data/brand_dict.json', brand_dict)
 
     print("Datasets created ✅")
 

@@ -7,9 +7,9 @@ from .scrapers.scraped_objects import get_scrape_objects
 from .scrape_logging.scrape_logging import get_filtered_sources, get_websites_info
 
 
-def create_scrape_datasets(max_threads=5):
+def create_scrape_datasets(max_threads=5, local=False):
     scrape_objects = get_scrape_objects(max_threads=max_threads)
-    scrape_objects = create_datasets(scrape_objects)
+    scrape_objects = create_datasets(scrape_objects, local)
     return 'datasets_created'
 
 
@@ -86,6 +86,11 @@ def main():
         help='Create datasets.'
     )
     parser_create_datasets.add_argument(
+        '--local',
+        action='store_true',
+        help='create dataset local'
+    )
+    parser_create_datasets.add_argument(
         '--threads',
         type=int,
         default=5,
@@ -117,7 +122,7 @@ def main():
             max_threads=args.threads
         )
     elif args.command == 'create_datasets':
-        create_scrape_datasets(max_threads=args.threads)
+        create_scrape_datasets(max_threads=args.threads, local=args.local)
     elif args.command == 'get_websites':
         get_websites_info()
     else:
