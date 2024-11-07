@@ -23,12 +23,14 @@ class request_object:
         else:
             self.response = response
 
+
 class scrape_object:
     def __init__(self, source, name, source_type, scrape_object):
         self.source = source
         self.name = name
         self.source_type = source_type
         self.scrape_object = scrape_object
+
 
 class job_object:
     def __init__(self, title, company, location, url, datetime, job_type):
@@ -37,8 +39,10 @@ class job_object:
         self.country = country_standardizer(location)
         self.location = location_standardizer(location)
         self.url = url.replace('www.', 'https://')
-        self.datetime = get_datetime(*(clean_string(datetime),) if datetime else ())
+        self.datetime = get_datetime(
+            *(clean_string(datetime),) if datetime else ())
         self.job_type = job_type
+
 
 class article_object:
     def __init__(self, title, url, datetime):
