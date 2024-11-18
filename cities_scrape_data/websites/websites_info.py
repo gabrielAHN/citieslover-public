@@ -1638,7 +1638,7 @@ website_info = [
     {
         'id': 'haydenai',
         'name': 'HaydenAI',
-        'image': 'https://www.stichtingfresh.nl/wp-content/uploads/2020/02/rebel.png',
+        'image': 'https://logowik.com/content/uploads/images/haydenai8139.logowik.com.webp',
         'scrapers': [
                 {
                     "scrape_function": haydenai_parser,
