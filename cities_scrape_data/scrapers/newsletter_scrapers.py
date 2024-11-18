@@ -43,42 +43,19 @@ def rss_parser(response, name='', id=''):
 
 def apple_parser(response, name='', id=''):
     soup = BeautifulSoup(response.content, 'html.parser')
-    articles = soup.find_all(
-        'li', {'class', 'tracks__track tracks__track--podcast'})
-    if not articles:
-        return None
-    articles = [
-        article_object(
-            title=article.find('a').text,
-            url=article.find('a').get('href'),
-            datetime=article.find('time').text
-        )
-        for article in articles
-    ]
-    if articles:
-        return articles
 
-
-def apple_new_parser(response, name='', id=''):
-    soup = BeautifulSoup(response.content, 'html.parser')
-
-    # Find the <script> tag containing the JSON-LD data
     script = soup.find('script', type='application/ld+json')
     if not script:
         return None
 
-    # Parse the JSON data
     json_text = script.string
     data = json.loads(json_text)
 
-    # Check if 'workExample' key exists
     if 'workExample' not in data:
         return None
 
-    # Extract the episodes
     episodes = data['workExample']
 
-    # Parse each episode into an article_object
     articles = [
         article_object(
             title=episode.get('name'),

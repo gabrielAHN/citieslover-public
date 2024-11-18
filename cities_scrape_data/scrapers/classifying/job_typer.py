@@ -11,14 +11,14 @@ NO_MATCHES = [
     'foot patrol', 'hr compensations', 'don\'t see a position that',
     'want to join inspiration', "don\'t see a role for you?",
     'cost controller', 'project accountant', 'copywriter',
-    'general application'
+    'general application', 'diversity and inclusion', 'head Of tax'
 ]
 
 
 def cityleaders(title, company):
     title_list = [
         r'chief( of staff| planner| marketing officer)', r'director( of|,)', r'team lead',
-        r'head of', r'vice president'
+        r'head of', r'vice president', r'manager'
     ]
     company_list = []
     job_type = job_labeling('city_leaders', title_list,
@@ -31,8 +31,8 @@ def city_sellers(title, company):
         r'(sales|revenue) operations', r'sales( development)? representative',
         r'public sector sales', r'(acquisition|business|account) manager',
         r'account executive', r'(customer success|sales) manager', r'director of marketing'
-        r'city partnerships director', r'emerging business', r'business (coordinator|development)',
-        r'go\-to\-market', r'growth \& success'
+        r'city partnerships director', r'emerging business', r'(business|rider growth) (coordinator|development|analyst)',
+        r'go\-to\-market', r'growth \& success', r'head of bids'
     ]
     company_list = [
     ]
@@ -94,10 +94,10 @@ def urban_techies(title, company):
     title_list = [
         r'(cloud|analytics|full stack|ios|python|react|software|reliability|(back|front(-)?)end|site '
         r'reliability|qa|support|platform security |design computation |gtfs|(staff )?machine learning|android|'
-        r'customer success|mobile) engineer', r'product analytics'
-        r'(data|staff product|solutions|backend) (engineer|analyst)', r'\(?gis\)? (administrator|analyst)',
+        r'customer success|mobile|automation|data) engineer', r'product analytics',
+        r'(data|staff product|solutions|backend|customer support) (engineer|analyst)', r'\(?gis\)? (administrator|analyst)',
         r'database specialist', r'(engineering|product analytics|technical product) (manager|director)',
-        r'(data infra|full stack) team', r'(front-end|java software|full(\-| )?stack( web)?|software) developer',
+        r'(data infra|full stack) team', r'(front-end|java software|full(\-| )?stack( web)?|software|backend|java( or kotlin)?) developer',
         r'head of (ai|automation)', r'application support', r'(tech|analytics) lead', r'data scientist'
     ]
     company_list = [

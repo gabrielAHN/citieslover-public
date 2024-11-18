@@ -199,7 +199,7 @@ website_info = [
                     },
                     'website': 'https://transitcenter.org/careersattransitcenter/',
                     'type': 'jobs'
-                }
+            }
         ]
     },
     {
@@ -502,7 +502,7 @@ website_info = [
                     },
                     'website': 'https://boards.greenhouse.io/via',
                     'type': 'jobs'
-                }
+            }
         ]
     },
     {
@@ -940,7 +940,7 @@ website_info = [
                     },
                     'website': 'https://rpa.org/about/join',
                     'type': 'jobs'
-                }
+            }
         ]
     },
     {
@@ -1153,7 +1153,7 @@ website_info = [
                     },
                     'website': 'https://www.villagepreservation.org/employment-internships/',
                     'type': 'jobs'
-                }
+            }
         ]
     },
     {
@@ -1581,11 +1581,26 @@ website_info = [
         'image': 'https://is1-ssl.mzstatic.com/image/thumb/Podcasts115/v4/c7/a2/1f/c7a21fdd-ef81-b534-1c6c-e876e31f618a/mza_5534370612162334114.jpg/600x600bb.webp',
         'scrapers': [
                 {
-                    'scrape_function': apple_new_parser,
+                    'scrape_function': apple_parser,
                     'requests': {
                         "request_type": get_response,
                     },
                     'website': 'https://podcasts.apple.com/us/podcast/the-freewheeling-podcast/id1549884606',
+                    'type': 'podcast'
+                }
+        ]
+    },
+    {
+        'id': 'urbcast',
+        'name': 'Urbcast',
+        'image': 'https://is1-ssl.mzstatic.com/image/thumb/Podcasts112/v4/d9/87/f1/d987f1d9-6939-9d99-8029-aedb635eb98d/mza_13540068321417830341.jpg/600x600bb.webp',
+        'scrapers': [
+                {
+                    'scrape_function': apple_parser,
+                    'requests': {
+                        "request_type": get_response,
+                    },
+                    'website': 'https://podcasts.apple.com/us/podcast/urbcast-a-podcast-about-cities-podcast-o-miastach/id1515146767',
                     'type': 'podcast'
                 }
         ]
@@ -1602,6 +1617,143 @@ website_info = [
                     },
                     'website': 'https://journal-buildingscities.org/',
                     'type': 'articles'
+                }
+        ]
+    },
+    {
+        'id': 'rebel',
+        'name': 'Rebel',
+        'image': 'https://www.stichtingfresh.nl/wp-content/uploads/2020/02/rebel.png',
+        'scrapers': [
+                {
+                    'scrape_function': rebel_job_parser,
+                    'requests': {
+                        "request_type": get_response,
+                    },
+                    'website': 'https://rebelgroup.com/en/career/',
+                    'type': 'jobs'
+                }
+        ]
+    },
+    {
+        'id': 'haydenai',
+        'name': 'HaydenAI',
+        'image': 'https://www.stichtingfresh.nl/wp-content/uploads/2020/02/rebel.png',
+        'scrapers': [
+                {
+                    "scrape_function": haydenai_parser,
+                    "requests": {
+                        "request_type": get_post_response,
+                        "header": {
+                            "content-type": "application/json",
+                            "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3)"
+                        },
+                        "payload": {
+                            "operationName": "ApiJobBoardWithTeams",
+                            "variables": {
+                                "organizationHostedJobsPageName": "haydenai"
+                            },
+                            "query": "query ApiJobBoardWithTeams($organizationHostedJobsPageName: String!) {\n  jobBoard: jobBoardWithTeams(\n    organizationHostedJobsPageName: $organizationHostedJobsPageName\n  ) {\n    teams {\n      id\n      name\n      parentTeamId\n      __typename\n    }\n    jobPostings {\n      id\n      title\n      teamId\n      locationId\n      locationName\n      employmentType\n      secondaryLocations {\n        ...JobPostingSecondaryLocationParts\n        __typename\n      }\n      compensationTierSummary\n      __typename\n    }\n    __typename\n  }\n}\n\nfragment JobPostingSecondaryLocationParts on JobPostingSecondaryLocation {\n  locationId\n  locationName\n  __typename\n}"
+                        }
+                    },
+                    "website": "https://jobs.ashbyhq.com/api/non-user-graphql?op=ApiJobBoardWithTeams",
+                    "type": "jobs"
+                }
+        ]
+    },
+    {
+        "id": "masabi",
+        "name": "Masabi",
+        "image": "https://careers.masabi.com/wp-content/uploads/2023/01/06-red-black-1024x576.png",
+        "scrapers": [
+            {
+                "scrape_function": masabi_job_parser,
+                "requests": {
+                    "request_type": get_post_response,
+                    "header": {
+                        "content-type": "application/json",
+                        "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3)"
+                    },
+                    "payload": {
+                        "operationName": "ApiJobBoardWithTeams",
+                        "variables": {
+                            "organizationHostedJobsPageName": "masabi"
+                        },
+                        "query": "query ApiJobBoardWithTeams($organizationHostedJobsPageName: String!) {\n  jobBoard: jobBoardWithTeams(\n    organizationHostedJobsPageName: $organizationHostedJobsPageName\n  ) {\n    teams {\n      id\n      name\n      parentTeamId\n      __typename\n    }\n    jobPostings {\n      id\n      title\n      teamId\n      locationId\n      locationName\n      employmentType\n      secondaryLocations {\n        ...JobPostingSecondaryLocationParts\n        __typename\n      }\n      compensationTierSummary\n      __typename\n    }\n    __typename\n  }\n}\n\nfragment JobPostingSecondaryLocationParts on JobPostingSecondaryLocation {\n  locationId\n  locationName\n  __typename\n}\n"
+                    }
+                },
+                "website": "https://jobs.ashbyhq.com/api/non-user-graphql?op=ApiJobBoardWithTeams",
+                "type": "jobs"
+            }
+        ]
+    },
+    {
+        'id': 'roadie',
+        'name': 'Roadie',
+        'image': 'https://s2-recruiting.cdn.greenhouse.io/external_greenhouse_job_boards/logos/400/587/300/original/Roadie_UPS_Logo_Stack_BROWN.png?1648056516',
+        'scrapers': [
+                {
+                    'scrape_function': greenhouse_jobs,
+                    'requests': {
+                        "request_type": get_response
+                    },
+                    'website': 'https://job-boards.greenhouse.io/roadie',
+                    'type': 'jobs'
+                }
+        ]
+    },
+    {
+        'id': 'goodtraffic',
+        'name': 'Good Traffic',
+        'image': 'https://is1-ssl.mzstatic.com/image/thumb/Podcasts211/v4/b8/56/4b/b8564ba8-f066-7a26-c7ca-3db49914ffe7/mza_4128940626188746453.jpg/600x600bb.webp',
+        'scrapers': [
+                {
+                    'scrape_function': apple_parser,
+                    'requests': {
+                        "request_type": get_response
+                    },
+                    'website': 'https://podcasts.apple.com/us/podcast/good-traffic/id1707603110',
+                    'type': 'podcast'
+                }
+        ]
+    },
+    {
+        'id': 'cabify',
+        'name': 'Cabify',
+        'image': 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Cabify-Logo-Moradul-RGB.png/440px-Cabify-Logo-Moradul-RGB.png',
+        'scrapers': [
+                {
+                    'scrape_function': cabify_jobs,
+                    'requests': {
+                        "request_type": get_response
+                    },
+                    'website': 'https://cabify.careers/en/jobs?search=&office=&department=',
+                    'type': 'jobs'
+                }
+        ]
+    },
+    {
+        'id': 'autofleet',
+        'name': 'Autofleet',
+        'image': 'https://workablehr.s3.amazonaws.com/uploads/account/logo/445657/logo',
+        'scrapers': [
+                {
+                    'scrape_function': workable_jobs,
+                    'requests': {
+                        "request_type": get_post_response,
+                        'header': {
+                            'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3)'
+                            'AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.61 '
+                            'Safari/537.36',
+                            'content-type': 'application/json',
+                        },
+                        'payload': {
+                            "query": "", "location": [], "department": [
+                            ], "worktype": [], "remote": [], "workplace": []
+                        }
+                    },
+                    'website': 'https://apply.workable.com/api/v3/accounts/autofleet/jobs',
+                    'type': 'jobs'
                 }
         ]
     }

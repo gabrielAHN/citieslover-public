@@ -1050,3 +1050,105 @@ def inrix_jobs(response, name='', id=''):
     ]
     if jobs:
         return jobs
+
+def masabi_job_parser(response, name='', id=''):
+    website = "https://careers.masabi.com/?ashby_jid={}"
+    jobs = response.json()
+    if not jobs:
+        return None
+    
+    jobs = jobs.get('data').get('jobBoard').get('jobPostings')
+    
+    if not jobs:
+        return None
+    jobs = [
+        job_object(
+            title=job.get('title'),
+            company=name,
+            location=[job.get('locationName')],
+            url=website.format(job.get('id')),
+            datetime=None,
+            job_type=job_typer(job.get('title'))
+        )
+        for job in jobs
+        if job
+        and job_typer(job.get('title'))
+    ]
+    if jobs:
+        return jobs
+
+def rebel_job_parser(response, name='', id=''):
+    soup = BeautifulSoup(response.content, 'html.parser')
+    
+    jobs = soup.find_all('div', {'class', 'card card--equal js-link'})
+    if not jobs:
+        return None
+
+    jobs = [
+        job_object(
+            title=job.find('a').text,
+            company=name,
+            location=[job.find('li').text],
+            url=job.find('a').get('href'),
+            datetime=None,
+            job_type=job_typer(job.find('a').text, pre_type=['transport_enthusiast'])
+        )
+        for job in jobs
+        if job
+        and job_typer(job.find('a').text)
+    ]
+    if jobs:
+        return jobs
+
+def haydenai_parser(response, name='', id=''):
+    website = "www.hayden.ai/careers?ashby_jid={}"
+    jobs = response.json()
+    if not jobs:
+        return None
+    
+    jobs = jobs.get('data').get('jobBoard').get('jobPostings')
+    
+    if not jobs:
+        return None
+    jobs = [
+        job_object(
+            title=job.get('title'),
+            company=name,
+            location=[job.get('locationName')],
+            url=website.format(job.get('id')),
+            datetime=None,
+            job_type=job_typer(job.get('title'))
+        )
+        for job in jobs
+        if job
+        and job_typer(job.get('title'))
+    ]
+    if jobs:
+        return jobs
+
+def cabify_jobs(response, name='', id=''):
+    website = 'https://cabify.careers{}'
+    soup = BeautifulSoup(response.content, 'html.parser')
+    
+    jobs = soup.find('ul', {'class', 'grid'})
+    if not jobs:
+        return None
+    
+    jobs = jobs.find_all('li')
+    if not jobs:
+        return None
+    jobs = [
+        job_object(
+            title=job.find('div', {'class', "card-title heading-1"}).text,
+            company=name,
+            location=[job.find('div', {'class', 'card-info-location'}).text],
+            url=website.format(job.find('a')['href']),
+            datetime=None,
+            job_type=job_typer(job.find('div', {'class', "card-title heading-1"}).text)
+        )
+        for job in jobs
+        if job
+        and job.find('div', {'class', "card-title heading-1"})
+    ]
+    if jobs:
+        return jobs
