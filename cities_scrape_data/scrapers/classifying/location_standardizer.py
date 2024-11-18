@@ -51,6 +51,8 @@ BRAZIL_COUNTRY_REGEX = re.compile(r'(são paulo|brazil)')
 
 URUGUAY_COUNTRY_REGEX = re.compile(r'uruguay')
 
+NETHERLANDS_CITY_REGEX = re.compile(r'rotterdam')
+
 def country_black_list(source_location):
     match = [
         country
@@ -207,6 +209,12 @@ def singapore_country_standard(location):
     if SINGAPORE_CITY:
         return 'Singapore'
 
+def netherlands_country_standard(location):
+    NETHERLANDS_CITY = re.search(NETHERLANDS_CITY_REGEX, location)
+
+    if NETHERLANDS_CITY:
+        return 'Netherlands'
+
 
 def location_standardizer(locations, area='', country=''):
 
@@ -255,6 +263,7 @@ def country_standardizer(locations):
             brazil_country = brazil_country_standard(clean_location)
             uruguay_country = uruguay_country_standard(clean_location)
             singapore_country = singapore_country_standard(clean_location)
+            netherlands_country = netherlands_country_standard(clean_location)
             remote_or_hybrid = remote_or_hybrid_standard(clean_location)
 
             if usa_country:
@@ -289,6 +298,8 @@ def country_standardizer(locations):
                 location_list.append(brazil_country)
             if uruguay_country:
                 location_list.append(uruguay_country)
+            if netherlands_country:
+                location_list.append(netherlands_country)
             if 'lithuania' in clean_location:
                 location_list.append('Lithuania')
             if 'tokyo' in clean_location:
@@ -315,6 +326,12 @@ def country_standardizer(locations):
                 location_list.append('Portugal')
             if 'india' in clean_location:
                 location_list.append('India')
+            if 'argentina' in clean_location:
+                location_list.append('Argentina')
+            if 'lima' in clean_location:
+                location_list.append('Peru')
+            if 'romania' in clean_location:
+                location_list.append('Romania')
             if remote_or_hybrid:
                 location_list.append(remote_or_hybrid)
 
