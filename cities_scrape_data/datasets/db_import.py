@@ -16,7 +16,7 @@ def ensure_list(value):
 def db_import(max_threads=5, chunks=25):
     load_dotenv()
 
-    database_url = os.getenv('DATABASE_URL')
+    database_url = os.getenv('DATABASE_PUBLIC_URL')
     if not database_url:
         raise ValueError("DATABASE_URL environment variable not set.")
 
