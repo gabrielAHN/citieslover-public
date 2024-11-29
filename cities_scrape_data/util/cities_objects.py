@@ -25,22 +25,28 @@ class request_object:
 
 
 class scrape_object:
-    def __init__(self, source, name, source_type, scrape_object):
+    def __init__(self, source, name, source_type, title, url, datetime, company=None, country=[], location=[], job_type=[]):
         self.source = source
         self.name = name
         self.source_type = source_type
-        self.scrape_object = scrape_object
+        self.title = title
+        self.url = url
+        self.datetime = datetime
+        self.company = company
+        self.country = country
+        self.location = location
+        self.job_type = job_type
 
 
 class job_object:
-    def __init__(self, title, company, location, url, datetime, job_type):
+    def __init__(self, title, url, datetime, company, location, job_type):
         self.title = clean_string(title).title()
-        self.company = clean_string(company)
-        self.country = country_standardizer(location)
-        self.location = location_standardizer(location)
         self.url = url.replace('www.', 'https://')
         self.datetime = get_datetime(
             *(clean_string(datetime),) if datetime else ())
+        self.company = clean_string(company)
+        self.country = country_standardizer(location)
+        self.location = location_standardizer(location)
         self.job_type = job_type
 
 

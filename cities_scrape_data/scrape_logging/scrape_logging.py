@@ -17,7 +17,6 @@ def get_filtered_sources(source_id=None, source_type=None, response=False, max_t
     scraped_objects = get_scrape_objects(
         source_id=source_id, source_type=source_type, response=response, max_threads=max_threads
     )
-
     if response:
         for object in scraped_objects:
             print(
@@ -27,6 +26,6 @@ def get_filtered_sources(source_id=None, source_type=None, response=False, max_t
             result = f'id: {object.source}\n'
             result += (
                 ''.join("%s: %s\n" % item
-                        for item in vars(object.scrape_object).items())
+                        for item in vars(object).items())
             )
             print(result)

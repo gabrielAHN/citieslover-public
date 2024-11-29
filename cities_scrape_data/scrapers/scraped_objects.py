@@ -6,30 +6,27 @@ import concurrent.futures
 
 
 def get_scrape_objects(source_id=None, source_type=None, response=False, max_threads=None):
-    all_websites = website_info.copy()
-
     if source_id is not None:
-        all_websites = [
-            website for website in all_websites
+        filtered_websites = [
+            website
+            for website in website_info
             if website['id'] == source_id
         ]
+    else:
+        filtered_websites = website_info
 
-    for website in all_websites:
+    for website in filtered_websites:
         if source_type is not None:
             website['scrapers'] = [
-                scraper for scraper in website['scrapers']
-                if scraper['type'] == source_type
-            ]
-        elif isinstance(source_type, list):
-            website['scrapers'] = [
-                scraper for scraper in website['scrapers']
-                if scraper['type'] in source_type
+                scraper
+                for scraper in website.get('scrapers', [])
+                if scraper.get('type') == source_type
             ]
 
     website_scraper_list = [
         (website, scraper)
-        for website in all_websites
-        for scraper in website['scrapers']
+        for website in filtered_websites
+        for scraper in website.get('scrapers', [])
     ]
 
     def fetch_website_request(args):
@@ -44,24 +41,30 @@ def get_scrape_objects(source_id=None, source_type=None, response=False, max_thr
     else:
         def process_response(response_object):
             result = []
+
             if response_object.response == 200 and response_object.content is not None:
                 scraper_objects = response_object.scraper(
                     response=response_object.content,
                     name=response_object.name,
                     id=response_object.id,
                 ) or []
-                
-                # Check if the source_type is 'jobs', if not, limit to 5 objects
+
                 if response_object.type != 'jobs':
                     scraper_objects = limit_objects(scraper_objects)
 
-                for scraper_object in scraper_objects:
-                    if scraper_object:
+                for object in scraper_objects:
+                    if object:
                         obj = scrape_object(
                             source=response_object.id,
                             name=response_object.name,
                             source_type=response_object.type,
-                            scrape_object=scraper_object
+                            url=getattr(object, 'url', None),
+                            title=getattr(object, 'title', None),
+                            datetime=getattr(object, 'datetime', None),
+                            company=getattr(object, 'company', None),
+                            country=getattr(object, 'country', None),
+                            location=getattr(object, 'location', []),
+                            job_type=getattr(object, 'job_type', [])
                         )
                         result.append(obj)
             return result

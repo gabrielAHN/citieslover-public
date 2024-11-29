@@ -50,7 +50,6 @@ def website_requests(website, scrapers):
             )
         else:
             response = response_type(scrapers['website'])
-
         return request_object(
             id=website['id'],
             name=website['name'],
