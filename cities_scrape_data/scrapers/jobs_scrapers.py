@@ -362,7 +362,7 @@ def optibus_jobs(response, name='', id=''):
             company=name,
             location=[
                 job.find('div', {'class': 'location-tag filter-tags'}).text],
-            url=f"https://{job.find('a').get('href')[2:]}",
+            url=f"https:{job.find('a').get('href')}",
             datetime=None,
             job_type=job_typer(
                 job.find('div').text,
@@ -371,10 +371,11 @@ def optibus_jobs(response, name='', id=''):
             )
         )
         for job in jobs
-        if job_typer(
-            job.find('div').text
-        )
-        and job
+        if job
+        # if job_typer(
+        #     job.find('div').text
+        # )
+        # and job
     ]
     if jobs:
         return jobs

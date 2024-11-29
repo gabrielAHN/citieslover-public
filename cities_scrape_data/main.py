@@ -2,15 +2,10 @@ import sys
 import argparse
 import os
 
-from .datasets.data_parsing import create_datasets
-from .scrapers.scraped_objects import get_scrape_objects
+from .datasets.create_data_files import create_datasets
+from .datasets.db_import import db_import
+
 from .scrape_logging.scrape_logging import get_filtered_sources, get_websites_info
-
-
-def create_scrape_datasets(max_threads=5, local=False):
-    scrape_objects = get_scrape_objects(max_threads=max_threads)
-    scrape_objects = create_datasets(scrape_objects, local)
-    return 'datasets_created'
 
 
 def main():
@@ -97,12 +92,30 @@ def main():
         help='Number of threads for multi-threading (default: 5).'
     )
 
+    parser_import_datasets = subparsers.add_parser(
+        'db_import',
+        help='Import datasets to DB.'
+    )
+    parser_import_datasets.add_argument(
+        '--threads',
+        type=int,
+        default=5,
+        help='Number of threads for multi-threading (default: 5).'
+    )
+    parser_import_datasets.add_argument(
+        '--chunks',
+        type=int,
+        default=25,
+        help='Number of chunks for copy into DB (default: 25).'
+    )
+
     subparsers.add_parser(
         'get_websites',
         help='Get websites info.'
     )
 
     args = parser.parse_args()
+
 
     if args.command == 'test_source':
         get_filtered_sources(
@@ -122,7 +135,9 @@ def main():
             max_threads=args.threads
         )
     elif args.command == 'create_datasets':
-        create_scrape_datasets(max_threads=args.threads, local=args.local)
+        create_datasets(max_threads=args.threads, local=args.local)
+    elif args.command == 'db_import':
+        db_import(max_threads=args.threads, chunks=args.chunks)
     elif args.command == 'get_websites':
         get_websites_info()
     else:
