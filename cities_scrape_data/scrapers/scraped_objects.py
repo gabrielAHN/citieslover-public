@@ -1,8 +1,11 @@
-from ..websites.websites_info import website_info
+import concurrent.futures
+
+from ..util.util import limit_objects
 from ..util.cities_objects import scrape_object
 from ..util.requests_types import website_requests
-from ..util.util import limit_objects
-import concurrent.futures
+from ..websites.websites_info import website_info
+from ..scrapers.classifying.blacklist import check_blacklist_object
+
 
 
 def get_scrape_objects(source_id=None, source_type=None, response=False, max_threads=None):
@@ -53,6 +56,7 @@ def get_scrape_objects(source_id=None, source_type=None, response=False, max_thr
                     scraper_objects = limit_objects(scraper_objects)
 
                 for object in scraper_objects:
+                    object=check_blacklist_object(response_object, object)
                     if object:
                         obj = scrape_object(
                             source=response_object.id,

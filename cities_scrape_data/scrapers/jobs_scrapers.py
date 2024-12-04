@@ -27,7 +27,7 @@ def lever_jobs(response, name='', id=''):
         )
         for job in jobs
         if job
-        and job_typer(job.find('h5').text)
+
     ]
     if jobs:
         return jobs
@@ -55,7 +55,6 @@ def greenhouse_jobs(response, name='', id=''):
             job.find_all('p')[0].text
         )
         and job
-        and country_black_list(job.find_all('p')[1].text)
     ]
     if jobs:
         return jobs
@@ -84,7 +83,6 @@ def greenhouse_older_jobs(response, name='', id=''):
             job.find('a').text
         )
         and job
-        and country_black_list(job.find('span', {'class', 'location'}).text)
     ]
     if jobs:
         return jobs
@@ -135,7 +133,7 @@ def planetizen_jobs(response, name='', id=''):
         if job.find('p', {'class', 'author__label'})
         and job.find('span').text
         and 'www.planetizen.com{}'.format(job.find('a').get('href'))
-        and job_typer(job.find('a').text, job.find('p', {'class', 'author__label'}).text)
+
     ]
     if jobs:
         return jobs
@@ -165,10 +163,6 @@ def allthingsurban_jobs(response, name='', id=''):
         if job
         and job.find('a') and job.find('h4', {'class': 'list-item-subtitle'})
         and not 'Administrator' in job.find(re.compile('h(3|4)'), {'class', REGEX_2}).text
-        and job_typer(
-                job.find(re.compile('h(3|4)'), {'class', REGEX_2}).text,
-                job.find('h4', {'class': 'list-item-subtitle'}).text
-        )
     ]
     if jobs:
         return jobs
@@ -194,10 +188,6 @@ def uber_jobs(response, name='', id=''):
         for job in jobs['data']['results']
         if jobs.get('data')
         and jobs.get('data').get('results')
-        and job_typer(
-            job['title'],
-            'Uber', ['transport_enthusiast']
-        )
     ]
     if jobs:
         return jobs
@@ -229,9 +219,6 @@ def govlove_jobs(response, name='', id=''):
         )
         for job in jobs
         if job.find('a', {'class', "link"})
-        and job_typer(job.find('a', {'class', "link"}).text,
-                      job.find('a', {'class', "link"}).text, ['gov_lovers']
-                      )
     ]
     if jobs:
         return jobs
@@ -316,7 +303,7 @@ def mobilitydata_jobs(response, name='', id=''):
 
 def smartgrowamerica_jobs(response, name='', id=''):
     soup = BeautifulSoup(response.content, 'html.parser')
-    jobs = soup.find('div', {'class','fw-content'})
+    jobs = soup.find('div', {'class', 'fw-content'})
     if not jobs:
         return None
     jobs = jobs.find_all('h2')
@@ -366,16 +353,11 @@ def optibus_jobs(response, name='', id=''):
             datetime=None,
             job_type=job_typer(
                 job.find('div').text,
-                name,
-                ['transport_enthusiast']
+                name
             )
         )
         for job in jobs
         if job
-        # if job_typer(
-        #     job.find('div').text
-        # )
-        # and job
     ]
     if jobs:
         return jobs
@@ -651,6 +633,7 @@ def transit_jobs(response, name='', id=''):
         )
         for job in jobs
         if job
+
     ]
     if jobs:
         return jobs
@@ -822,7 +805,7 @@ def electricera_jobs(response, name='', id=''):
         )
         for job in jobs
         if job and job.find('a')
-        and job_typer(job.text)
+
     ]
     if jobs:
         return jobs
@@ -855,10 +838,11 @@ def parkmobile_jobs(response, name='', id=''):
         for job in jobs
         if job
         and job.find('span', class_='text-block-base-link')
-        and job_typer(job.find('span', class_='text-block-base-link').get_text(strip=True))
+
     ]
     if jobs:
         return jobs
+
 
 def fleet_jobs(response, name='', id=''):
     soup = BeautifulSoup(response.content, 'html.parser')
@@ -878,19 +862,20 @@ def fleet_jobs(response, name='', id=''):
         )
         for job in jobs
         if job and job.find_all('div')
-        and job_typer(job.find_all('div')[0].text)
+
     ]
     if jobs:
         return jobs
+
 
 def nplan_jobs(response, name='', id=''):
     website = 'https://nplan.breezy.hr{}'
     soup = BeautifulSoup(response.content, 'html.parser')
     jobs = soup.find_all('ul', {'class', 'positions location'})
-    
+
     if not jobs:
         return None
-    
+
     jobs = [
         position
         for job_list in jobs
@@ -898,7 +883,7 @@ def nplan_jobs(response, name='', id=''):
     ]
 
     if not jobs:
-        return None    
+        return None
 
     jobs = [
         job_object(
@@ -908,7 +893,7 @@ def nplan_jobs(response, name='', id=''):
                 span.text
                 for span in job.find('li', class_='location').find_all('span')
                 if span
-                ],
+            ],
             url=website.format(job.find('a')['href']),
             datetime=None,
             job_type=job_typer(job.find('h2').text)
@@ -916,11 +901,13 @@ def nplan_jobs(response, name='', id=''):
         for job in jobs
         if job
         and job.find('h2')
-        and job.find('li', class_='location') 
+        and job.find('li', class_='location')
+
     ]
 
     if jobs:
         return jobs
+
 
 def arcadis_jobs(response, name='', id=''):
     jobs = [
@@ -936,10 +923,10 @@ def arcadis_jobs(response, name='', id=''):
         for page in BeautifulSoup(response.content, 'html.parser')
         for job in page.find_all('li')
         if job.find('h4')
-        and country_black_list(page.find('h3').text)
     ]
     if jobs:
         return jobs
+
 
 def gridwise_jobs(response, name='', id=''):
     website = 'https://gridwise.io/careers/?ashby_jid={}'
@@ -987,16 +974,18 @@ def gridwise_jobs(response, name='', id=''):
         for job in job_postings
         if job
         and job.get('title')
+
     ]
     if jobs:
         return jobs
+
 
 def foursquareitp_jobs(response, name='', id=''):
     soup = BeautifulSoup(response.content, 'html.parser')
     jobs = soup.find('div', {'class', 'col col-xs-7 jobs-list'})
     if not jobs:
         return None
-    
+
     jobs = jobs.find_all('li')
     if not jobs:
         return None
@@ -1014,11 +1003,12 @@ def foursquareitp_jobs(response, name='', id=''):
         if job
         and job.find('a')
         and job.find('li')
-        and job_typer(job.find('a').text)
+
     ]
 
     if jobs:
         return jobs
+
 
 def inrix_jobs(response, name='', id=''):
     website = 'https://jobs.jobvite.com{}'
@@ -1047,19 +1037,20 @@ def inrix_jobs(response, name='', id=''):
         if job
         and job.find('td', {'class', 'jv-job-list-location'})
         and job.find('a')
-        and job_typer(job.find('a').text)
+
     ]
     if jobs:
         return jobs
+
 
 def masabi_job_parser(response, name='', id=''):
     website = "https://careers.masabi.com/?ashby_jid={}"
     jobs = response.json()
     if not jobs:
         return None
-    
+
     jobs = jobs.get('data').get('jobBoard').get('jobPostings')
-    
+
     if not jobs:
         return None
     jobs = [
@@ -1073,14 +1064,15 @@ def masabi_job_parser(response, name='', id=''):
         )
         for job in jobs
         if job
-        and job_typer(job.get('title'))
+
     ]
     if jobs:
         return jobs
 
+
 def rebel_job_parser(response, name='', id=''):
     soup = BeautifulSoup(response.content, 'html.parser')
-    
+
     jobs = soup.find_all('div', {'class', 'card card--equal js-link'})
     if not jobs:
         return None
@@ -1092,23 +1084,25 @@ def rebel_job_parser(response, name='', id=''):
             location=[job.find('li').text],
             url=job.find('a').get('href'),
             datetime=None,
-            job_type=job_typer(job.find('a').text, pre_type=['transport_enthusiast'])
+            job_type=job_typer(job.find('a').text, pre_type=[
+                               'transport_enthusiast'])
         )
         for job in jobs
         if job
-        and job_typer(job.find('a').text)
+
     ]
     if jobs:
         return jobs
+
 
 def haydenai_parser(response, name='', id=''):
     website = "www.hayden.ai/careers?ashby_jid={}"
     jobs = response.json()
     if not jobs:
         return None
-    
+
     jobs = jobs.get('data').get('jobBoard').get('jobPostings')
-    
+
     if not jobs:
         return None
     jobs = [
@@ -1122,19 +1116,20 @@ def haydenai_parser(response, name='', id=''):
         )
         for job in jobs
         if job
-        and job_typer(job.get('title'))
+
     ]
     if jobs:
         return jobs
 
+
 def cabify_jobs(response, name='', id=''):
     website = 'https://cabify.careers{}'
     soup = BeautifulSoup(response.content, 'html.parser')
-    
+
     jobs = soup.find('ul', {'class', 'grid'})
     if not jobs:
         return None
-    
+
     jobs = jobs.find_all('li')
     if not jobs:
         return None
@@ -1145,11 +1140,13 @@ def cabify_jobs(response, name='', id=''):
             location=[job.find('div', {'class', 'card-info-location'}).text],
             url=website.format(job.find('a')['href']),
             datetime=None,
-            job_type=job_typer(job.find('div', {'class', "card-title heading-1"}).text)
+            job_type=job_typer(
+                job.find('div', {'class', "card-title heading-1"}).text)
         )
         for job in jobs
         if job
         and job.find('div', {'class', "card-title heading-1"})
+
     ]
     if jobs:
         return jobs

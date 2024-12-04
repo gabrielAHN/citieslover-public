@@ -34,7 +34,9 @@ BEGIN
             country,
             job_type
         FROM temp_scrape_data
-        GROUP BY source, name, source_type, title, url, company, location, country, job_type
+        GROUP BY 
+            source, name, source_type, title, url,
+            company, location, country, job_type
     ) t
     WHERE NOT EXISTS (
         SELECT 1 FROM website_data w

@@ -1,9 +1,14 @@
 import os
 import io
 import psycopg2
-from psycopg2 import sql
+import itertools
+
 from dotenv import load_dotenv
 from ..scrapers.scraped_objects import get_scrape_objects
+from ..websites.websites_info import website_info
+
+
+load_dotenv()
 
 def ensure_list(value):
     if value is None:
@@ -14,8 +19,6 @@ def ensure_list(value):
         return [value]
 
 def db_import(max_threads=5, chunks=25):
-    load_dotenv()
-
     database_url = os.getenv('DATABASE_PUBLIC_URL')
     if not database_url:
         raise ValueError("DATABASE_URL environment variable not set.")
@@ -40,34 +43,13 @@ def db_import(max_threads=5, chunks=25):
         ) ON COMMIT DROP;
         """
         cur.execute(create_temp_table)
-        # No need to commit here; the table exists within the transaction
 
         scrape_objects = get_scrape_objects(max_threads=max_threads)
-
-        data = []
-        for scrape_object in scrape_objects:
-            item = {
-                'source': scrape_object.source,
-                'name': scrape_object.name,
-                'source_type': scrape_object.source_type,
-                'title': scrape_object.title,
-                'url': scrape_object.url,
-                'datetime': scrape_object.datetime,
-                'company': getattr(scrape_object, 'company', None),
-                'country': ensure_list(getattr(scrape_object, 'country', [])),
-                'location': getattr(scrape_object, 'location', None),
-                'job_type': ensure_list(getattr(scrape_object, 'job_type', []))
-            }
-            data.append(item)
-
-        total_records = len(data)
-        for i in range(0, total_records, chunks):
-            chunk = data[i:i+chunks]
-            process_chunk(chunk, cur)
-            # No need to commit after each chunk; commit at the end
+        
+        db_import_brand_data(website_info, cur, chunks)
+        db_import_website_data(scrape_objects, cur, chunks)
 
         cur.execute("CALL process_scrape_data();")
-        # The temporary table is accessible within the same transaction
 
         conn.commit()  # Commit the transaction
         print("Database import successful ✅")
@@ -78,33 +60,105 @@ def db_import(max_threads=5, chunks=25):
         cur.close()
         conn.close()
 
-def process_chunk(chunk, cur):
-    buffer = io.StringIO()
-    for item in chunk:
-        job_type_formatted = '{' + ','.join(item['job_type']) + '}' if item['job_type'] else '{}'
-        country_formatted = '{' + ','.join(item['country']) + '}' if item['country'] else '{}'
-        fields = [
-            item['source'] or '',
-            item['name'] or '',
-            item['source_type'] or '',
-            item['title'] or '',
-            item['url'] or '',
-            item['datetime'].strftime('%Y-%m-%d %H:%M:%S') if item['datetime'] else '',
-            item['company'] or '',
-            country_formatted,
-            item['location'] or '',
-            job_type_formatted
-        ]
+def db_import_brand_data(website_info, cur, chunks):
+    total_records = len(website_info)
+    cur.execute("TRUNCATE TABLE brand_data;")
+                
+    for i in range(0, total_records, chunks):
+        chunk = website_info[i:i+chunks]
+        buffer = io.StringIO()
 
-        fields = [str(v).replace('\n', ' ').replace('\r', ' ').replace('\t', ' ').replace('\\', '\\\\') for v in fields]
-        buffer.write('\t'.join(fields) + '\n')
-    buffer.seek(0)
+        for item in chunk:
+            # Extracting 'type' as strings instead of dictionaries
+            brand_type = [scraper['type'] for scraper in item.get('scrapers', [])]
+            brand_type_formatted = '{' + ','.join(brand_type) + '}' if brand_type else '{}'
+            fields = [
+                item.get('id', ''),
+                item.get('name', ''),
+                item.get('image', ''),
+                brand_type_formatted
+            ]
 
+            # Sanitize fields
+            sanitized_fields = [
+                str(v).replace('\n', ' ').replace('\r', ' ').replace('\t', ' ').replace('\\', '\\\\')
+                for v in fields
+            ]
+            buffer.write('\t'.join(sanitized_fields) + '\n')
+        buffer.seek(0)
+        chunk_import(
+            cur=cur,
+            buffer=buffer,
+            tablename='brand_data',
+            columns=('id', 'name', 'image', 'brand_type')
+        )
+
+def db_import_website_data(scrape_objects, cur, chunks):
+    for chunk in chunk_iterator(iter(scrape_objects), chunks):
+        buffer = io.StringIO()
+        for scrape_object in chunk:
+            source = scrape_object.source or ''
+            name = scrape_object.name or ''
+            source_type = scrape_object.source_type or ''
+            title = scrape_object.title or ''
+            url = scrape_object.url or ''
+            datetime_str = scrape_object.datetime.strftime('%Y-%m-%d %H:%M:%S') if scrape_object.datetime else ''
+            company = getattr(scrape_object, 'company', '') or ''
+            country = getattr(scrape_object, 'country', [])
+            location = getattr(scrape_object, 'location', '') or ''
+            job_type = getattr(scrape_object, 'job_type', [])
+
+            # Format lists as required
+            country_formatted = '{' + ','.join(country) + '}' if country else '{}'
+            job_type_formatted = '{' + ','.join(job_type) + '}' if job_type else '{}'
+
+            # Prepare fields
+            fields = [
+                source,
+                name,
+                source_type,
+                title,
+                url,
+                datetime_str,
+                company,
+                country_formatted,
+                location,
+                job_type_formatted
+            ]
+
+            # Sanitize fields
+            sanitized_fields = [
+                str(field).replace('\n', ' ').replace('\r', ' ').replace('\t', ' ').replace('\\', '\\\\')
+                for field in fields
+            ]
+
+            buffer.write('\t'.join(sanitized_fields) + '\n')
+        
+        buffer.seek(0)
+        chunk_import(
+            cur=cur,
+            buffer=buffer,
+            tablename='temp_scrape_data',
+            columns=(
+                'source', 'name', 'source_type', 'title', 'url',
+                'datetime', 'company', 'country', 'location',
+                'job_type'
+            )
+        )
+
+def chunk_import(cur, buffer, tablename, columns):
     cur.copy_from(
         file=buffer,
-        table='temp_scrape_data',
-        columns=('source', 'name', 'source_type', 'title', 'url',
-                 'datetime', 'company', 'country', 'location', 'job_type'),
+        table=tablename,
+        columns=columns,
         sep='\t',
         null=''
     )
+
+def chunk_iterator(iterator, size):
+    """Yield successive chunks from the iterator of specified size."""
+    while True:
+        chunk = list(itertools.islice(iterator, size))
+        if not chunk:
+            break
+        yield chunk

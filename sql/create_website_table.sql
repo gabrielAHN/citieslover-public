@@ -13,3 +13,10 @@ CREATE TABLE website_data (
     job_type TEXT[],
     data_status TEXT
 );
+
+CREATE TABLE brand_data (
+    id TEXT,
+    name TEXT,
+    image TEXT,
+    brand_type TEXT[]
+);

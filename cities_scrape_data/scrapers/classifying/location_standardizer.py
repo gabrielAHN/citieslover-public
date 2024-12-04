@@ -1,10 +1,6 @@
 import re
 from ...util.util import clean_string
 
-COUNTRY_BLACKLIST = [
-    'Tel Aviv', 'India', 'Sofia'
-    'Poland'
-]
 
 USA_COUNTRY_REGEX = re.compile(r'(\(usa\)| us(a)?|united states)')
 USA_STATE_REGEX = re.compile(
@@ -52,15 +48,6 @@ BRAZIL_COUNTRY_REGEX = re.compile(r'(são paulo|brazil)')
 URUGUAY_COUNTRY_REGEX = re.compile(r'uruguay')
 
 NETHERLANDS_CITY_REGEX = re.compile(r'rotterdam')
-
-def country_black_list(source_location):
-    match = [
-        country
-        for country in COUNTRY_BLACKLIST
-        if country.lower() in source_location.lower()
-    ]
-    if not match:
-        return True
 
 
 def remote_or_hybrid_standard(location):
