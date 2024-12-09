@@ -41,7 +41,6 @@ def create_post_data(scrape_objects):
         }
         for post in scrape_objects
         if 'jobs' != post.source_type
-        and not hasattr(post, 'company')
     ]
     random.shuffle(post_data)
     return json.dumps(post_data, indent=2)

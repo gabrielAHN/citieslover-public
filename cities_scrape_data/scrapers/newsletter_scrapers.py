@@ -22,18 +22,13 @@ def rss_parser(response, name='', id=''):
 
     items = root.find('channel')
 
-    if not items:
-        return None
-
     items = items.findall("item")
-    if not items:
-        return None
 
     articles = [
         article_object(
             title=item.find('title').text,
             url=item.find('link').text,
-            datetime=item.find('pubDate').text,
+            datetime=None
         )
         for item in items
     ]
@@ -60,7 +55,7 @@ def apple_parser(response, name='', id=''):
         article_object(
             title=episode.get('name'),
             url=episode.get('url'),
-            datetime=episode.get('datePublished')
+            datetime=None
         )
         for episode in episodes
     ]
@@ -74,13 +69,12 @@ def allthingsurban(response, name='', id=''):
 
     soup = BeautifulSoup(response.content, 'html.parser')
     articles = soup.find_all('div', {'class': 'blog-item'})
-    if not articles:
-        return None
+
     articles = [
         article_object(
             title=article.find('h3', {"class", "blog-item-title"}).text,
             url=website.format(article.find('a')['href']),
-            datetime=article.find('h4', {'class', "blog-item-subtitle"}).text,
+            datetime=None
         )
         for article in articles
         if article
@@ -92,15 +86,15 @@ def allthingsurban(response, name='', id=''):
 
 def govtech(response, name='', id=''):
     soup = BeautifulSoup(response.content, 'html.parser')
-    articles = soup.find_all('div', {'class': "ListA-items-item"})
-    if not articles:
-        return None
+
+    articles = soup.find_all('div', {'class': "PromoB-content"})
+
     articles = [
         article_object(
             title=article.find('div', {'class', 'Promo-title'}).text,
             url=article.find(
                 'div', {'class', 'Promo-title'}).find('a').get('href'),
-            datetime=article.find('div', {'class', 'Promo-date'}).text
+            datetime=None
         )
         for article in articles
     ]
@@ -111,14 +105,12 @@ def govtech(response, name='', id=''):
 def streetsblog(response, name='', id=''):
     soup = BeautifulSoup(response.content, 'html.parser')
     articles = soup.find_all('article')
-    if not articles:
-        return None
 
     articles = [
         article_object(
             title=article.find('h2', {'class': 'entry-title'}).text,
             url=article.find('a')['href'],
-            datetime=article.find('time').text
+            datetime=None
         )
         for article in articles
     ]
@@ -130,15 +122,13 @@ def transitcenter(response, name='', id=''):
     soup = BeautifulSoup(response.content, 'html.parser')
 
     articles = soup.find_all('div', {'class': 'container wide is-widescreen'})
-    if not articles:
-        return None
+
     articles = [
         article_object(
             title=article.find(
                 'a', {'class', 'd-block sans-medium py-4 has-text-black is-size-4'}).text,
             url=article.find('a').get('href'),
-            datetime=article.find(
-                'div', {'class', 'has-color-primary sans-medium is-size-6 py-2'}).text
+            datetime=None
         )
         for article in articles
         if article.find('a', {'class', 'd-block sans-medium py-4 has-text-black is-size-4'})
@@ -150,14 +140,12 @@ def transitcenter(response, name='', id=''):
 def spur(response, name='', id=''):
     soup = BeautifulSoup(response.content, 'html.parser')
     articles = soup.find_all('div', {'class', 'content'})[2:]
-    if not articles:
-        return None
 
     articles = [
         article_object(
             title=article.find('h2').text,
             url=article.find('a').get('href'),
-            datetime=article.find('time').text
+            datetime=None
         )
         for article in articles
         if article.find('time')
@@ -171,13 +159,12 @@ def spur(response, name='', id=''):
 def parking_mobility(response, name='', id=''):
     soup = BeautifulSoup(response.content, 'html.parser')
     articles = soup.find_all('div', {'class', 'blog-post-info'})
-    if not articles:
-        return None
+
     articles = [
         article_object(
             title=article.find('h2').text,
             url=article.find('a')['href'],
-            datetime=article.find('p').previous_sibling
+            datetime=None
         )
         for article in articles
     ]
@@ -189,15 +176,12 @@ def axios(response, name='', id=''):
 
     soup = BeautifulSoup(response.content, 'html.parser')
     articles = soup.find_all('amp-layout')
-    if not articles:
-        return None
+
     articles = [
         article_object(
             title=article.find('h3').text,
             url=article.find('h3').find('a').get('href'),
-            datetime=article.find(
-                'span', {'data-testid', "time-rubric"}
-            ).text.split(' - ')[0]
+            datetime=None
         )
         for article in articles
         if article
@@ -207,35 +191,15 @@ def axios(response, name='', id=''):
         return articles
 
 
-def micromobilitypodcast(response, name='', id=''):
-    website = 'https://micromobility.io{}'
-
-    soup = BeautifulSoup(response.content, 'html.parser')
-    articles = soup.find_all('article')
-    if not articles:
-        return None
-    articles = [
-        article_object(
-            title=article.find('a').text,
-            url=website.format(article.find('a').get('href')),
-            datetime=article.find('time').text
-        )
-        for article in articles
-    ]
-    if articles:
-        return articles
-
-
 def zag(response, name='', id=''):
     soup = BeautifulSoup(response.content, 'html.parser')
     articles = soup.find_all('article')
-    if not articles:
-        return None
+
     articles = [
         article_object(
             title=article.find('h2').text,
             url=article.find('a').get('href'),
-            datetime='today'
+            datetime=None
         )
         for article in articles[1:]
     ]
@@ -247,14 +211,12 @@ def transloc(response, name='', id=''):
     soup = BeautifulSoup(response.content, 'html.parser')
     articles = soup.find_all(
         'div', {"class", "esg-entry-content eg-blog-posts-content"})
-    if not articles:
-        return None
+
     articles = [
         article_object(
             title=article.find('a').text,
             url=article.find('a').get('href'),
-            datetime=article.find('div', {'class', re.compile(
-                r'esg-content eg-post-\d+ eg-blog-posts-element-3')}).text
+            datetime=None
         )
         for article in articles
     ]
@@ -283,8 +245,7 @@ def commutifi(response, name='', id=''):
                 article_object(
                     title=title.split(':')[1].strip(),
                     url=link,
-                    datetime=soup.find(
-                        'div', {'class', 'subtitle _10-top-margin w-condition-invisible'}).text
+                    datetime=None
                 )
             )
         except:
@@ -298,14 +259,11 @@ def electronomous(response, name='', id=''):
     articles = soup.find_all(
         'h1', {'class', "elementor-heading-title elementor-size-default"})
 
-    if not articles:
-        return None
-
     articles = [
         article_object(
             title=article.find('a').text,
             url=article.find('a').get('href'),
-            datetime=''
+            datetime=None
         )
         for article in articles
         if article
@@ -322,8 +280,6 @@ def rpa_parser(response, name='', id=''):
         r'|l-card-grid__card js-append-latest)'
         r'|l-card-grid__card l-card-grid__card--featured')
     )
-    if not articles:
-        return None
 
     articles = [
         article_object(
@@ -332,7 +288,7 @@ def rpa_parser(response, name='', id=''):
                                    r'(featured-heading-set__heading|media-blurb__subtitle)'
                                )).text,
             url=article.find('a', {'class': "card-link"}).get('href'),
-            datetime=article.find('p', {'class', 'tag__text'}).text
+            datetime=None
         )
         for article in articles
         if article
@@ -346,13 +302,11 @@ def curbed_scraper(response, name='', id=''):
     soup = BeautifulSoup(response.content, 'html.parser')
     articles = soup.find_all('li', {'class', 'article'})
 
-    if not articles:
-        return None
     articles = [
         article_object(
             title=article.find('span', {'class', 'headline'}).text,
             url=article.find('a', {"class", "link-text"}).get('href'),
-            datetime=article.find('time', {'class', "paginate-time"}).text
+            datetime=None
         )
         for article in articles
         if article
@@ -366,15 +320,11 @@ def chartercitiesinstitute_podcast_parser(response, name='', id=''):
     soup = BeautifulSoup(response.content, 'html.parser')
     articles = soup.find_all('article')
 
-    if not articles:
-        return None
-
     articles = [
         article_object(
             title=article.find('h3').text,
             url=article.find('a').get('href'),
-            datetime=article.find(
-                'span', {'class', 'elementor-post-date'}).text
+            datetime=None
         )
         for article in articles
         if article
@@ -388,15 +338,11 @@ def chartercitiesinstitute_blog_parser(response, name='', id=''):
     soup = BeautifulSoup(response.content, 'html.parser')
     articles = soup.find_all('article')
 
-    if not articles:
-        return None
-
     articles = [
         article_object(
             title=article.find('h3').text,
             url=article.find('a').get('href'),
-            datetime=article.find(
-                'span', {'class', 'elementor-post-date'}).text
+            datetime=None
         )
         for article in articles
         if article
@@ -421,15 +367,12 @@ def eurocities_parser(response, name='', id=''):
         for articles in articles_list
         for article in articles.find_all('li')
     ]
-    if not articles:
-        return None
 
     articles = [
         article_object(
             title=article.find('h2').text,
             url=article.find('a').get('href'),
-            datetime=article.find(
-                'span', {'class', 'date'}).text
+            datetime=None
         )
         for article in articles
         if article
@@ -447,15 +390,12 @@ def activecities_parser(response, name='', id=''):
 
     articles = soup.find_all('article', attrs={'role': 'article'})
 
-    if not articles:
-        return None
-
     articles = [
         article_object(
             title=article.find('h3').text,
             url=website.format(article.find(
                 'a', {'class', "c-card c-card--with-ribbon"}).get('href')),
-            datetime=article.find('div', {'class', 'c-card__date'}).text
+            datetime=None
         )
         for article in articles
         if article
@@ -470,19 +410,15 @@ def gvshp_parser(response, name='', id=''):
 
     articles = soup.find_all('article')
 
-    if not articles:
-        return None
-
     articles = [
         article_object(
             title=article.find('h2').text,
             url=article.find('a')['href'],
-            datetime=article.find('time')['datetime']
+            datetime=None
         )
         for article in articles
         if article
         and article.find('a')['href']
-        and article.find('time')['datetime']
     ]
     if articles:
         return articles
@@ -493,41 +429,16 @@ def itdpTransportMatters_parser(response, name='', id=''):
 
     articles = soup.find_all('div', {'class', 'post-detail'})
 
-    if not articles:
-        return None
-
     articles = [
         article_object(
             title=article.find('a').text,
             url=article.find('a').get('href'),
-            datetime=article.find('p', {'class', 'post-date'}).text
+            datetime=None
         )
         for article in articles
         if article
         and article.find('a')['href']
         and article.find('p', {'class', 'post-date'})
-    ]
-    if articles:
-        return articles
-
-
-def intelligenttransport_parser(response, name='', id=''):
-    soup = BeautifulSoup(response.content, 'html.parser')
-    articles = soup.find_all('article')
-
-    if not articles:
-        return None
-
-    articles = [
-        article_object(
-            title=article.find('h3').text,
-            url=article.find('h3').find('a').get('href'),
-            datetime=article.find('p', {'class': 'meta'}).text.split('|')[0]
-        )
-        for article in articles
-        if article
-        and article.find('p', {'class': 'meta'})
-        and article.find('h3')
     ]
     if articles:
         return articles
@@ -539,15 +450,11 @@ def futuremobility_parser(response, name='', id=''):
     soup = BeautifulSoup(response.content, 'html.parser')
     articles = soup.find_all('div', {"class", "alpha-card__content"})
 
-    if not articles:
-        return None
-
     articles = [
         article_object(
             title=article.find('h3').text,
             url=website.format(article.find('a').get('href')),
-            datetime=article.find(
-                'div', {"class", "card-with-meta__meta"}).text
+            datetime=None
         )
         for article in articles
         if article
@@ -563,14 +470,11 @@ def urbanomnibus_parser(response, name='', id=''):
 
     articles = soup.find_all('article')
 
-    if not articles:
-        return None
-
     articles = [
         article_object(
             title=article.find('h3').text,
             url=article.find('h3').find('a').get('href'),
-            datetime=article.find_all('span', {'class', "meta"})[-1].text
+            datetime=None
         )
         for article in articles
         if article
@@ -586,15 +490,11 @@ def enotransportation_parser(response, name='', id=''):
 
     articles = soup.find_all('article')
 
-    if not articles:
-        return None
-
     articles = [
         article_object(
             title=article.find('a').get('title'),
             url=article.find('a').get('href'),
-            datetime=article.find(
-                'div', {'class', 'etw-article-meta'}).text.split('|')[0].strip()
+            datetime=None
         )
         for article in articles
         if article
@@ -612,15 +512,11 @@ def nusurbananalytics_parser(response, name='', id=''):
     articles = soup.find_all(
         'div', {'class', 'media stream-item view-compact'})
 
-    if not articles:
-        return None
-
     articles = [
         article_object(
             title=article.find('a').text,
             url=website.format(article.find('a').get('href')),
-            datetime=article.find(
-                'span', {'class', 'article-date'}).text
+            datetime=None
         )
         for article in articles
         if article
@@ -637,15 +533,12 @@ def journal_buildingscities_parser(response, name='', id=''):
 
     articles = soup.find_all('div', {'class', "fPSBzf gfYZhR"})
 
-    if not articles:
-        return None
-
     articles = [
         article_object(
             title=article.find('div', {'class', 'jaxCjk'}).text,
             url=website.format(article.find(
                 'div', {'class', 'jaxCjk'}).find('a')['href']),
-            datetime=article.find('time').text
+            datetime=None
         )
         for article in articles
         if article

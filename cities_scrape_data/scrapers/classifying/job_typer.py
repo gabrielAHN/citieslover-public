@@ -1,24 +1,10 @@
 import re
 
-NO_MATCHES = [
-    'finance', 'health', 'hr', 'strategic', 'office coordinator',
-    'advertising', 'payroll', 'office manager', 'accountant',
-    'full time seasonal', 'driver', 'talent acquisition',
-    'talent pool', 'mechanic', 'shift', 'technician',
-    'recruiter', 'ranger', 'mécanicien', 'financial',
-    'open application', 'submit your resume', 'tax', 'payroll',
-    'equipment maintenance', 'accountant', 'treasury', 'diversity',
-    'foot patrol', 'hr compensations', 'don\'t see a position that',
-    'want to join inspiration', "don\'t see a role for you?",
-    'cost controller', 'project accountant', 'copywriter',
-    'general application', 'diversity and inclusion', 'head Of tax'
-]
-
 
 def cityleaders(title, company):
     title_list = [
         r'chief( of staff| planner| marketing officer)', r'director( of|,)', r'team lead',
-        r'head of', r'vice president', r'manager'
+        r'(vp|head) of', r'vice president', r'manager'
     ]
     company_list = []
     job_type = job_labeling('city_leaders', title_list,
@@ -168,14 +154,6 @@ def company_matching(company_list, title, company):
 
 def job_typer(title, company='', pre_type=[]):
     if not title:
-        return []
-    blacklist = [
-        word
-        for word in NO_MATCHES
-        if word in title.lower()
-        or word in company.lower()
-    ]
-    if blacklist:
         return []
 
     job_type_list = [
