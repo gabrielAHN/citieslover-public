@@ -13,8 +13,7 @@ def lever_jobs(response, name='', id=''):
     soup = BeautifulSoup(response.content, 'html.parser')
 
     jobs = soup.find_all('div', {'class', 'posting'})
-    if not jobs:
-        return None
+
     jobs = [
         job_object(
             title=job.find('h5').text,
@@ -37,8 +36,6 @@ def greenhouse_jobs(response, name='', id=''):
     soup = BeautifulSoup(response.content, 'html.parser')
     jobs = soup.find_all('tr', {'class': 'job-post'})
 
-    if not jobs:
-        return None
     jobs = [
         job_object(
             title=job.find_all('p')[0].text,
@@ -65,8 +62,6 @@ def greenhouse_older_jobs(response, name='', id=''):
     soup = BeautifulSoup(response.content, 'html.parser')
     jobs = soup.find_all('div', {'class': 'opening'})
 
-    if not jobs:
-        return None
     jobs = [
         job_object(
             title=job.find('a').text,
@@ -92,9 +87,6 @@ def workable_jobs(response, name='', id=''):
     website = "https://apply.workable.com/{}/j/{}/"
     jobs = response.json()
 
-    if jobs.get('total') == 0:
-        return None
-
     jobs = [
         job_object(
             title=job.get('title'),
@@ -116,8 +108,6 @@ def workable_jobs(response, name='', id=''):
 def planetizen_jobs(response, name='', id=''):
     soup = BeautifulSoup(response.content, 'html.parser')
     jobs = soup.find('div', {'class', 'view-content global-search'})
-    if not jobs:
-        return None
 
     jobs = [
         job_object(
@@ -144,8 +134,7 @@ def allthingsurban_jobs(response, name='', id=''):
 
     soup = BeautifulSoup(response.content, 'html.parser')
     jobs = soup.find('div', {'class', 'list'})
-    if not jobs:
-        return None
+
     jobs = jobs.find_all('div', {'class': 'list-item'})
     jobs = [
         job_object(
@@ -171,9 +160,6 @@ def allthingsurban_jobs(response, name='', id=''):
 def uber_jobs(response, name='', id=''):
     jobs = response.json()
 
-    if jobs.get('status') != 'success' or jobs['data']['results'] == None:
-        return None
-
     jobs = [
         job_object(
             title=job['title'],
@@ -196,8 +182,6 @@ def uber_jobs(response, name='', id=''):
 def govlove_jobs(response, name='', id=''):
     soup = BeautifulSoup(response.content, 'html.parser')
     jobs = soup.find_all('article')
-    if not jobs:
-        return None
 
     jobs = [
         job_object(
@@ -228,8 +212,6 @@ def nyc_planning_jobs(response, name='', id=''):
     website = 'www.nyc.gov'
     jobs = response.json()
 
-    if not jobs:
-        return None
     jobs = [
         job_object(
             title=job.get('name'),
@@ -251,11 +233,8 @@ def transitcenter_job(response, name='', id=''):
     soup = BeautifulSoup(response.content, 'html.parser')
 
     jobs = soup.find('div', {'class', "content-body"})
-    if not jobs:
-        return None
     jobs = jobs.find_all('a')
-    if not jobs:
-        return None
+
     jobs = [
         job_object(
             title=job.text,
@@ -278,8 +257,7 @@ def mobilitydata_jobs(response, name='', id=''):
 
     soup = BeautifulSoup(response.content, 'html.parser')
     jobs = soup.find_all('li', {'class': 'position transition'})
-    if not jobs:
-        return None
+
     jobs = [
         job_object(
             title=job.find('h2').text,
@@ -304,11 +282,8 @@ def mobilitydata_jobs(response, name='', id=''):
 def smartgrowamerica_jobs(response, name='', id=''):
     soup = BeautifulSoup(response.content, 'html.parser')
     jobs = soup.find('div', {'class', 'fw-content'})
-    if not jobs:
-        return None
     jobs = jobs.find_all('h2')
-    if not jobs:
-        return None
+
     jobs = [
         job_object(
             title=job.find('a').text.replace('Now hiring: ', ''),
@@ -336,12 +311,7 @@ def optibus_jobs(response, name='', id=''):
     soup = BeautifulSoup(response.content, 'html.parser')
     jobs = soup.find('ul', {'class': 'comeet-positions-list'})
 
-    if not jobs:
-        return None
-
     jobs = jobs.find_all('li')
-    if not jobs:
-        return None
 
     jobs = [
         job_object(
@@ -368,9 +338,6 @@ def ito_jobs(response, name='', id=''):
 
     jobs = response.json()
 
-    if not jobs:
-        return None
-
     jobs = [
         job_object(
             title=job['jobOpeningName'],
@@ -395,15 +362,11 @@ def ito_jobs(response, name='', id=''):
 
 
 def voi_jobs(response, name='', id=''):
-    if response.status_code != 200:
-        return None
-
     soup = BeautifulSoup(response.content, 'html.parser')
-    jobs = soup.find_all(
-        'li', {'class', "transition-opacity duration-150 border rounded block-grid-item border-block-base-text border-opacity-15"}
-    )
-    if not jobs:
-        return None
+
+    jobs = soup.find('ul', {'class': 'block-grid',
+                     'id': 'jobs_list_container'})
+    jobs = jobs.find_all('li')
 
     jobs = [
         job_object(
@@ -440,8 +403,7 @@ def dbf_jobs(response, name='', id=''):
     soup = BeautifulSoup(response.content, 'html.parser')
     jobs = soup.findAll('div', {'class': 'w-layout-grid grid-6'})
 
-    if not jobs:
-        return None
+
 
     jobs = [
         job_object(
@@ -466,8 +428,6 @@ def replica_jobs(response, name='', id=''):
     soup = BeautifulSoup(response.content, 'html.parser')
     jobs = soup.find_all('a', {'class': 'job_title_link'})
 
-    if not jobs:
-        return None
     jobs = [
         job_object(
             title=job.text,
@@ -490,9 +450,6 @@ def lastminute_jobs(response, name='', id=''):
 
     soup = BeautifulSoup(response.content, 'html.parser')
     jobs = soup.find_all('div', {'class': 'job-row'})
-
-    if not jobs:
-        return None
 
     jobs = [
         job_object(
@@ -520,13 +477,11 @@ def la_metro_jobs(response, name='', id=''):
     jobs = soup.find(
         'table', {"id": "ctl00_ContentPlaceHolder1_dgvMetroJobPTSC"})
 
-    if not jobs:
-        return None
+
     jobs = jobs.find_all('td', {'align': 'left'})
     jobs = [a.find('a') for a in jobs if a.find('a')]
 
-    if not jobs:
-        return None
+
     jobs = [
         job_object(
             title=job.text,
@@ -549,8 +504,7 @@ def rpa_jobs(response, name='', id=''):
     soup = BeautifulSoup(response.content, 'html.parser')
     jobs = soup.find_all('div', {'class': 'content-table-row__opening'})
 
-    if not jobs:
-        return None
+
 
     jobs = [
         job_object(
@@ -576,12 +530,10 @@ def rpa_jobs(response, name='', id=''):
 def lyft_jobs(response, name='', id=''):
     jobs = response.json()
 
-    if not jobs:
-        return None
+
 
     jobs = jobs.get('jobs')
-    if not jobs:
-        return None
+
     jobs = [
         job_object(
             title=job.get('title'),
@@ -613,14 +565,12 @@ def transit_jobs(response, name='', id=''):
 
     soup = BeautifulSoup(response.content, 'html.parser')
     jobs = soup.find('div', {'class', 'framer-nhflh7'})
-    if not jobs:
-        return None
+
     jobs = jobs.find_all('div', {
         'class', 'framer-1yx909s-container',
         "style", "opacity: 1"})
 
-    if not jobs:
-        return None
+
 
     jobs = [
         job_object(
@@ -642,12 +592,10 @@ def transit_jobs(response, name='', id=''):
 def spare_jobs(response, name='', id=''):
     jobs = response.json()
 
-    if not jobs:
-        return None
+
 
     jobs = jobs.get('data')
-    if not jobs:
-        return None
+
 
     jobs = [
         job_object(
@@ -675,14 +623,12 @@ def mobilityhouse_jobs(response, name='', id=''):
     jobs = soup.find(
         'section', {"class", "sc-3fe7f201-0 sc-3226279f-0 btDIwT khtdVs"})
 
-    if not jobs:
-        return None
+
     jobs = jobs.find_all('a', attrs={
         'target': '_blank',
         'rel': 'noopener noreferrer'
     })
-    if not jobs:
-        return None
+
     jobs = [
         job_object(
             title=job.find('strong').text,
@@ -710,8 +656,7 @@ def gvshp_jobs(response, name='', id=''):
         'a', href=re.compile(r'\.pdf$'),
         attrs={'title': "", 'rel': "noopener"})
 
-    if not jobs:
-        return None
+
 
     jobs = [
         job_object(
@@ -739,8 +684,7 @@ def urbandesignforum_parser(response, name='', id=''):
     soup = BeautifulSoup(response.content, 'html.parser')
     jobs = soup.find_all('a', href=REGEX)
 
-    if not jobs:
-        return None
+
 
     jobs = [
         job_object(
@@ -765,8 +709,7 @@ def zencity_jobs(response, name='', id=''):
     soup = BeautifulSoup(response.content, 'html.parser')
     jobs = soup.find_all('li', {'class': 'comeet_position_cont'})
 
-    if not jobs:
-        return None
+
 
     jobs = [
         job_object(
@@ -789,10 +732,7 @@ def zencity_jobs(response, name='', id=''):
 
 def electricera_jobs(response, name='', id=''):
     soup = BeautifulSoup(response.content, 'html.parser')
-    jobs = soup.find_all('h1', {'class', 'title'})
-
-    if not jobs:
-        return None
+    jobs = soup.find_all('div', {'class', 'ee_careers_posting'})
 
     jobs = [
         job_object(
@@ -816,8 +756,7 @@ def parkmobile_jobs(response, name='', id=''):
     jobs = soup.find('ul', {'id': 'jobs_list_container'})
     jobs = jobs.find_all('li', {'class': 'w-full'})
 
-    if not jobs:
-        return None
+
 
     jobs = [
         job_object(
@@ -849,8 +788,7 @@ def fleet_jobs(response, name='', id=''):
     jobs = soup.find('div', {'class', 'careers-grid'})
     jobs = jobs.find_all('a')
 
-    if not jobs:
-        return None
+
     jobs = [
         job_object(
             title=job.find_all('div')[0].text,
@@ -873,8 +811,7 @@ def nplan_jobs(response, name='', id=''):
     soup = BeautifulSoup(response.content, 'html.parser')
     jobs = soup.find_all('ul', {'class', 'positions location'})
 
-    if not jobs:
-        return None
+
 
     jobs = [
         position
@@ -882,8 +819,7 @@ def nplan_jobs(response, name='', id=''):
         for position in job_list.find_all('li', class_='position transition')
     ]
 
-    if not jobs:
-        return None
+
 
     jobs = [
         job_object(
@@ -951,17 +887,12 @@ def gridwise_jobs(response, name='', id=''):
         return None
 
     json_text = script_content[json_start:json_end+1]
-    try:
-        app_data = json.loads(json_text)
-    except json.JSONDecodeError as e:
-        print("JSONDecodeError:", e)
-        return None
-
+    
+    app_data = json.loads(json_text)
     job_board = app_data.get('jobBoard', {})
     job_postings = job_board.get('jobPostings', [])
 
-    if not job_postings:
-        return None
+
     jobs = [
         job_object(
             title=job.get('title'),
@@ -983,12 +914,10 @@ def gridwise_jobs(response, name='', id=''):
 def foursquareitp_jobs(response, name='', id=''):
     soup = BeautifulSoup(response.content, 'html.parser')
     jobs = soup.find('div', {'class', 'col col-xs-7 jobs-list'})
-    if not jobs:
-        return None
+
 
     jobs = jobs.find_all('li')
-    if not jobs:
-        return None
+
 
     jobs = [
         job_object(
@@ -1022,8 +951,6 @@ def inrix_jobs(response, name='', id=''):
         and soup.find_all('table', {'class', 'jv-job-list'})
     ]
 
-    if not jobs:
-        return None
     jobs = [
         job_object(
             title=job.find('a').text,
@@ -1046,13 +973,9 @@ def inrix_jobs(response, name='', id=''):
 def masabi_job_parser(response, name='', id=''):
     website = "https://careers.masabi.com/?ashby_jid={}"
     jobs = response.json()
-    if not jobs:
-        return None
 
     jobs = jobs.get('data').get('jobBoard').get('jobPostings')
 
-    if not jobs:
-        return None
     jobs = [
         job_object(
             title=job.get('title'),
@@ -1074,8 +997,7 @@ def rebel_job_parser(response, name='', id=''):
     soup = BeautifulSoup(response.content, 'html.parser')
 
     jobs = soup.find_all('div', {'class', 'card card--equal js-link'})
-    if not jobs:
-        return None
+
 
     jobs = [
         job_object(
@@ -1098,13 +1020,11 @@ def rebel_job_parser(response, name='', id=''):
 def haydenai_parser(response, name='', id=''):
     website = "www.hayden.ai/careers?ashby_jid={}"
     jobs = response.json()
-    if not jobs:
-        return None
+
 
     jobs = jobs.get('data').get('jobBoard').get('jobPostings')
 
-    if not jobs:
-        return None
+
     jobs = [
         job_object(
             title=job.get('title'),
@@ -1127,12 +1047,9 @@ def cabify_jobs(response, name='', id=''):
     soup = BeautifulSoup(response.content, 'html.parser')
 
     jobs = soup.find('ul', {'class', 'grid'})
-    if not jobs:
-        return None
 
     jobs = jobs.find_all('li')
-    if not jobs:
-        return None
+
     jobs = [
         job_object(
             title=job.find('div', {'class', "card-title heading-1"}).text,

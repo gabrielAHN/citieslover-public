@@ -223,11 +223,11 @@ website_info = [
         'image': 'https://www.intelligenttransport.com/wp-content/themes/it19/images/IT-Logo@2x.png',
         'scrapers': [
                 {
-                    'scrape_function': intelligenttransport_parser,
+                    'scrape_function': rss_parser,
                     'requests': {
                         "request_type": get_response
                     },
-                    'website': 'https://www.intelligenttransport.com/transport-news/',
+                    'website': 'https://feeds.feedburner.com/GlobalRailwayReview',
                     'type': 'news'
                 }
         ]
@@ -328,11 +328,11 @@ website_info = [
         'image': 'https://cdn.substack.com/image/fetch/w_96,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2Fb50394d7-f3de-45b5-9087-542005d1cef0_256x256.png',
         'scrapers': [
                 {
-                    'scrape_function': micromobilitypodcast,
+                    'scrape_function': apple_parser,
                     'requests': {
                         "request_type": get_response
                     },
-                    'website': 'https://micromobility.io/podcast',
+                    'website': 'https://podcasts.apple.com/us/podcast/ride-ai/id1434457337',
                     'type': 'podcast'
                 }
         ]

@@ -1,11 +1,9 @@
 import concurrent.futures
 
-from ..util.util import limit_objects
 from ..util.cities_objects import scrape_object
 from ..util.requests_types import website_requests
 from ..websites.websites_info import website_info
 from ..scrapers.classifying.blacklist import check_blacklist_object
-
 
 
 def get_scrape_objects(source_id=None, source_type=None, response=False, max_threads=None):
@@ -37,28 +35,23 @@ def get_scrape_objects(source_id=None, source_type=None, response=False, max_thr
         return website_requests(website, scraper)
 
     with concurrent.futures.ThreadPoolExecutor(max_workers=max_threads) as executor:
-        website_response = list(executor.map(fetch_website_request, website_scraper_list))
+        website_response = list(executor.map(
+            fetch_website_request, website_scraper_list))
 
     if response:
         return website_response
     else:
         def process_response(response_object):
-            result = []
 
             if response_object.response == 200 and response_object.content is not None:
-                scraper_objects = response_object.scraper(
-                    response=response_object.content,
-                    name=response_object.name,
-                    id=response_object.id,
-                ) or []
-
-                if response_object.type != 'jobs':
-                    scraper_objects = limit_objects(scraper_objects)
-
-                for object in scraper_objects:
-                    object=check_blacklist_object(response_object, object)
-                    if object:
-                        obj = scrape_object(
+                try:
+                    scraper_objects = response_object.scraper(
+                        response=response_object.content,
+                        name=response_object.name,
+                        id=response_object.id,
+                    )
+                    return [
+                        scrape_object(
                             source=response_object.id,
                             name=response_object.name,
                             source_type=response_object.type,
@@ -70,11 +63,23 @@ def get_scrape_objects(source_id=None, source_type=None, response=False, max_thr
                             location=getattr(object, 'location', []),
                             job_type=getattr(object, 'job_type', [])
                         )
-                        result.append(obj)
-            return result
+                        for object in scraper_objects
+                        if check_blacklist_object(response_object, object)
+
+                    ]
+                except Exception as e:
+                    print(f"Error on {response_object.id}:\n{e}")
+                    return None
 
         with concurrent.futures.ThreadPoolExecutor(max_workers=max_threads) as executor:
-            scrape_objects_list = list(executor.map(process_response, website_response))
+            scrape_objects_list = list(executor.map(
+                process_response, website_response))
 
-        scrape_objects = [obj for sublist in scrape_objects_list for obj in sublist]
+        scrape_objects = [
+            obj
+            for sublist in scrape_objects_list
+            if sublist
+            for obj in sublist
+        ]
+
         return scrape_objects

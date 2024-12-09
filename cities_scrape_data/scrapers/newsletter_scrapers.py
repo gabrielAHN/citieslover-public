@@ -22,12 +22,7 @@ def rss_parser(response, name='', id=''):
 
     items = root.find('channel')
 
-    if not items:
-        return None
-
     items = items.findall("item")
-    if not items:
-        return None
 
     articles = [
         article_object(
@@ -74,8 +69,7 @@ def allthingsurban(response, name='', id=''):
 
     soup = BeautifulSoup(response.content, 'html.parser')
     articles = soup.find_all('div', {'class': 'blog-item'})
-    if not articles:
-        return None
+
     articles = [
         article_object(
             title=article.find('h3', {"class", "blog-item-title"}).text,
@@ -92,9 +86,9 @@ def allthingsurban(response, name='', id=''):
 
 def govtech(response, name='', id=''):
     soup = BeautifulSoup(response.content, 'html.parser')
-    articles = soup.find_all('div', {'class': "ListA-items-item"})
-    if not articles:
-        return None
+
+    articles = soup.find_all('div', {'class': "PromoB-content"})
+
     articles = [
         article_object(
             title=article.find('div', {'class', 'Promo-title'}).text,
@@ -111,8 +105,6 @@ def govtech(response, name='', id=''):
 def streetsblog(response, name='', id=''):
     soup = BeautifulSoup(response.content, 'html.parser')
     articles = soup.find_all('article')
-    if not articles:
-        return None
 
     articles = [
         article_object(
@@ -130,8 +122,7 @@ def transitcenter(response, name='', id=''):
     soup = BeautifulSoup(response.content, 'html.parser')
 
     articles = soup.find_all('div', {'class': 'container wide is-widescreen'})
-    if not articles:
-        return None
+
     articles = [
         article_object(
             title=article.find(
@@ -150,8 +141,6 @@ def transitcenter(response, name='', id=''):
 def spur(response, name='', id=''):
     soup = BeautifulSoup(response.content, 'html.parser')
     articles = soup.find_all('div', {'class', 'content'})[2:]
-    if not articles:
-        return None
 
     articles = [
         article_object(
@@ -171,8 +160,7 @@ def spur(response, name='', id=''):
 def parking_mobility(response, name='', id=''):
     soup = BeautifulSoup(response.content, 'html.parser')
     articles = soup.find_all('div', {'class', 'blog-post-info'})
-    if not articles:
-        return None
+
     articles = [
         article_object(
             title=article.find('h2').text,
@@ -189,8 +177,7 @@ def axios(response, name='', id=''):
 
     soup = BeautifulSoup(response.content, 'html.parser')
     articles = soup.find_all('amp-layout')
-    if not articles:
-        return None
+
     articles = [
         article_object(
             title=article.find('h3').text,
@@ -207,30 +194,10 @@ def axios(response, name='', id=''):
         return articles
 
 
-def micromobilitypodcast(response, name='', id=''):
-    website = 'https://micromobility.io{}'
-
-    soup = BeautifulSoup(response.content, 'html.parser')
-    articles = soup.find_all('article')
-    if not articles:
-        return None
-    articles = [
-        article_object(
-            title=article.find('a').text,
-            url=website.format(article.find('a').get('href')),
-            datetime=article.find('time').text
-        )
-        for article in articles
-    ]
-    if articles:
-        return articles
-
-
 def zag(response, name='', id=''):
     soup = BeautifulSoup(response.content, 'html.parser')
     articles = soup.find_all('article')
-    if not articles:
-        return None
+
     articles = [
         article_object(
             title=article.find('h2').text,
@@ -247,8 +214,7 @@ def transloc(response, name='', id=''):
     soup = BeautifulSoup(response.content, 'html.parser')
     articles = soup.find_all(
         'div', {"class", "esg-entry-content eg-blog-posts-content"})
-    if not articles:
-        return None
+
     articles = [
         article_object(
             title=article.find('a').text,
@@ -298,9 +264,6 @@ def electronomous(response, name='', id=''):
     articles = soup.find_all(
         'h1', {'class', "elementor-heading-title elementor-size-default"})
 
-    if not articles:
-        return None
-
     articles = [
         article_object(
             title=article.find('a').text,
@@ -322,8 +285,6 @@ def rpa_parser(response, name='', id=''):
         r'|l-card-grid__card js-append-latest)'
         r'|l-card-grid__card l-card-grid__card--featured')
     )
-    if not articles:
-        return None
 
     articles = [
         article_object(
@@ -346,8 +307,6 @@ def curbed_scraper(response, name='', id=''):
     soup = BeautifulSoup(response.content, 'html.parser')
     articles = soup.find_all('li', {'class', 'article'})
 
-    if not articles:
-        return None
     articles = [
         article_object(
             title=article.find('span', {'class', 'headline'}).text,
@@ -365,9 +324,6 @@ def curbed_scraper(response, name='', id=''):
 def chartercitiesinstitute_podcast_parser(response, name='', id=''):
     soup = BeautifulSoup(response.content, 'html.parser')
     articles = soup.find_all('article')
-
-    if not articles:
-        return None
 
     articles = [
         article_object(
@@ -387,9 +343,6 @@ def chartercitiesinstitute_podcast_parser(response, name='', id=''):
 def chartercitiesinstitute_blog_parser(response, name='', id=''):
     soup = BeautifulSoup(response.content, 'html.parser')
     articles = soup.find_all('article')
-
-    if not articles:
-        return None
 
     articles = [
         article_object(
@@ -421,8 +374,6 @@ def eurocities_parser(response, name='', id=''):
         for articles in articles_list
         for article in articles.find_all('li')
     ]
-    if not articles:
-        return None
 
     articles = [
         article_object(
@@ -447,9 +398,6 @@ def activecities_parser(response, name='', id=''):
 
     articles = soup.find_all('article', attrs={'role': 'article'})
 
-    if not articles:
-        return None
-
     articles = [
         article_object(
             title=article.find('h3').text,
@@ -469,9 +417,6 @@ def gvshp_parser(response, name='', id=''):
     soup = BeautifulSoup(response.content, 'html.parser')
 
     articles = soup.find_all('article')
-
-    if not articles:
-        return None
 
     articles = [
         article_object(
@@ -493,9 +438,6 @@ def itdpTransportMatters_parser(response, name='', id=''):
 
     articles = soup.find_all('div', {'class', 'post-detail'})
 
-    if not articles:
-        return None
-
     articles = [
         article_object(
             title=article.find('a').text,
@@ -511,36 +453,11 @@ def itdpTransportMatters_parser(response, name='', id=''):
         return articles
 
 
-def intelligenttransport_parser(response, name='', id=''):
-    soup = BeautifulSoup(response.content, 'html.parser')
-    articles = soup.find_all('article')
-
-    if not articles:
-        return None
-
-    articles = [
-        article_object(
-            title=article.find('h3').text,
-            url=article.find('h3').find('a').get('href'),
-            datetime=article.find('p', {'class': 'meta'}).text.split('|')[0]
-        )
-        for article in articles
-        if article
-        and article.find('p', {'class': 'meta'})
-        and article.find('h3')
-    ]
-    if articles:
-        return articles
-
-
 def futuremobility_parser(response, name='', id=''):
     website = 'https://futuremobility.lindholmen.se{}'
 
     soup = BeautifulSoup(response.content, 'html.parser')
     articles = soup.find_all('div', {"class", "alpha-card__content"})
-
-    if not articles:
-        return None
 
     articles = [
         article_object(
@@ -563,9 +480,6 @@ def urbanomnibus_parser(response, name='', id=''):
 
     articles = soup.find_all('article')
 
-    if not articles:
-        return None
-
     articles = [
         article_object(
             title=article.find('h3').text,
@@ -585,9 +499,6 @@ def enotransportation_parser(response, name='', id=''):
     soup = BeautifulSoup(response.content, 'html.parser')
 
     articles = soup.find_all('article')
-
-    if not articles:
-        return None
 
     articles = [
         article_object(
@@ -612,9 +523,6 @@ def nusurbananalytics_parser(response, name='', id=''):
     articles = soup.find_all(
         'div', {'class', 'media stream-item view-compact'})
 
-    if not articles:
-        return None
-
     articles = [
         article_object(
             title=article.find('a').text,
@@ -636,9 +544,6 @@ def journal_buildingscities_parser(response, name='', id=''):
     soup = BeautifulSoup(response.content, 'html.parser')
 
     articles = soup.find_all('div', {'class', "fPSBzf gfYZhR"})
-
-    if not articles:
-        return None
 
     articles = [
         article_object(

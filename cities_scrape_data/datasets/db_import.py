@@ -19,37 +19,49 @@ def ensure_list(value):
         return [value]
 
 def db_import(max_threads=5, chunks=25):
+    scrape_objects = get_scrape_objects(max_threads=max_threads)
+    
     database_url = os.getenv('DATABASE_PUBLIC_URL')
+
     if not database_url:
         raise ValueError("DATABASE_URL environment variable not set.")
 
     try:
+        
         conn = psycopg2.connect(database_url)
-        conn.autocommit = False  # Start a transaction
+        conn.autocommit = False
         cur = conn.cursor()
 
-        create_temp_table = """
-        CREATE TEMPORARY TABLE temp_scrape_data (
-            source TEXT,
-            name TEXT,
-            source_type TEXT,
-            title TEXT,
-            url TEXT,
-            datetime TIMESTAMP,
-            company TEXT,
-            country TEXT[],
-            location TEXT,
-            job_type TEXT[]
-        ) ON COMMIT DROP;
-        """
-        cur.execute(create_temp_table)
+        cur.execute(
+            """
+            CREATE TEMPORARY TABLE temp_brand_data (
+                    id TEXT,
+                    name TEXT,
+                    image TEXT,
+                    brand_type TEXT[],
+                    job_type TEXT[]
+                ) ON COMMIT DROP;
 
-        scrape_objects = get_scrape_objects(max_threads=max_threads)
+            CREATE TEMPORARY TABLE temp_scrape_data (
+                source TEXT,
+                name TEXT,
+                source_type TEXT,
+                title TEXT,
+                url TEXT,
+                latest_date TIMESTAMP,
+                company TEXT,
+                country TEXT[],
+                location TEXT,
+                job_type TEXT[]
+            ) ON COMMIT DROP;
+        """
+        )
         
         db_import_brand_data(website_info, cur, chunks)
         db_import_website_data(scrape_objects, cur, chunks)
 
-        cur.execute("CALL process_scrape_data();")
+        cur.execute("CALL process_website_data();")
+        cur.execute("CALL populate_brand_data();")
 
         conn.commit()  # Commit the transaction
         print("Database import successful ✅")
@@ -76,21 +88,22 @@ def db_import_brand_data(website_info, cur, chunks):
                 item.get('id', ''),
                 item.get('name', ''),
                 item.get('image', ''),
-                brand_type_formatted
+                brand_type_formatted,
+                item.get('job_type', '{}')
             ]
 
-            # Sanitize fields
             sanitized_fields = [
                 str(v).replace('\n', ' ').replace('\r', ' ').replace('\t', ' ').replace('\\', '\\\\')
                 for v in fields
             ]
             buffer.write('\t'.join(sanitized_fields) + '\n')
         buffer.seek(0)
+
         chunk_import(
             cur=cur,
             buffer=buffer,
-            tablename='brand_data',
-            columns=('id', 'name', 'image', 'brand_type')
+            tablename='temp_brand_data',
+            columns=('id', 'name', 'image', 'brand_type', 'job_type')
         )
 
 def db_import_website_data(scrape_objects, cur, chunks):
@@ -131,9 +144,8 @@ def db_import_website_data(scrape_objects, cur, chunks):
                 str(field).replace('\n', ' ').replace('\r', ' ').replace('\t', ' ').replace('\\', '\\\\')
                 for field in fields
             ]
-
             buffer.write('\t'.join(sanitized_fields) + '\n')
-        
+
         buffer.seek(0)
         chunk_import(
             cur=cur,
@@ -141,7 +153,7 @@ def db_import_website_data(scrape_objects, cur, chunks):
             tablename='temp_scrape_data',
             columns=(
                 'source', 'name', 'source_type', 'title', 'url',
-                'datetime', 'company', 'country', 'location',
+                'latest_date', 'company', 'country', 'location',
                 'job_type'
             )
         )

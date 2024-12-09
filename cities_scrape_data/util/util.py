@@ -55,12 +55,6 @@ def get_dataset(file_type):
         return None
 
 
-def limit_objects(website_objects):
-    if len(website_objects) > 5:
-        return website_objects[:5]
-    return website_objects
-
-
 def randomize_dict(data_dict):
     keys = list(data_dict.keys())
     random.shuffle(keys)
