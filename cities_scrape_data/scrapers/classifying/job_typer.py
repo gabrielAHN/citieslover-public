@@ -4,7 +4,7 @@ import re
 def cityleaders(title, company):
     title_list = [
         r'chief( of staff| planner| marketing officer)', r'director( of|,)', r'team lead',
-        r'head of', r'vice president', r'manager'
+        r'(vp|head) of', r'vice president', r'manager'
     ]
     company_list = []
     job_type = job_labeling('city_leaders', title_list,

@@ -115,7 +115,7 @@ def planetizen_jobs(response, name='', id=''):
             company=job.find('p', {'class', 'author__label'}).text,
             location=[job.get('data-location')],
             url='www.planetizen.com{}'.format(job.find('a').get('href')),
-            datetime=job.find('span').text,
+            datetime=None,
             job_type=job_typer(job.find('a').text, job.find(
                 'p', {'class', 'author__label'}).text)
         )
@@ -142,7 +142,7 @@ def allthingsurban_jobs(response, name='', id=''):
             company=job.find('h4', {'class': 'list-item-subtitle'}).text,
             location=[job.find('div', {'class', 'list-item-value'}).text],
             url='www.allthingsurban.net{}'.format(job.find('a')['href']),
-            datetime=job.find('div', {'class', "list-item-date"}).text,
+            datetime=None,
             job_type=job_typer(
                 job.find(re.compile('h(3|4)'), {'class', REGEX_2}).text,
                 job.find('h4', {'class': 'list-item-subtitle'}).text
@@ -166,7 +166,7 @@ def uber_jobs(response, name='', id=''):
             company=name,
             location=[i['region'] for i in job['allLocations'] if i['region']],
             url=f"www.uber.com/global/en/careers/list/{job['id']}/",
-            datetime=job['updatedDate'],
+            datetime=None,
             job_type=job_typer(job['title'],
                                'Uber', ['transport_enthusiast']
                                )
@@ -195,7 +195,7 @@ def govlove_jobs(response, name='', id=''):
                     'class', 'listing-item__info--item listing-item__info--item-location'}
             ).text],
             url=job.find('a', {'class', "link"}).get('href'),
-            datetime=job.find('div', {'class', "listing-item__date"}).text,
+            datetime=None,
             job_type=job_typer(job.find('a', {'class', "link"}).text,
                                job.find('a', {'class', "link"}).text, [
                 'gov_lovers']
@@ -736,7 +736,7 @@ def electricera_jobs(response, name='', id=''):
 
     jobs = [
         job_object(
-            title=job.text,
+            title=job.find('h3').text,
             company=name,
             location=(['Seattle, USA']),
             url=job.find('a')['href'].replace('https://', ''),
@@ -899,7 +899,7 @@ def gridwise_jobs(response, name='', id=''):
             company=name,
             location=[job.get('locationName')],
             url=website.format(job.get('id')),
-            datetime=job.get('updatedAt'),
+            datetime=None,
             job_type=job_typer(job.get('title'))
         )
         for job in job_postings

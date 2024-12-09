@@ -199,7 +199,7 @@ website_info = [
                     },
                     'website': 'https://transitcenter.org/careersattransitcenter/',
                     'type': 'jobs'
-            }
+                }
         ]
     },
     {
@@ -502,7 +502,7 @@ website_info = [
                     },
                     'website': 'https://boards.greenhouse.io/via',
                     'type': 'jobs'
-            }
+                }
         ]
     },
     {
@@ -940,7 +940,7 @@ website_info = [
                     },
                     'website': 'https://rpa.org/about/join',
                     'type': 'jobs'
-            }
+                }
         ]
     },
     {
@@ -1153,7 +1153,7 @@ website_info = [
                     },
                     'website': 'https://www.villagepreservation.org/employment-internships/',
                     'type': 'jobs'
-            }
+                }
         ]
     },
     {
@@ -1755,6 +1755,61 @@ website_info = [
                     'website': 'https://apply.workable.com/api/v3/accounts/autofleet/jobs',
                     'type': 'jobs'
                 }
+        ]
+    },
+    {
+        'id': 'spacespodcast',
+        'name': 'Spaces Podcast',
+        'image': 'https://is1-ssl.mzstatic.com/image/thumb/Podcasts221/v4/db/30/54/db305462-8eb8-b6d5-eab3-abd1935751e1/mza_2839107751596279306.png/600x600bb.webp',
+        'scrapers': [
+                {
+                    'scrape_function': apple_parser,
+                    'requests': {
+                        "request_type": get_response
+                    },
+                    'website': 'https://podcasts.apple.com/us/podcast/spaces-podcast/id1326670085',
+                    'type': 'podcast'
+                }
+        ]
+    },
+    {
+        'id': 'cyvlai',
+        'name': 'Cyvl Ai',
+        'image': 'https://lever-client-logos.s3.us-west-2.amazonaws.com/50c872b0-4a13-4b4b-964f-d211908916c5-1719259337206.png',
+        'scrapers': [
+                {
+                    'scrape_function': lever_jobs,
+                    'requests': {
+                        "request_type": get_response
+                    },
+                    'website': 'https://jobs.lever.co/cyvl-ai',
+                    'type': 'jobs'
+                }
+        ]
+    },
+    {
+        'id': 'procureai',
+        'name': 'Procure Ai',
+        'image': 'https://workable-application-form.s3.amazonaws.com/advanced/production/602fa2bc3e0ec0b348d61f16/6a4ba8ba-9859-9635-8e15-d4a8a13dd8e5',
+        'scrapers': [
+            {
+                'scrape_function': workable_jobs,
+                'requests': {
+                    "request_type": get_post_response,
+                    'header': {
+                        'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3)'
+                        'AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.61 '
+                        'Safari/537.36',
+                        'content-type': 'application/json',
+                    },
+                    'payload': {
+                        "query": "", "location": [], "department": [
+                        ], "worktype": [], "remote": [], "workplace": []
+                    }
+                },
+                'website': 'https://apply.workable.com/api/v3/accounts/procureai/jobs',
+                'type': 'jobs'
+            }
         ]
     }
 ]
