@@ -199,7 +199,7 @@ website_info = [
                     },
                     'website': 'https://transitcenter.org/careersattransitcenter/',
                     'type': 'jobs'
-                }
+            }
         ]
     },
     {
@@ -502,7 +502,7 @@ website_info = [
                     },
                     'website': 'https://boards.greenhouse.io/via',
                     'type': 'jobs'
-                }
+            }
         ]
     },
     {
@@ -940,7 +940,7 @@ website_info = [
                     },
                     'website': 'https://rpa.org/about/join',
                     'type': 'jobs'
-                }
+            }
         ]
     },
     {
@@ -1153,7 +1153,7 @@ website_info = [
                     },
                     'website': 'https://www.villagepreservation.org/employment-internships/',
                     'type': 'jobs'
-                }
+            }
         ]
     },
     {
@@ -1760,6 +1760,7 @@ website_info = [
     {
         'id': 'spacespodcast',
         'name': 'Spaces Podcast',
+        'linkedin': 'Gābl Media Group, Inc.',
         'image': 'https://is1-ssl.mzstatic.com/image/thumb/Podcasts221/v4/db/30/54/db305462-8eb8-b6d5-eab3-abd1935751e1/mza_2839107751596279306.png/600x600bb.webp',
         'scrapers': [
                 {
@@ -1775,6 +1776,7 @@ website_info = [
     {
         'id': 'cyvlai',
         'name': 'Cyvl Ai',
+        'linkedin': 'Cyvl',
         'image': 'https://lever-client-logos.s3.us-west-2.amazonaws.com/50c872b0-4a13-4b4b-964f-d211908916c5-1719259337206.png',
         'scrapers': [
                 {
@@ -1790,6 +1792,7 @@ website_info = [
     {
         'id': 'procureai',
         'name': 'Procure Ai',
+        'linkedin': 'Procure Ai',
         'image': 'https://workable-application-form.s3.amazonaws.com/advanced/production/602fa2bc3e0ec0b348d61f16/6a4ba8ba-9859-9635-8e15-d4a8a13dd8e5',
         'scrapers': [
             {
@@ -1815,6 +1818,7 @@ website_info = [
     {
         'id': 'podaris',
         'name': 'Podaris',
+        'linkedin': 'podaris',
         'image': 'https://cdn.prod.website-files.com/627130c0c6ca7661fa206333/627130c0c6ca76825e2064d1_podaris_logo.svg',
         'scrapers': [
                 {
@@ -1830,6 +1834,7 @@ website_info = [
     {
         'id': 'coforma',
         'name': 'Coforma',
+        'linkedin': 'coforma',
         'image': 'https://lever-client-logos.s3.us-west-2.amazonaws.com/d469341d-d7d9-43b5-9b93-e82d5792eae7-1602006045141.png',
         'scrapers': [
                 {
@@ -1838,6 +1843,67 @@ website_info = [
                         "request_type": get_response
                     },
                     'website': 'https://jobs.lever.co/coforma',
+                    'type': 'jobs'
+                }
+        ]
+    },
+    {
+        'id': 'kpler',
+        'name': 'Kpler',
+        'linkedin': 'kpler',
+        'image': 'https://lever-client-logos.s3.us-west-2.amazonaws.com/d4685f4a-7242-49a3-9ab4-59a1df71b65e-1697541493548.png',
+        'scrapers': [
+                {
+                    'scrape_function': lever_jobs,
+                    'requests': {
+                        "request_type": get_response
+                    },
+                    'website': 'https://jobs.lever.co/kpler',
+                    'type': 'jobs'
+                }
+        ]
+    },
+    {
+        'id': 'newpublic',
+        'name': 'New_ Public',
+        'linkedin': 'New_ Public',
+        'image': 'https://newpublic.org/dist/cs-logo.dca58721.svg',
+        'scrapers': [
+                {
+                    'scrape_function': newpublic_jobs,
+                    'requests': {
+                        "request_type": get_post_response,
+                        'header': {
+                            'Content-Type': 'application/json',
+                            'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) '
+                            'AppleWebKit/537.36 (KHTML, like Gecko) '
+                            'Chrome/131.0.0.0 Safari/537.36'
+                        },
+                        'payload': [
+                            {
+                                "query": """
+                                    {
+                                    page(id: 1851, idType: DATABASE_ID) {
+                                        acf: acf_generic {
+                                        flexible {
+                                            ... on Page_AcfGeneric_Flexible_Links {
+                                            links { 
+                                                titleEn
+                                                btn: button {
+                                                url
+                                                }
+                                            }
+                                            }
+                                        }
+                                        }
+                                    }
+                                    }
+                                    """,
+                                "variables": {}
+                            }
+                        ]
+                    },
+                    'website': 'https://newpublic.org/cms/graphql',
                     'type': 'jobs'
                 }
         ]
