@@ -4,6 +4,7 @@ import os
 
 from .datasets.create_data_files import create_datasets
 from .datasets.db_import import db_import
+from .datasets.linkedin_post import linkedin_post
 
 from .scrape_logging.scrape_logging import get_filtered_sources, get_websites_info
 
@@ -109,6 +110,23 @@ def main():
         help='Number of chunks for copy into DB (default: 25).'
     )
 
+    parser_linkedin_post = subparsers.add_parser(
+        'linkedin_post',
+        help='Post data to LinkedIn.'
+    )
+    parser_linkedin_post.add_argument(
+        '--sources',
+        required=True,
+        nargs='+',
+        help='Specify the list of sources to make post for. Example: --sources source1 source2 source3'
+    )
+    parser_linkedin_post.add_argument(
+        '--threads',
+        type=int,
+        default=5,
+        help='Number of threads for multi-threading (default: 5).'
+    )
+
     subparsers.add_parser(
         'get_websites',
         help='Get websites info.'
@@ -140,6 +158,8 @@ def main():
         db_import(max_threads=args.threads, chunks=args.chunks)
     elif args.command == 'get_websites':
         get_websites_info()
+    elif args.command == 'linkedin_post':
+        linkedin_post(max_threads=args.threads, sources=args.sources)
     else:
         print('No command provided.')
         parser.print_help()

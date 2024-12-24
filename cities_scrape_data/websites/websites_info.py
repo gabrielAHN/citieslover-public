@@ -1792,7 +1792,7 @@ website_info = [
     {
         'id': 'procureai',
         'name': 'Procure Ai',
-        'linkedin': 'Procure Ai',
+        'linkedin': False,
         'image': 'https://workable-application-form.s3.amazonaws.com/advanced/production/602fa2bc3e0ec0b348d61f16/6a4ba8ba-9859-9635-8e15-d4a8a13dd8e5',
         'scrapers': [
             {
@@ -1818,7 +1818,7 @@ website_info = [
     {
         'id': 'podaris',
         'name': 'Podaris',
-        'linkedin': 'podaris',
+        'linkedin': False,
         'image': 'https://cdn.prod.website-files.com/627130c0c6ca7661fa206333/627130c0c6ca76825e2064d1_podaris_logo.svg',
         'scrapers': [
                 {
@@ -1834,7 +1834,7 @@ website_info = [
     {
         'id': 'coforma',
         'name': 'Coforma',
-        'linkedin': 'coforma',
+        'linkedin': False,
         'image': 'https://lever-client-logos.s3.us-west-2.amazonaws.com/d469341d-d7d9-43b5-9b93-e82d5792eae7-1602006045141.png',
         'scrapers': [
                 {
@@ -1850,7 +1850,7 @@ website_info = [
     {
         'id': 'kpler',
         'name': 'Kpler',
-        'linkedin': 'kpler',
+        'linkedin': False,
         'image': 'https://lever-client-logos.s3.us-west-2.amazonaws.com/d4685f4a-7242-49a3-9ab4-59a1df71b65e-1697541493548.png',
         'scrapers': [
                 {
@@ -1866,7 +1866,7 @@ website_info = [
     {
         'id': 'newpublic',
         'name': 'New_ Public',
-        'linkedin': 'New_ Public',
+        'linkedin': False,
         'image': 'https://newpublic.org/dist/cs-logo.dca58721.svg',
         'scrapers': [
                 {
