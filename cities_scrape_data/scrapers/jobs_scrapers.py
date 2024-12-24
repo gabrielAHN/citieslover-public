@@ -1067,3 +1067,44 @@ def cabify_jobs(response, name='', id=''):
     ]
     if jobs:
         return jobs
+
+def urbanfootprint_jobs(response, name='', id=''):
+    website = 'https://boards.greenhouse.io{}'
+    soup = BeautifulSoup(response.content, 'html.parser')
+    jobs = soup.find_all('div', {'class', 'opening'})
+
+    jobs = [
+        job_object(
+            title=job.find('a').text,
+            company=name,
+            location=[job.find('span', {'class', 'location'}).text],
+            url=website.format(job.find('a')['href']),
+            datetime=None,
+            job_type=job_typer(
+                job.find('a').text)
+        )
+        for job in jobs
+        if job
+    ]
+    if jobs:
+        return jobs
+
+def podaris_jobs(response, name='', id=''):
+    soup = BeautifulSoup(response.content, 'html.parser')
+    jobs = soup.find_all('a', {'class', 'homerun-widget__vacancy'})
+
+    jobs = [
+        job_object(
+            title=job.find('h3').text,
+            company=name,
+            location=[job.find('span', {'class', 'homerun-widget__vacancy__department'}).text],
+            url=job.get('href'),
+            datetime=None,
+            job_type=job_typer(
+                job.find('h3').text)
+        )
+        for job in jobs
+        if job
+    ]
+    if jobs:
+        return jobs

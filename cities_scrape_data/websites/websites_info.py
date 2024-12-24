@@ -646,7 +646,7 @@ website_info = [
         'image': 'https://urbanfootprint.com/wp-content/uploads/2022/06/UrbanFootprint_Logo@2x.png',
         'scrapers': [
                 {
-                    'scrape_function': greenhouse_jobs,
+                    'scrape_function': urbanfootprint_jobs,
                     'requests': {
                         "request_type": get_response
                     },
@@ -1369,7 +1369,7 @@ website_info = [
     {
         'id': 'electricera',
         'name': 'Electric Era',
-        'image': 'https://pbs.twimg.com/profile_images/1645842332938559489/g6HGa6hJ_400x400.jpg',
+        'image': 'https://pbs.twimg.com/profile_images/1863655693972291584/lnUdeakc_400x400.jpg',
         'scrapers': [
                 {
                     'scrape_function': electricera_jobs,
@@ -1384,7 +1384,7 @@ website_info = [
     {
         'id': 'parkmobile',
         'name': 'Park Mobile',
-        'image': 'https://images.teamtailor-cdn.com/images/s3/teamtailor-production/logotype-v3/image_uploads/88c437d6-ab53-462a-9da3-34d05362ca61/original.png',
+        'image': 'https://www.parking.net/Upload/Industry/00-New-HD-Logos/parkmobile-company-logo-480px_main.jpg',
         'scrapers': [
                 {
                     'scrape_function': parkmobile_jobs,
@@ -1811,5 +1811,35 @@ website_info = [
                 'type': 'jobs'
             }
         ]
-    }
+    },
+    {
+        'id': 'podaris',
+        'name': 'Podaris',
+        'image': 'https://cdn.prod.website-files.com/627130c0c6ca7661fa206333/627130c0c6ca76825e2064d1_podaris_logo.svg',
+        'scrapers': [
+                {
+                    'scrape_function': podaris_jobs,
+                    'requests': {
+                        "request_type": get_response
+                    },
+                    'website': 'https://embed.homerun.co/nqcgqjpfb0xkutoxamvm/widget-en.html?t=1734964836330',
+                    'type': 'jobs'
+                }
+        ]
+    },
+    {
+        'id': 'coforma',
+        'name': 'Coforma',
+        'image': 'https://lever-client-logos.s3.us-west-2.amazonaws.com/d469341d-d7d9-43b5-9b93-e82d5792eae7-1602006045141.png',
+        'scrapers': [
+                {
+                    'scrape_function': lever_jobs,
+                    'requests': {
+                        "request_type": get_response
+                    },
+                    'website': 'https://jobs.lever.co/coforma',
+                    'type': 'jobs'
+                }
+        ]
+    },
 ]
