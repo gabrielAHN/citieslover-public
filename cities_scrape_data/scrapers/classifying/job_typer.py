@@ -3,8 +3,8 @@ import re
 
 def cityleaders(title, company):
     title_list = [
-        r'chief( of staff| planner| marketing officer)', r'director( of|,)', r'team lead',
-        r'(vp|head) of', r'vice president', r'manager'
+        r'chief( of staff| planner| marketing officer)', r'director( of|,)', r'(team|data) lead',
+        r'(vp|head) of', r'vice president'
     ]
     company_list = []
     job_type = job_labeling('city_leaders', title_list,
@@ -14,11 +14,11 @@ def cityleaders(title, company):
 
 def city_sellers(title, company):
     title_list = [
-        r'(sales|revenue) operations', r'sales( development)? representative',
+        r'(sales|revenue) (operations|lead)', r'sales( development)? representative',
         r'public sector sales', r'(acquisition|business|account) manager',
         r'account executive', r'(customer success|sales) manager', r'director of marketing'
         r'city partnerships director', r'emerging business', r'(business|rider growth) (coordinator|development|analyst)',
-        r'go\-to\-market', r'growth \& success', r'head of bids'
+        r'go\-to\-market', r'growth \& success', r'head of bids', r'commercial',
     ]
     company_list = [
     ]
@@ -78,13 +78,15 @@ def city_builders(title, company):
 
 def urban_techies(title, company):
     title_list = [
-        r'(cloud|analytics|full stack|ios|python|react|software|reliability|(back|front(-)?)end|site '
+        r'(cloud|analytics|full\s?stack|ios|python|react|software|reliability|(back|front(-)?)end|site '
         r'reliability|qa|support|platform security |design computation |gtfs|(staff )?machine learning|android|'
-        r'customer success|mobile|automation|data) engineer', r'product analytics',
-        r'(data|staff product|solutions|backend|customer support) (engineer|analyst)', r'\(?gis\)? (administrator|analyst)',
+        r'customer success|mobile|automation|data|devops|principal|kotlin|security|partner|'
+        r'tier \d|infrastructure|product) engineer', r'product analytics',
+        r'(data|staff product|solutions?|backend|customer support) (engineer\,?|analyst)', r'\(?gis\)? (administrator|analyst)',
         r'database specialist', r'(engineering|product analytics|technical product) (manager|director)',
-        r'(data infra|full stack) team', r'(front-end|java software|full(\-| )?stack( web)?|software|backend|java( or kotlin)?) developer',
-        r'head of (ai|automation)', r'application support', r'(tech|analytics) lead', r'data scientist'
+        r'(data infra|full stack) team', r'(front-end|java software|full(\-| )?stack( web)?|software|backend|'
+        r'java( or kotlin)?|kotlin|andriod) developer',
+        r'head of (ai|automation)', r'application support', r'(tech|analytics) lead', r'(data|applied|machine learning) scientist'
     ]
     company_list = [
     ]
