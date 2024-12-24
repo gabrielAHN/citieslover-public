@@ -65,6 +65,7 @@ def get_scrape_objects(source_id=None, source_type=None, response=False, max_thr
                         )
                         for object in scraper_objects
                         if check_blacklist_object(response_object, object)
+                        and object.title
 
                     ]
                 except Exception as e:

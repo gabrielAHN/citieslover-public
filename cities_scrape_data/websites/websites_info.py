@@ -1841,5 +1841,5 @@ website_info = [
                     'type': 'jobs'
                 }
         ]
-    },
+    }
 ]
