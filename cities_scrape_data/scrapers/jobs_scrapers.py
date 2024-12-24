@@ -1108,3 +1108,32 @@ def podaris_jobs(response, name='', id=''):
     ]
     if jobs:
         return jobs
+
+
+def newpublic_jobs(response, name='', id=''):
+    job = response.json()
+    job = job[0]['data']['page']['acf']['flexible']
+
+    jobs = [
+        job        
+        for i in job
+        if i
+        for job in i.get('links')
+    ]
+
+    jobs = [
+        job_object(
+            title=job.get('titleEn'),
+            company=name,
+            location=['United States or Canada (fully remote)'],
+            url=job.get('btn').get('url'),
+            datetime=None,
+            job_type=job_typer(
+                job.get('titleEn')
+            )
+        )
+        for job in jobs
+        if job
+    ]
+    if jobs:
+        return jobs

@@ -10,7 +10,7 @@ JOB_TITLES_BLOCK = [
     'want to join inspiration', "don\'t see a role for you?",
     'cost controller', 'project accountant', 'copywriter',
     'general application', 'diversity and inclusion', 'head Of tax',
-    'workplace'
+    'workplace','spontaneous application'
 ]
 
 def check_blacklist_object(response_object, object):
