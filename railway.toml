@@ -5,4 +5,4 @@ builder = "nixpacks"
 buildCommand = "pip install -r requirements.txt"
 
 [deploy]
-startCommand = "python -m cities_scrape_data create_datasets"
+startCommand = "python -m cities_scrape_data db_import --threads 25 --chunks 100"
