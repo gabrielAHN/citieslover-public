@@ -904,7 +904,7 @@ website_info = [
     {
         'id': 'trafi',
         'name': 'Trafi',
-        'social': {
+        'socials': {
             'linkedin': False,
         },
         'image': 'https://workable-application-form.s3.amazonaws.com/advanced/production/6076d2e3756dfc2c9f97167c/1dba3256-e0d4-44c1-9e86-85abaa003048',
@@ -932,7 +932,7 @@ website_info = [
     {
         'id': 'replica',
         'name': 'Replica',
-        'social': {
+        'socials': {
             'linkedin': False,
         },
         'image': 'https://mms.businesswire.com/media/20211004005009/en/910899/22/replica_logo.jpg',
@@ -950,7 +950,7 @@ website_info = [
     {
         'id': 'lastminute',
         'name': 'lastminute',
-        'social': {
+        'socials': {
             'linkedin': 'lastminute.com',
         },
         'image': 'https://corporate.lastminute.com/wp-content/uploads/2023/11/brands-lastminutecom.svg',
@@ -968,7 +968,7 @@ website_info = [
     {
         'id': 'lametro',
         'name': 'LA Metro',
-        'social': {
+        'socials': {
             'linkedin': 'Los Angeles Metro',
         },
         'image': 'https://www.publicissapient.com/content/dam/ps-rebrand/work/la-metros-boundary-less-fare-cards/Promo_GOV_LA-Metro-Tap.jpg',
@@ -986,7 +986,7 @@ website_info = [
     {
         'id': 'rpa',
         'name': 'Regional Plan Association',
-        'social': {
+        'socials': {
             'linkedin': False,
         },
         'image': 'https://upload.wikimedia.org/wikipedia/en/0/05/Regional_Plan_Association_logo.png',
@@ -1012,7 +1012,7 @@ website_info = [
     {
         'id': 'lyft',
         'name': 'Lyft',
-        'social': {
+        'socials': {
             'linkedin': False,
         },
         'image': 'https://image.careerpuck.com/_TnoAqcr/_TnoAqcr.300.png',
@@ -1045,7 +1045,7 @@ website_info = [
     {
         'id': 'transitapp',
         'name': 'Transit App',
-        'social': {
+        'socials': {
             'linkedin': 'Transit',
         },
         'image': 'https://upload.wikimedia.org/wikipedia/en/thumb/f/f9/Transit_App_icon.png/300px-Transit_App_icon.png',
@@ -1063,7 +1063,7 @@ website_info = [
     {
         'id': 'spare',
         'name': 'Spare',
-        'social': {
+        'socials': {
             'linkedin': False,
         },
         'image': 'https://app.pinpointhq.com/rails/active_storage/representations/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBL1RjSnc9PSIsImV4cCI6bnVsbCwicHVyIjoiYmxvYl9pZCJ9fQ==--5d0af3b2ab4d0240ffa1d59a987009d6d3ef5f93/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCam9MY21WemFYcGxTU0lRTkRRd0xqQjRNVEF3TGpBR09nWkZWQT09IiwiZXhwIjpudWxsLCJwdXIiOiJ2YXJpYXRpb24ifX0=--5fd990b5737f041b8b006e0f6f8b9bd3043c9631/spare-logo.png',
@@ -1126,7 +1126,7 @@ website_info = [
     {
         'id': 'the-mobility-house',
         'name': 'The Mobility House',
-        'social': {
+        'socials': {
             'linkedin': False,
         },
         'image': 'https://cdn.theorg.com/cd0c0e7e-3df6-4f96-96e6-4421e9d887fc_medium.jpg',
@@ -1214,7 +1214,7 @@ website_info = [
     {
         'id': 'gvshp',
         'name': 'NYC Village Preservation',
-        'social': {
+        'socials': {
             'linkedin': 'Village Preservation (GVSHP)',
         },
         'image': 'https://upload.wikimedia.org/wikipedia/commons/4/4d/Village_Preservation_Logo.png',
@@ -1270,7 +1270,7 @@ website_info = [
     {
         'id': 'urbandesignforum',
         'name': 'Urban Design Forum',
-        'social': {
+        'socials': {
             'linkedin': False,
         },
         'image': 'https://upload.wikimedia.org/wikipedia/commons/thumb/b/b1/Urbandesingforumlogo.jpg/440px-Urbandesingforumlogo.jpg',
@@ -1363,7 +1363,7 @@ website_info = [
     {
         'id': 'zencity',
         'name': 'Zencity',
-        'social': {
+        'socials': {
             'linkedin': False,
         },
         'image': 'https://pbs.twimg.com/profile_images/1704493064499191808/hdEuPhlV_400x400.png',
@@ -1381,7 +1381,7 @@ website_info = [
     {
         'id': 'nava',
         'name': 'Nava',
-        'social': {
+        'socials': {
             'linkedin': False,
         },
         'image': 'https://www.navapbc.com/favicon.svg',
@@ -1459,7 +1459,7 @@ website_info = [
     {
         'id': 'electricera',
         'name': 'Electric Era',
-        'social': {
+        'socials': {
             'linkedin': False,
         },
         'image': 'https://pbs.twimg.com/profile_images/1863655693972291584/lnUdeakc_400x400.jpg',
@@ -1477,7 +1477,7 @@ website_info = [
     {
         'id': 'parkmobile',
         'name': 'Park Mobile',
-        'social': {
+        'socials': {
             'linkedin': 'ParkMobile, LLC',
         },
         'image': 'https://www.parking.net/Upload/Industry/00-New-HD-Logos/parkmobile-company-logo-480px_main.jpg',
@@ -1495,7 +1495,7 @@ website_info = [
     {
         'id': 'inspirationMobility',
         'name': 'Inspiration Mobility',
-        'social': {
+        'socials': {
             'linkedin': False,
         },
         'image': 'https://lever-client-logos.s3.us-west-2.amazonaws.com/f446fc6e-6ae0-456d-a9c2-f847132abef2-1640978230903.png',
@@ -1513,7 +1513,7 @@ website_info = [
     {
         'id': 'fleet',
         'name': 'Fleet',
-        'social': {
+        'socials': {
             'linkedin': 'Fleet',
         },
         'image': 'https://cdn.prod.website-files.com/60c7f12862eab431c781bc24/669a82ea31e72031ec334bdf_Group%2010122572.avif',
@@ -1531,7 +1531,7 @@ website_info = [
     {
         'id': 'vivacitylabs',
         'name': 'Vivacity Labs',
-        'social': {
+        'socials': {
             'linkedin': 'Vivacity',
         },
         'image': 'https://lever-client-logos.s3.us-west-2.amazonaws.com/e0200f8d-63da-4b74-b3d6-f9fe20007388-1656683474532.png',
@@ -1549,7 +1549,7 @@ website_info = [
     {
         'id': 'nplan',
         'name': 'nPlan',
-        'social': {
+        'socials': {
             'linkedin': False,
         },
         'image': 'https://gallery-cdn.breezy.hr/e99e7f5f-8b57-4a28-b172-2ef7f1d58ff2/nPlan_logo_blue.png',
@@ -1567,7 +1567,7 @@ website_info = [
     {
         'id': 'bloomworks',
         'name': 'Bloomworks',
-        'social': {
+        'socials': {
             'linkedin': 'Bloom Works Public Benefit LLC',
         },
         'image': 'https://s7-recruiting.cdn.greenhouse.io/external_greenhouse_job_boards/logos/400/165/600/resized/bw-green.png?1686168632',
@@ -1585,7 +1585,7 @@ website_info = [
     {
         'id': 'arcadis',
         'name': 'Arcadis',
-        'social': {
+        'socials': {
             'linkedin': False,
         },
         'image': 'https://c.smartrecruiters.com/sr-company-logo-prod-aws-dc5/57e9b7bbe4b0b6fa1a859b8d/huge?r=s3-eu-central-1&_1702069078823',
@@ -1607,7 +1607,7 @@ website_info = [
     {
         'id': 'metropolis',
         'name': 'Metropolis',
-        'social': {
+        'socials': {
             'linkedin': 'Metropolis Technologies',
         },
         'image': 'https://s3-recruiting.cdn.greenhouse.io/external_greenhouse_job_boards/logos/400/053/300/original/mark.png?1578956035',
@@ -1625,7 +1625,7 @@ website_info = [
     {
         'id': 'gridwise',
         'name': 'Gridwise',
-        'social': {
+        'socials': {
             'linkedin': False,
         },
         'image': 'https://gridwise.io/wp-content/uploads/2021/09/logo.svg',
@@ -1643,7 +1643,7 @@ website_info = [
     {
         'id': 'papayadash',
         'name': 'Papaya Dash',
-        'social': {
+        'socials': {
             'linkedin': False,
         },
         'image': 'https://workable-application-form.s3.amazonaws.com/advanced/production/628ced9a7d26824e5742d0d5/9a161780-a02c-9947-ac23-563a862f1016',
@@ -1671,7 +1671,7 @@ website_info = [
     {
         'id': 'foursquareItp',
         'name': 'Foursquare ITP',
-        'social': {
+        'socials': {
             'linkedin': False,
         },
         'image': 'https://s3.amazonaws.com/resumator/customer_20200514151826_0OI7MI4QLNBYFWYO/logos/20230831160450_Full_Color_CMYK.jpg',
@@ -1689,7 +1689,7 @@ website_info = [
     {
         'id': 'inrix',
         'name': 'Inrix',
-        'social': {
+        'socials': {
             'linkedin': False,
         },
         'image': 'https://mma.prnewswire.com/media/2446738/INRIX_Logo.jpg',
@@ -1752,7 +1752,7 @@ website_info = [
     {
         'id': 'rebel',
         'name': 'Rebel',
-        'social': {
+        'socials': {
             'linkedin': False,
         },
         'image': 'https://www.stichtingfresh.nl/wp-content/uploads/2020/02/rebel.png',
@@ -1770,7 +1770,7 @@ website_info = [
     {
         'id': 'haydenai',
         'name': 'Hayden AI',
-        'social': {
+        'socials': {
             'linkedin': False,
         },
         'image': 'https://logowik.com/content/uploads/images/haydenai8139.logowik.com.webp',
