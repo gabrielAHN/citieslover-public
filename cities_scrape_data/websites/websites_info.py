@@ -8,6 +8,9 @@ website_info = [
     {
         'id': 'planetizen',
         'name': 'Planetizen',
+        'socials': {
+            'linkedin': False
+        },
         'image': 'https://simplycareer.com/wp-content/uploads/2015/05/planetizen-425x215.png',
         'scrapers': [
             {
@@ -31,6 +34,9 @@ website_info = [
     {
         'id': 'allthingsurban',
         'name': 'All Things Urban',
+        'socials': {
+            'linkedin': False
+        },
         'image': 'https://all-things-urban.storage.googleapis.com/static/images/social.jpg',
         'scrapers': [
             {
@@ -182,6 +188,9 @@ website_info = [
     {
         'id': 'transitcenter',
         'name': 'Transitcenter',
+        'socials': {
+            'linkedin': False
+        },
         'image': 'https://d3n8a8pro7vhmx.cloudfront.net/circulatesd/pages/1101/attachments/original/1553274530/transit-center-logo.png?1553274530',
         'scrapers': [
                 {
@@ -355,6 +364,9 @@ website_info = [
     {
         'id': 'nyc_plannning',
         'name': 'NYC Planning',
+        'socials': {
+            'linkedin': 'NYC Department of City Planning'
+        },
         'image': 'https://planning-org-uploaded-media.s3.amazonaws.com/uploads/PROFILE_PHOTOS/95ba7dce-738f-465b-917a-e457760cb7b1.png',
         'scrapers': [
                 {
@@ -400,6 +412,9 @@ website_info = [
     {
         'id': 'carto',
         'name': 'Carto',
+        'socials': {
+            'linkedin': False
+        },
         'image': 'https://mma.prnewswire.com/media/695160/CARTO_Logo.jpg',
         'scrapers': [
                 {
@@ -430,6 +445,9 @@ website_info = [
     {
         'id': 'uber',
         'name': 'Uber',
+        'socials': {
+            'linkedin': False
+        },
         'image': 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/cc/Uber_logo_2018.png/640px-Uber_logo_2018.png',
         'scrapers': [
                 {
@@ -485,6 +503,9 @@ website_info = [
     {
         'id': 'via',
         'name': 'Via',
+        'socials': {
+            'linkedin': False
+        },
         'image': 'https://assets-global.website-files.com/609196881a69bf7486cbfd01/60919d5d15b7324b8aa8d9d8_via-logo.svg',
         'scrapers': [
                 {
@@ -523,6 +544,9 @@ website_info = [
     {
         'id': 'mobilitydata',
         'name': 'Mobility Data',
+        'socials': {
+            'linkedin': 'MobilityData'
+        },
         'image': 'https://mobilitydata.org/app/uploads/2021/04/cropped-flaticon_logo-18.png',
         'scrapers': [
                 {
@@ -538,6 +562,9 @@ website_info = [
     {
         'id': 'goswift',
         'name': 'Swiftly',
+        'socials': {
+            'linkedin': 'Swiftly, Inc.'
+        },
         'image': 'https://store.lmknowledgehub.com/storage/swift/G1lc1nfABW8ZhO2Kdu0WP2o0TqbqN8CVnjoquQn8.png',
         'scrapers': [
                 {
@@ -553,6 +580,9 @@ website_info = [
     {
         'id': 'smartgrowthamerica',
         'name': 'Smart Growth America',
+        'socials': {
+            'linkedin': False
+        },
         'image': 'https://smartgrowthamerica.org/wp-content/uploads/2021/08/SGA_logo_card.png',
         'scrapers': [
                 {
@@ -598,10 +628,13 @@ website_info = [
     {
         'id': 'revel',
         'name': 'Revel',
+        'socials': {
+            'linkedin': False
+        },
         'image': 'https://s4-recruiting.cdn.greenhouse.io/external_greenhouse_job_boards/logos/400/075/500/resized/revel_greenhouse.png',
         'scrapers': [
                 {
-                    'scrape_function': greenhouse_jobs,
+                    'scrape_function': greenhouse_older_jobs,
                     'requests': {
                         "request_type": get_response
                     },
@@ -646,7 +679,7 @@ website_info = [
         'image': 'https://urbanfootprint.com/wp-content/uploads/2022/06/UrbanFootprint_Logo@2x.png',
         'scrapers': [
                 {
-                    'scrape_function': urbanfootprint_jobs,
+                    'scrape_function': greenhouse_older_jobs,
                     'requests': {
                         "request_type": get_response
                     },
@@ -718,6 +751,9 @@ website_info = [
     {
         'id': 'tier',
         'name': 'Tier',
+        'socials': {
+            'linkedin': 'TIER Mobility'
+        },
         'image': 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/32/TIER_Mobility_Logo_%28blau%2C_2021%29.svg/1200px-TIER_Mobility_Logo_%28blau%2C_2021%29.svg.png',
         'scrapers': [
                 {
@@ -733,6 +769,9 @@ website_info = [
     {
         'id': 'veo',
         'name': 'Veo',
+        'socials': {
+            'linkedin': False
+        },
         'image': 'https://s4-recruiting.cdn.greenhouse.io/external_greenhouse_job_boards/logos/400/297/800/resized/veo_logo_black.png?1622840779',
         'scrapers': [
                 {
@@ -748,6 +787,9 @@ website_info = [
     {
         'id': 'populus',
         'name': 'Populus',
+        'socials': {
+            'linkedin': False
+        },
         'image': 'https://images.squarespace-cdn.com/content/v1/5fc6dab681da8a590dace76d/1608170071061-NYJKZQQBQHK4IHASGYNR/Populus_SecondaryLogo_Dark.png',
         'scrapers': [
                 {
@@ -763,6 +805,9 @@ website_info = [
     {
         'id': 'blablacar',
         'name': 'Blablacar',
+        'socials': {
+            'linkedin': False
+        },
         'image': 'https://lever-client-logos.s3.us-west-2.amazonaws.com/e3520345-0a28-449b-8485-23082ade0c1f-1623869719522.png',
         'scrapers': [
                 {
@@ -778,6 +823,9 @@ website_info = [
     {
         'id': 'dott',
         'name': 'Dott',
+        'socials': {
+            'linkedin': False
+        },
         'image': 'https://lever-client-logos.s3.us-west-2.amazonaws.com/f11eb4df-5f0d-4027-8616-f0ae67765b48-1607421366657.png',
         'scrapers': [
                 {
@@ -793,6 +841,9 @@ website_info = [
     {
         'id': 'digitalbluefoam',
         'name': 'Digital Blue Foam',
+        'socials': {
+            'linkedin': False
+        },
         'image': 'https://assets-global.website-files.com/64c79ac5be374c3df952fa71/64e6109eb0e64d7926970b5b_dbf.svg',
         'scrapers': [
                 {
@@ -853,6 +904,9 @@ website_info = [
     {
         'id': 'trafi',
         'name': 'Trafi',
+        'social': {
+            'linkedin': False,
+        },
         'image': 'https://workable-application-form.s3.amazonaws.com/advanced/production/6076d2e3756dfc2c9f97167c/1dba3256-e0d4-44c1-9e86-85abaa003048',
         'scrapers': [
                 {
@@ -878,6 +932,9 @@ website_info = [
     {
         'id': 'replica',
         'name': 'Replica',
+        'social': {
+            'linkedin': False,
+        },
         'image': 'https://mms.businesswire.com/media/20211004005009/en/910899/22/replica_logo.jpg',
         'scrapers': [
                 {
@@ -893,6 +950,9 @@ website_info = [
     {
         'id': 'lastminute',
         'name': 'lastminute',
+        'social': {
+            'linkedin': 'lastminute.com',
+        },
         'image': 'https://corporate.lastminute.com/wp-content/uploads/2023/11/brands-lastminutecom.svg',
         'scrapers': [
                 {
@@ -908,6 +968,9 @@ website_info = [
     {
         'id': 'lametro',
         'name': 'LA Metro',
+        'social': {
+            'linkedin': 'Los Angeles Metro',
+        },
         'image': 'https://www.publicissapient.com/content/dam/ps-rebrand/work/la-metros-boundary-less-fare-cards/Promo_GOV_LA-Metro-Tap.jpg',
         'scrapers': [
                 {
@@ -923,6 +986,9 @@ website_info = [
     {
         'id': 'rpa',
         'name': 'Regional Plan Association',
+        'social': {
+            'linkedin': False,
+        },
         'image': 'https://upload.wikimedia.org/wikipedia/en/0/05/Regional_Plan_Association_logo.png',
         'scrapers': [
                 {
@@ -946,6 +1012,9 @@ website_info = [
     {
         'id': 'lyft',
         'name': 'Lyft',
+        'social': {
+            'linkedin': False,
+        },
         'image': 'https://image.careerpuck.com/_TnoAqcr/_TnoAqcr.300.png',
         'scrapers': [
                 {
@@ -976,6 +1045,9 @@ website_info = [
     {
         'id': 'transitapp',
         'name': 'Transit App',
+        'social': {
+            'linkedin': 'Transit',
+        },
         'image': 'https://upload.wikimedia.org/wikipedia/en/thumb/f/f9/Transit_App_icon.png/300px-Transit_App_icon.png',
         'scrapers': [
                 {
@@ -991,6 +1063,9 @@ website_info = [
     {
         'id': 'spare',
         'name': 'Spare',
+        'social': {
+            'linkedin': False,
+        },
         'image': 'https://app.pinpointhq.com/rails/active_storage/representations/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBL1RjSnc9PSIsImV4cCI6bnVsbCwicHVyIjoiYmxvYl9pZCJ9fQ==--5d0af3b2ab4d0240ffa1d59a987009d6d3ef5f93/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCam9MY21WemFYcGxTU0lRTkRRd0xqQjRNVEF3TGpBR09nWkZWQT09IiwiZXhwIjpudWxsLCJwdXIiOiJ2YXJpYXRpb24ifX0=--5fd990b5737f041b8b006e0f6f8b9bd3043c9631/spare-logo.png',
         'scrapers': [
                 {
@@ -1051,6 +1126,9 @@ website_info = [
     {
         'id': 'the-mobility-house',
         'name': 'The Mobility House',
+        'social': {
+            'linkedin': False,
+        },
         'image': 'https://cdn.theorg.com/cd0c0e7e-3df6-4f96-96e6-4421e9d887fc_medium.jpg',
         'scrapers': [
                 {
@@ -1136,6 +1214,9 @@ website_info = [
     {
         'id': 'gvshp',
         'name': 'NYC Village Preservation',
+        'social': {
+            'linkedin': 'Village Preservation (GVSHP)',
+        },
         'image': 'https://upload.wikimedia.org/wikipedia/commons/4/4d/Village_Preservation_Logo.png',
         'scrapers': [
                 {
@@ -1189,6 +1270,9 @@ website_info = [
     {
         'id': 'urbandesignforum',
         'name': 'Urban Design Forum',
+        'social': {
+            'linkedin': False,
+        },
         'image': 'https://upload.wikimedia.org/wikipedia/commons/thumb/b/b1/Urbandesingforumlogo.jpg/440px-Urbandesingforumlogo.jpg',
         'scrapers': [
                 {
@@ -1279,6 +1363,9 @@ website_info = [
     {
         'id': 'zencity',
         'name': 'Zencity',
+        'social': {
+            'linkedin': False,
+        },
         'image': 'https://pbs.twimg.com/profile_images/1704493064499191808/hdEuPhlV_400x400.png',
         'scrapers': [
                 {
@@ -1294,6 +1381,9 @@ website_info = [
     {
         'id': 'nava',
         'name': 'Nava',
+        'social': {
+            'linkedin': False,
+        },
         'image': 'https://www.navapbc.com/favicon.svg',
         'scrapers': [
                 {
@@ -1369,6 +1459,9 @@ website_info = [
     {
         'id': 'electricera',
         'name': 'Electric Era',
+        'social': {
+            'linkedin': False,
+        },
         'image': 'https://pbs.twimg.com/profile_images/1863655693972291584/lnUdeakc_400x400.jpg',
         'scrapers': [
                 {
@@ -1384,6 +1477,9 @@ website_info = [
     {
         'id': 'parkmobile',
         'name': 'Park Mobile',
+        'social': {
+            'linkedin': 'ParkMobile, LLC',
+        },
         'image': 'https://www.parking.net/Upload/Industry/00-New-HD-Logos/parkmobile-company-logo-480px_main.jpg',
         'scrapers': [
                 {
@@ -1399,6 +1495,9 @@ website_info = [
     {
         'id': 'inspirationMobility',
         'name': 'Inspiration Mobility',
+        'social': {
+            'linkedin': False,
+        },
         'image': 'https://lever-client-logos.s3.us-west-2.amazonaws.com/f446fc6e-6ae0-456d-a9c2-f847132abef2-1640978230903.png',
         'scrapers': [
                 {
@@ -1414,6 +1513,9 @@ website_info = [
     {
         'id': 'fleet',
         'name': 'Fleet',
+        'social': {
+            'linkedin': 'Fleet',
+        },
         'image': 'https://cdn.prod.website-files.com/60c7f12862eab431c781bc24/669a82ea31e72031ec334bdf_Group%2010122572.avif',
         'scrapers': [
                 {
@@ -1429,6 +1531,9 @@ website_info = [
     {
         'id': 'vivacitylabs',
         'name': 'Vivacity Labs',
+        'social': {
+            'linkedin': 'Vivacity',
+        },
         'image': 'https://lever-client-logos.s3.us-west-2.amazonaws.com/e0200f8d-63da-4b74-b3d6-f9fe20007388-1656683474532.png',
         'scrapers': [
                 {
@@ -1444,6 +1549,9 @@ website_info = [
     {
         'id': 'nplan',
         'name': 'nPlan',
+        'social': {
+            'linkedin': False,
+        },
         'image': 'https://gallery-cdn.breezy.hr/e99e7f5f-8b57-4a28-b172-2ef7f1d58ff2/nPlan_logo_blue.png',
         'scrapers': [
                 {
@@ -1459,6 +1567,9 @@ website_info = [
     {
         'id': 'bloomworks',
         'name': 'Bloomworks',
+        'social': {
+            'linkedin': 'Bloom Works Public Benefit LLC',
+        },
         'image': 'https://s7-recruiting.cdn.greenhouse.io/external_greenhouse_job_boards/logos/400/165/600/resized/bw-green.png?1686168632',
         'scrapers': [
                 {
@@ -1474,6 +1585,9 @@ website_info = [
     {
         'id': 'arcadis',
         'name': 'Arcadis',
+        'social': {
+            'linkedin': False,
+        },
         'image': 'https://c.smartrecruiters.com/sr-company-logo-prod-aws-dc5/57e9b7bbe4b0b6fa1a859b8d/huge?r=s3-eu-central-1&_1702069078823',
         'scrapers': [
                 {
@@ -1493,6 +1607,9 @@ website_info = [
     {
         'id': 'metropolis',
         'name': 'Metropolis',
+        'social': {
+            'linkedin': 'Metropolis Technologies',
+        },
         'image': 'https://s3-recruiting.cdn.greenhouse.io/external_greenhouse_job_boards/logos/400/053/300/original/mark.png?1578956035',
         'scrapers': [
                 {
@@ -1508,6 +1625,9 @@ website_info = [
     {
         'id': 'gridwise',
         'name': 'Gridwise',
+        'social': {
+            'linkedin': False,
+        },
         'image': 'https://gridwise.io/wp-content/uploads/2021/09/logo.svg',
         'scrapers': [
                 {
@@ -1523,6 +1643,9 @@ website_info = [
     {
         'id': 'papayadash',
         'name': 'Papaya Dash',
+        'social': {
+            'linkedin': False,
+        },
         'image': 'https://workable-application-form.s3.amazonaws.com/advanced/production/628ced9a7d26824e5742d0d5/9a161780-a02c-9947-ac23-563a862f1016',
         'scrapers': [
                 {
@@ -1548,6 +1671,9 @@ website_info = [
     {
         'id': 'foursquareItp',
         'name': 'Foursquare ITP',
+        'social': {
+            'linkedin': False,
+        },
         'image': 'https://s3.amazonaws.com/resumator/customer_20200514151826_0OI7MI4QLNBYFWYO/logos/20230831160450_Full_Color_CMYK.jpg',
         'scrapers': [
                 {
@@ -1563,6 +1689,9 @@ website_info = [
     {
         'id': 'inrix',
         'name': 'Inrix',
+        'social': {
+            'linkedin': False,
+        },
         'image': 'https://mma.prnewswire.com/media/2446738/INRIX_Logo.jpg',
         'scrapers': [
                 {
@@ -1623,6 +1752,9 @@ website_info = [
     {
         'id': 'rebel',
         'name': 'Rebel',
+        'social': {
+            'linkedin': False,
+        },
         'image': 'https://www.stichtingfresh.nl/wp-content/uploads/2020/02/rebel.png',
         'scrapers': [
                 {
@@ -1637,7 +1769,10 @@ website_info = [
     },
     {
         'id': 'haydenai',
-        'name': 'HaydenAI',
+        'name': 'Hayden AI',
+        'social': {
+            'linkedin': False,
+        },
         'image': 'https://logowik.com/content/uploads/images/haydenai8139.logowik.com.webp',
         'scrapers': [
                 {
@@ -1664,6 +1799,9 @@ website_info = [
     {
         "id": "masabi",
         "name": "Masabi",
+        "socials": {
+            "linkedin": False,
+        },
         "image": "https://careers.masabi.com/wp-content/uploads/2023/01/06-red-black-1024x576.png",
         "scrapers": [
             {
@@ -1690,6 +1828,9 @@ website_info = [
     {
         'id': 'roadie',
         'name': 'Roadie',
+        'socials': {
+            'linkedin': False,
+        },
         'image': 'https://s2-recruiting.cdn.greenhouse.io/external_greenhouse_job_boards/logos/400/587/300/original/Roadie_UPS_Logo_Stack_BROWN.png?1648056516',
         'scrapers': [
                 {
@@ -1705,6 +1846,9 @@ website_info = [
     {
         'id': 'goodtraffic',
         'name': 'Good Traffic',
+        'socials': {
+            'linkedin': 'Brad Biehl',
+        },
         'image': 'https://is1-ssl.mzstatic.com/image/thumb/Podcasts211/v4/b8/56/4b/b8564ba8-f066-7a26-c7ca-3db49914ffe7/mza_4128940626188746453.jpg/600x600bb.webp',
         'scrapers': [
                 {
@@ -1720,6 +1864,9 @@ website_info = [
     {
         'id': 'cabify',
         'name': 'Cabify',
+        'socials': {
+            'linkedin': False,
+        },
         'image': 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Cabify-Logo-Moradul-RGB.png/440px-Cabify-Logo-Moradul-RGB.png',
         'scrapers': [
                 {
@@ -1735,6 +1882,9 @@ website_info = [
     {
         'id': 'autofleet',
         'name': 'Autofleet',
+        'socials': {
+            'linkedin': False,
+        },
         'image': 'https://workablehr.s3.amazonaws.com/uploads/account/logo/445657/logo',
         'scrapers': [
                 {
@@ -1760,7 +1910,9 @@ website_info = [
     {
         'id': 'spacespodcast',
         'name': 'Spaces Podcast',
-        'linkedin': 'Gābl Media Group, Inc.',
+        'socials': {
+            'linkedin': 'Gābl Media Group, Inc.',
+        },
         'image': 'https://is1-ssl.mzstatic.com/image/thumb/Podcasts221/v4/db/30/54/db305462-8eb8-b6d5-eab3-abd1935751e1/mza_2839107751596279306.png/600x600bb.webp',
         'scrapers': [
                 {
@@ -1776,7 +1928,9 @@ website_info = [
     {
         'id': 'cyvlai',
         'name': 'Cyvl Ai',
-        'linkedin': 'Cyvl',
+        'socials': {
+            'linkedin': 'Cyvl',
+        },
         'image': 'https://lever-client-logos.s3.us-west-2.amazonaws.com/50c872b0-4a13-4b4b-964f-d211908916c5-1719259337206.png',
         'scrapers': [
                 {
@@ -1792,7 +1946,9 @@ website_info = [
     {
         'id': 'procureai',
         'name': 'Procure Ai',
-        'linkedin': 'Procure Ai',
+        'socials': {
+            "linkedin": False
+        },
         'image': 'https://workable-application-form.s3.amazonaws.com/advanced/production/602fa2bc3e0ec0b348d61f16/6a4ba8ba-9859-9635-8e15-d4a8a13dd8e5',
         'scrapers': [
             {
@@ -1818,7 +1974,9 @@ website_info = [
     {
         'id': 'podaris',
         'name': 'Podaris',
-        'linkedin': 'podaris',
+        'socials': {
+            "linkedin": False
+        },
         'image': 'https://cdn.prod.website-files.com/627130c0c6ca7661fa206333/627130c0c6ca76825e2064d1_podaris_logo.svg',
         'scrapers': [
                 {
@@ -1834,7 +1992,9 @@ website_info = [
     {
         'id': 'coforma',
         'name': 'Coforma',
-        'linkedin': 'coforma',
+        'socials': {
+            "linkedin": False
+        },
         'image': 'https://lever-client-logos.s3.us-west-2.amazonaws.com/d469341d-d7d9-43b5-9b93-e82d5792eae7-1602006045141.png',
         'scrapers': [
                 {
@@ -1850,7 +2010,9 @@ website_info = [
     {
         'id': 'kpler',
         'name': 'Kpler',
-        'linkedin': 'kpler',
+        'socials': {
+            "linkedin": False
+        },
         'image': 'https://lever-client-logos.s3.us-west-2.amazonaws.com/d4685f4a-7242-49a3-9ab4-59a1df71b65e-1697541493548.png',
         'scrapers': [
                 {
@@ -1866,7 +2028,9 @@ website_info = [
     {
         'id': 'newpublic',
         'name': 'New_ Public',
-        'linkedin': 'New_ Public',
+        'socials': {
+            "linkedin": False
+        },
         'image': 'https://newpublic.org/dist/cs-logo.dca58721.svg',
         'scrapers': [
                 {
