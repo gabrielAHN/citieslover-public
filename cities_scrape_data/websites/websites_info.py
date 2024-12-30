@@ -645,7 +645,10 @@ website_info = [
     },
     {
         'id': 'streetlightdata',
-        'name': 'Street Light Data',
+        'name': 'StreetLight',
+        'socials': {
+            'linkedin': False
+        },
         'image': 'https://lever-client-logos.s3.amazonaws.com/0046318a-573c-41a8-8de0-52fda3259340-1546914822777.png',
         'scrapers': [
                 {
@@ -661,6 +664,9 @@ website_info = [
     {
         'id': 'lime',
         'name': 'Lime',
+        'socials': {
+            'linkedin': False
+        },
         'image': 'https://lever-client-logos.s3.amazonaws.com/04d69456-1062-431c-bf70-177b55749515-1571247003987.png',
         'scrapers': [
                 {
@@ -676,6 +682,9 @@ website_info = [
     {
         'id': 'urbanfootprint',
         'name': 'Urban Footprint',
+        'socials': {
+            'linkedin': 'UrbanFootprint'
+        },
         'image': 'https://urbanfootprint.com/wp-content/uploads/2022/06/UrbanFootprint_Logo@2x.png',
         'scrapers': [
                 {
@@ -691,6 +700,9 @@ website_info = [
     {
         'id': 'mbta',
         'name': 'MBTA',
+        'socials': {
+            'linkedin': False
+        },
         'image': 'https://lever-client-logos.s3-us-west-2.amazonaws.com/753da791-a783-4cb5-b37d-ce85a22dc7bd-1596468426966.png',
         'scrapers': [
                 {
@@ -706,6 +718,9 @@ website_info = [
     {
         'id': 'optibus',
         'name': 'Optibus',
+        'socials': {
+            'linkedin': False
+        },
         'image': 'https://www.optibus.com/wp-content/uploads/2021/12/optibus-dark-logo.svg',
         'scrapers': [
                 {
@@ -721,6 +736,9 @@ website_info = [
     {
         'id': 'itoworld',
         'name': 'Ito World',
+        'socials': {
+            'linkedin': False
+        },
         'image': 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRqX4ny_KpkEgtdPbWqcBzeETqJ0IB7utegAg&s',
         'scrapers': [
                 {
@@ -736,6 +754,9 @@ website_info = [
     {
         'id': 'voi',
         'name': 'Voi',
+        'socials': {
+            'linkedin': 'Voi Technology'
+        },
         'image': 'https://pbs.twimg.com/profile_images/1293203903610105861/Kh_w4N69_400x400.jpg',
         'scrapers': [
                 {
