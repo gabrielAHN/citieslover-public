@@ -9,7 +9,10 @@ website_info = [
         'id': 'planetizen',
         'name': 'Planetizen',
         'socials': {
-            'linkedin': False
+            "linkedin": {
+                "name": 'Planetizen',
+                "id": "urn:li:organization:1449928"
+            }
         },
         'image': 'https://simplycareer.com/wp-content/uploads/2015/05/planetizen-425x215.png',
         'scrapers': [
@@ -35,7 +38,10 @@ website_info = [
         'id': 'allthingsurban',
         'name': 'All Things Urban',
         'socials': {
-            'linkedin': False
+            "linkedin": {
+                "name": "All Things Urban",
+                "id": "urn:li:organization:18783013"
+            }
         },
         'image': 'https://all-things-urban.storage.googleapis.com/static/images/social.jpg',
         'scrapers': [
@@ -187,27 +193,30 @@ website_info = [
     },
     {
         'id': 'transitcenter',
-        'name': 'Transitcenter',
+        'name': 'TransitCenter',
         'socials': {
-            'linkedin': False
+            "linkedin": {
+                "name": "TransitCenter",
+                "id": "urn:li:organization:9996338"
+            }
         },
         'image': 'https://d3n8a8pro7vhmx.cloudfront.net/circulatesd/pages/1101/attachments/original/1553274530/transit-center-logo.png?1553274530',
         'scrapers': [
-                {
-                    'scrape_function': transitcenter,
-                    'requests': {
-                        "request_type": get_response_header
-                    },
-                    'website': 'https://transitcenter.org/blog/',
-                    'type': 'blog'
-                },
             {
-                    'scrape_function': transitcenter_job,
-                    'requests': {
-                        "request_type": get_response_header
-                    },
-                    'website': 'https://transitcenter.org/careersattransitcenter/',
-                    'type': 'jobs'
+                'scrape_function': transitcenter,
+                'requests': {
+                    "request_type": get_response_header
+                },
+                'website': 'https://transitcenter.org/blog/',
+                'type': 'blog'
+            },
+            {
+                'scrape_function': transitcenter_job,
+                'requests': {
+                    "request_type": get_response_header
+                },
+                'website': 'https://transitcenter.org/careersattransitcenter/',
+                'type': 'jobs'
             }
         ]
     },
@@ -365,18 +374,21 @@ website_info = [
         'id': 'nyc_plannning',
         'name': 'NYC Planning',
         'socials': {
-            'linkedin': 'NYC Department of City Planning'
+            'linkedin': {
+                'name': 'NYC Department of City Planning',
+                'id': 'urn:li:organization:583982'
+            }
         },
         'image': 'https://planning-org-uploaded-media.s3.amazonaws.com/uploads/PROFILE_PHOTOS/95ba7dce-738f-465b-917a-e457760cb7b1.png',
         'scrapers': [
-                {
-                    'scrape_function': nyc_planning_jobs,
-                    'requests': {
-                        "request_type": get_response
-                    },
-                    'website': 'https://www.nyc.gov/assets/planning/libs/JSON/Careers/careers.json',
-                    'type': 'jobs'
-                }
+            {
+                'scrape_function': nyc_planning_jobs,
+                'requests': {
+                    "request_type": get_response
+                },
+                'website': 'https://www.nyc.gov/assets/planning/libs/JSON/Careers/careers.json',
+                'type': 'jobs'
+            }
         ]
     },
     {
@@ -413,18 +425,21 @@ website_info = [
         'id': 'carto',
         'name': 'Carto',
         'socials': {
-            'linkedin': False
+            "linkedin": {
+                "name": "CARTO",
+                "id": "urn:li:organization:5084329"
+            }
         },
         'image': 'https://mma.prnewswire.com/media/695160/CARTO_Logo.jpg',
         'scrapers': [
-                {
-                    'scrape_function': lever_jobs,
-                    'requests': {
-                        "request_type": get_response
-                    },
-                    'website': 'https://jobs.lever.co/cartodb',
-                    'type': 'jobs'
-                }
+            {
+                'scrape_function': lever_jobs,
+                'requests': {
+                    "request_type": get_response
+                },
+                'website': 'https://jobs.lever.co/cartodb',
+                'type': 'jobs'
+            }
         ]
     },
     {
@@ -446,83 +461,89 @@ website_info = [
         'id': 'uber',
         'name': 'Uber',
         'socials': {
-            'linkedin': False
+            "linkedin": {
+                "name": "Uber",
+                "id": "urn:li:organization:1815218"
+            }
         },
         'image': 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/cc/Uber_logo_2018.png/640px-Uber_logo_2018.png',
         'scrapers': [
-                {
-                    'scrape_function': uber_jobs,
-                    'requests': {
-                        "request_type": get_post_response,
-                        'header': {
-                            'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3)'
-                            'AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.61 '
-                            'Safari/537.36',
-                            'x-csrf-token': 'x',
-                            'content-type': 'application/json',
-                        },
-                        'payload': {
-                            "params": {
-                                "location": [
-                                    {
-                                        "country": "USA",
-                                    },
-                                    {
-                                        "country": "GBR",
-                                    },
-                                    {
-                                        "country": "HKG",
-                                    },
-                                    {
-                                        "country": "JPN",
-                                    },
-                                    {
-                                        "country": "ESP",
-                                    },
-                                    {
-                                        "country": "CAN",
-                                    },
-                                    {
-                                        "country": "BRA",
-                                    }
-                                ],
-                                "department": [
-                                    "Public Policy",
-                                    "Data Science",
-                                    "Engineering",
-                                    "Product"
-                                ]
-                            }
-                        }
+            {
+                'scrape_function': uber_jobs,
+                'requests': {
+                    "request_type": get_post_response,
+                    'header': {
+                        'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3)'
+                        'AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.61 '
+                        'Safari/537.36',
+                        'x-csrf-token': 'x',
+                        'content-type': 'application/json',
                     },
-                    'website': 'https://www.uber.com/api/loadSearchJobsResults?localeCode=en',
-                    'type': 'jobs'
-                }
+                    'payload': {
+                        "params": {
+                            "location": [
+                                {
+                                    "country": "USA",
+                                },
+                                {
+                                    "country": "GBR",
+                                },
+                                {
+                                    "country": "HKG",
+                                },
+                                {
+                                    "country": "JPN",
+                                },
+                                {
+                                    "country": "ESP",
+                                },
+                                {
+                                    "country": "CAN",
+                                },
+                                {
+                                    "country": "BRA",
+                                }
+                            ],
+                            "department": [
+                                "Public Policy",
+                                "Data Science",
+                                "Engineering",
+                                "Product"
+                            ]
+                        }
+                    }
+                },
+                'website': 'https://www.uber.com/api/loadSearchJobsResults?localeCode=en',
+                'type': 'jobs'
+            }
         ]
     },
     {
         'id': 'via',
         'name': 'Via',
         'socials': {
-            'linkedin': False
+            "linkedin": {
+                "name": "Via",
+                "id": "urn:li:organization:2770100"
+            }
         },
         'image': 'https://assets-global.website-files.com/609196881a69bf7486cbfd01/60919d5d15b7324b8aa8d9d8_via-logo.svg',
         'scrapers': [
-                {
-                    'scrape_function': apple_parser,
-                    'requests': {
-                        "request_type": get_response
-                    },
-                    'website': 'https://podcasts.apple.com/us/podcast/modeshift/id1644748349',
-                    'type': 'podcast'
-                },
             {
-                    'scrape_function': greenhouse_older_jobs,
-                    'requests': {
-                        "request_type": get_response
-                    },
-                    'website': 'https://boards.greenhouse.io/via',
-                    'type': 'jobs'
+                'scrape_function': apple_parser,
+                'requests': {
+                    "request_type": get_response
+                },
+                'website': 'https://podcasts.apple.com/us/podcast/modeshift/id1644748349',
+                'type': 'podcast'
+            },
+            {
+                'scrape_function': greenhouse_older_jobs,
+                'requests': {
+                    "request_type": get_response
+                },
+                'website': 'https://boards.greenhouse.io/via',
+                'type': 'jobs'
             }
         ]
     },
@@ -545,54 +566,63 @@ website_info = [
         'id': 'mobilitydata',
         'name': 'Mobility Data',
         'socials': {
-            'linkedin': 'MobilityData'
+            'linkedin':{
+                'name': 'MobilityData',
+                'id': 'urn:li:organization:11798232'
+            } 
         },
         'image': 'https://mobilitydata.org/app/uploads/2021/04/cropped-flaticon_logo-18.png',
         'scrapers': [
-                {
-                    'scrape_function': mobilitydata_jobs,
-                    'requests': {
-                        "request_type": get_response
-                    },
-                    'website': 'https://careers.mobilitydata.org',
-                    'type': 'jobs'
-                }
+            {
+                'scrape_function': mobilitydata_jobs,
+                'requests': {
+                    "request_type": get_response
+                },
+                'website': 'https://careers.mobilitydata.org',
+                'type': 'jobs'
+            }
         ]
     },
     {
         'id': 'goswift',
         'name': 'Swiftly',
         'socials': {
-            'linkedin': 'Swiftly, Inc.'
+            'linkedin': {
+                'name': 'Swiftly, Inc.',
+                'id': 'urn:li:organization:5137739'
+            }
         },
         'image': 'https://store.lmknowledgehub.com/storage/swift/G1lc1nfABW8ZhO2Kdu0WP2o0TqbqN8CVnjoquQn8.png',
         'scrapers': [
-                {
-                    'scrape_function': lever_jobs,
-                    'requests': {
-                        "request_type": get_response
-                    },
-                    'website': 'https://jobs.lever.co/goswift',
-                    'type': 'jobs'
-                }
+            {
+                'scrape_function': lever_jobs,
+                'requests': {
+                    "request_type": get_response
+                },
+                'website': 'https://jobs.lever.co/goswift',
+                'type': 'jobs'
+            }
         ]
     },
     {
         'id': 'smartgrowthamerica',
         'name': 'Smart Growth America',
         'socials': {
-            'linkedin': False
+            "linkedin": {
+                "name": 'Smart Growth America',
+                "id": "urn:li:organization:647408"
+            }
         },
         'image': 'https://smartgrowthamerica.org/wp-content/uploads/2021/08/SGA_logo_card.png',
         'scrapers': [
-                {
-                    'scrape_function': smartgrowamerica_jobs,
-                    'requests': {
-                        "request_type": get_response
-                    },
-                    'website': 'https://smartgrowthamerica.org/about-us/careers/',
-                    'type': 'jobs'
-                }
+            {
+                'scrape_function': smartgrowamerica_jobs,
+                'requests': {
+                    "request_type": get_response
+                },
+                'website': 'https://smartgrowthamerica.org/about-us/careers/',
+                'type': 'jobs'
+            }
         ]
     },
     {
@@ -629,252 +659,294 @@ website_info = [
         'id': 'revel',
         'name': 'Revel',
         'socials': {
-            'linkedin': False
+            "linkedin": {
+                "name": "Revel",
+                "id": "urn:li:organization:11678594"
+            }
         },
         'image': 'https://s4-recruiting.cdn.greenhouse.io/external_greenhouse_job_boards/logos/400/075/500/resized/revel_greenhouse.png',
         'scrapers': [
-                {
-                    'scrape_function': greenhouse_older_jobs,
-                    'requests': {
-                        "request_type": get_response
-                    },
-                    'website': 'https://boards.greenhouse.io/revel',
-                    'type': 'jobs'
-                }
+            {
+                'scrape_function': greenhouse_older_jobs,
+                'requests': {
+                    "request_type": get_response
+                },
+                'website': 'https://boards.greenhouse.io/revel',
+                'type': 'jobs'
+            }
         ]
     },
     {
         'id': 'streetlightdata',
         'name': 'StreetLight',
         'socials': {
-            'linkedin': False
+            "linkedin": {
+                "name": "StreetLight",
+                "id": "urn:li:organization:2516415"
+            }
         },
         'image': 'https://lever-client-logos.s3.amazonaws.com/0046318a-573c-41a8-8de0-52fda3259340-1546914822777.png',
         'scrapers': [
-                {
-                    'scrape_function': lever_jobs,
-                    'requests': {
-                        "request_type": get_response
-                    },
-                    'website': 'https://jobs.lever.co/streetlightdata',
-                    'type': 'jobs'
-                }
+            {
+                'scrape_function': lever_jobs,
+                'requests': {
+                    "request_type": get_response
+                },
+                'website': 'https://jobs.lever.co/streetlightdata',
+                'type': 'jobs'
+            }
         ]
     },
     {
         'id': 'lime',
         'name': 'Lime',
         'socials': {
-            'linkedin': False
+            "linkedin": {
+                "name": "Lime",
+                "id": "urn:li:organization:16199690"
+            }
         },
         'image': 'https://lever-client-logos.s3.amazonaws.com/04d69456-1062-431c-bf70-177b55749515-1571247003987.png',
         'scrapers': [
-                {
-                    'scrape_function': lever_jobs,
-                    'requests': {
-                        "request_type": get_response
-                    },
-                    'website': 'https://jobs.lever.co/lime',
-                    'type': 'jobs'
-                }
+            {
+                'scrape_function': lever_jobs,
+                'requests': {
+                    "request_type": get_response
+                },
+                'website': 'https://jobs.lever.co/lime',
+                'type': 'jobs'
+            }
         ]
     },
     {
         'id': 'urbanfootprint',
         'name': 'Urban Footprint',
         'socials': {
-            'linkedin': 'UrbanFootprint'
+            'linkedin': {
+                'name': 'UrbanFootprint',
+                'id': 'urn:li:organization:6629640'
+            }
         },
         'image': 'https://urbanfootprint.com/wp-content/uploads/2022/06/UrbanFootprint_Logo@2x.png',
         'scrapers': [
-                {
-                    'scrape_function': greenhouse_older_jobs,
-                    'requests': {
-                        "request_type": get_response
-                    },
-                    'website': 'https://boards.greenhouse.io/urbanfootprint',
-                    'type': 'jobs'
-                }
+            {
+                'scrape_function': greenhouse_older_jobs,
+                'requests': {
+                    "request_type": get_response
+                },
+                'website': 'https://boards.greenhouse.io/urbanfootprint',
+                'type': 'jobs'
+            }
         ]
     },
     {
         'id': 'mbta',
         'name': 'MBTA',
         'socials': {
-            'linkedin': False
+            "linkedin": {
+                "name": "MBTA",
+                "id": "urn:li:organization:164885"
+            }
         },
         'image': 'https://lever-client-logos.s3-us-west-2.amazonaws.com/753da791-a783-4cb5-b37d-ce85a22dc7bd-1596468426966.png',
         'scrapers': [
-                {
-                    'scrape_function': lever_jobs,
-                    'requests': {
-                        "request_type": get_response
-                    },
-                    'website': 'https://jobs.lever.co/mbta/',
-                    'type': 'jobs'
-                }
+            {
+                'scrape_function': lever_jobs,
+                'requests': {
+                    "request_type": get_response
+                },
+                'website': 'https://jobs.lever.co/mbta/',
+                'type': 'jobs'
+            }
         ]
     },
     {
         'id': 'optibus',
         'name': 'Optibus',
         'socials': {
-            'linkedin': False
+            "linkedin": {
+                "name": 'Optibus',
+                "id": "urn:li:organization:3023213"
+            }
         },
         'image': 'https://www.optibus.com/wp-content/uploads/2021/12/optibus-dark-logo.svg',
         'scrapers': [
-                {
-                    'scrape_function': optibus_jobs,
-                    'requests': {
-                        "request_type": get_response
-                    },
-                    'website': 'https://www.optibus.com/company/careers/jobs/',
-                    'type': 'jobs'
-                }
+            {
+                'scrape_function': optibus_jobs,
+                'requests': {
+                    "request_type": get_response
+                },
+                'website': 'https://www.optibus.com/company/careers/jobs/',
+                'type': 'jobs'
+            }
         ]
     },
     {
         'id': 'itoworld',
         'name': 'Ito World',
         'socials': {
-            'linkedin': False
+            "linkedin": {
+                "name": 'Ito World',
+                "id": "urn:li:organization:2042291"
+            }
         },
         'image': 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRqX4ny_KpkEgtdPbWqcBzeETqJ0IB7utegAg&s',
         'scrapers': [
-                {
-                    'scrape_function': ito_jobs,
-                    'requests': {
-                        "request_type": get_response
-                    },
-                    'website': 'https://itoworld.bamboohr.com/careers/list',
-                    'type': 'jobs'
-                }
+            {
+                'scrape_function': ito_jobs,
+                'requests': {
+                    "request_type": get_response
+                },
+                'website': 'https://itoworld.bamboohr.com/careers/list',
+                'type': 'jobs'
+            }
         ]
     },
     {
         'id': 'voi',
         'name': 'Voi',
         'socials': {
-            'linkedin': 'Voi Technology'
+            'linkedin': {
+                'name': 'Voi Technology',
+                'id': 'urn:li:organization:18707985'
+            }
         },
         'image': 'https://pbs.twimg.com/profile_images/1293203903610105861/Kh_w4N69_400x400.jpg',
         'scrapers': [
-                {
-                    'scrape_function': voi_jobs,
-                    'requests': {
-                        "request_type": get_response
-                    },
-                    'website': 'https://careers.voi.com/jobs?department=Research+%26+Development&query=',
-                    'type': 'jobs'
-                }
+            {
+                'scrape_function': voi_jobs,
+                'requests': {
+                    "request_type": get_response
+                },
+                'website': 'https://careers.voi.com/jobs?department=Research+%26+Development&query=',
+                'type': 'jobs'
+            }
         ]
     },
     {
         'id': 'tier',
         'name': 'Tier',
         'socials': {
-            'linkedin': 'TIER Mobility'
+            'linkedin': {
+                'name': 'TIER Mobility',
+                'id': 'urn:li:organization:11820361'
+            }
         },
         'image': 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/32/TIER_Mobility_Logo_%28blau%2C_2021%29.svg/1200px-TIER_Mobility_Logo_%28blau%2C_2021%29.svg.png',
         'scrapers': [
-                {
-                    'scrape_function': greenhouse_jobs,
-                    'requests': {
-                        "request_type": get_response
-                    },
-                    'website': 'https://boards.greenhouse.io/tiermobility',
-                    'type': 'jobs'
-                }
+            {
+                'scrape_function': greenhouse_jobs,
+                'requests': {
+                    "request_type": get_response
+                },
+                'website': 'https://boards.greenhouse.io/tiermobility',
+                'type': 'jobs'
+            }
         ]
     },
     {
         'id': 'veo',
         'name': 'Veo',
         'socials': {
-            'linkedin': False
+            "linkedin": {
+                "name": 'Veo',
+                "id": "urn:li:organization:18268076"
+            }
         },
         'image': 'https://s4-recruiting.cdn.greenhouse.io/external_greenhouse_job_boards/logos/400/297/800/resized/veo_logo_black.png?1622840779',
         'scrapers': [
-                {
-                    'scrape_function': greenhouse_jobs,
-                    'requests': {
-                        "request_type": get_response
-                    },
-                    'website': 'https://job-boards.greenhouse.io/veocorporatecareers',
-                    'type': 'jobs'
-                }
+            {
+                'scrape_function': greenhouse_jobs,
+                'requests': {
+                    "request_type": get_response
+                },
+                'website': 'https://job-boards.greenhouse.io/veocorporatecareers',
+                'type': 'jobs'
+            }
         ]
     },
     {
         'id': 'populus',
         'name': 'Populus',
         'socials': {
-            'linkedin': False
+            "linkedin": {
+                "name": 'Populus',
+                "id": "urn:li:organization:18493728"
+            }
         },
         'image': 'https://images.squarespace-cdn.com/content/v1/5fc6dab681da8a590dace76d/1608170071061-NYJKZQQBQHK4IHASGYNR/Populus_SecondaryLogo_Dark.png',
         'scrapers': [
-                {
-                    'scrape_function': greenhouse_older_jobs,
-                    'requests': {
-                        "request_type": get_response
-                    },
-                    'website': 'https://boards.greenhouse.io/populus',
-                    'type': 'jobs'
-                }
+            {
+                'scrape_function': greenhouse_older_jobs,
+                'requests': {
+                    "request_type": get_response
+                },
+                'website': 'https://boards.greenhouse.io/populus',
+                'type': 'jobs'
+            }
         ]
     },
     {
         'id': 'blablacar',
-        'name': 'Blablacar',
+        'name': 'BlaBlaCar',
         'socials': {
-            'linkedin': False
+            "linkedin": {
+                "name": 'BlaBlaCar',
+                "id": "urn:li:organization:2479609"
+            }
         },
         'image': 'https://lever-client-logos.s3.us-west-2.amazonaws.com/e3520345-0a28-449b-8485-23082ade0c1f-1623869719522.png',
         'scrapers': [
-                {
-                    'scrape_function': lever_jobs,
-                    'requests': {
-                        "request_type": get_response
-                    },
-                    'website': 'https://jobs.lever.co/blablacar',
-                    'type': 'jobs'
-                }
+            {
+                'scrape_function': lever_jobs,
+                'requests': {
+                    "request_type": get_response
+                },
+                'website': 'https://jobs.lever.co/blablacar',
+                'type': 'jobs'
+            }
         ]
     },
     {
         'id': 'dott',
         'name': 'Dott',
         'socials': {
-            'linkedin': False
+            "linkedin": {
+                "name": 'Dott',
+                "id": "urn:li:organization:35480664"
+            }
         },
         'image': 'https://lever-client-logos.s3.us-west-2.amazonaws.com/f11eb4df-5f0d-4027-8616-f0ae67765b48-1607421366657.png',
         'scrapers': [
-                {
-                    'scrape_function': lever_jobs,
-                    'requests': {
-                        "request_type": get_response
-                    },
-                    'website': 'https://jobs.lever.co/dott',
-                    'type': 'jobs'
-                }
+            {
+                'scrape_function': lever_jobs,
+                'requests': {
+                    "request_type": get_response
+                },
+                'website': 'https://jobs.lever.co/dott',
+                'type': 'jobs'
+            }
         ]
     },
     {
         'id': 'digitalbluefoam',
         'name': 'Digital Blue Foam',
         'socials': {
-            'linkedin': False
+            "linkedin": {
+                "name": 'Digital Blue Foam',
+                "id": "urn:li:organization:14672777"
+            }
         },
         'image': 'https://assets-global.website-files.com/64c79ac5be374c3df952fa71/64e6109eb0e64d7926970b5b_dbf.svg',
         'scrapers': [
-                {
-                    'scrape_function': dbf_jobs,
-                    'requests': {
-                        "request_type": get_response
-                    },
-                    'website': 'https://www.digitalbluefoam.com/company/career',
-                    'type': 'jobs'
-                }
+            {
+                'scrape_function': dbf_jobs,
+                'requests': {
+                    "request_type": get_response
+                },
+                'website': 'https://www.digitalbluefoam.com/company/career',
+                'type': 'jobs'
+            }
         ]
     },
     {
@@ -926,107 +998,122 @@ website_info = [
         'id': 'trafi',
         'name': 'Trafi',
         'socials': {
-            'linkedin': False,
+            "linkedin": {
+                "name": 'Trafi',
+                "id": "urn:li:organization:3022881"
+            },
         },
         'image': 'https://workable-application-form.s3.amazonaws.com/advanced/production/6076d2e3756dfc2c9f97167c/1dba3256-e0d4-44c1-9e86-85abaa003048',
         'scrapers': [
-                {
-                    'scrape_function': workable_jobs,
-                    'requests': {
-                        "request_type": get_post_response,
-                        'header': {
-                            'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3)'
-                            'AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.61 '
-                            'Safari/537.36',
-                            'content-type': 'application/json',
-                        },
-                        'payload': {
-                            "query": "", "location": [], "department": [
-                            ], "worktype": [], "remote": [], "workplace": []
-                        }
+            {
+                'scrape_function': workable_jobs,
+                'requests': {
+                    "request_type": get_post_response,
+                    'header': {
+                        'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3)'
+                        'AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.61 '
+                        'Safari/537.36',
+                        'content-type': 'application/json',
                     },
-                    'website': 'https://apply.workable.com/api/v3/accounts/trafi/jobs',
-                    'type': 'jobs'
-                }
+                    'payload': {
+                        "query": "", "location": [], "department": [
+                        ], "worktype": [], "remote": [], "workplace": []
+                    }
+                },
+                'website': 'https://apply.workable.com/api/v3/accounts/trafi/jobs',
+                'type': 'jobs'
+            }
         ]
     },
     {
         'id': 'replica',
         'name': 'Replica',
         'socials': {
-            'linkedin': False,
+            "linkedin": {
+                "name": 'Replica',
+                "id": "urn:li:organization:35630799"
+            },
         },
         'image': 'https://mms.businesswire.com/media/20211004005009/en/910899/22/replica_logo.jpg',
         'scrapers': [
-                {
-                    'scrape_function': replica_jobs,
-                    'requests': {
-                        "request_type": get_response
-                    },
-                    'website': 'https://replicainc.applytojob.com/apply/jobs/',
-                    'type': 'jobs'
-                }
+            {
+                'scrape_function': replica_jobs,
+                'requests': {
+                    "request_type": get_response
+                },
+                'website': 'https://replicainc.applytojob.com/apply/jobs/',
+                'type': 'jobs'
+            }
         ]
     },
     {
         'id': 'lastminute',
         'name': 'lastminute',
         'socials': {
-            'linkedin': 'lastminute.com',
+            'linkedin': {
+                'name': 'lastminute.com',
+                'id': 'urn:li:organization:5229'
+            },
         },
         'image': 'https://corporate.lastminute.com/wp-content/uploads/2023/11/brands-lastminutecom.svg',
         'scrapers': [
-                {
-                    'scrape_function': lastminute_jobs,
-                    'requests': {
-                        "request_type": get_response,
-                    },
-                    'website': 'https://corporate.lastminute.com/wp-admin/admin-ajax.php?action=lm_careers_search',
-                    'type': 'jobs'
-                }
+            {
+                'scrape_function': lastminute_jobs,
+                'requests': {
+                    "request_type": get_response,
+                },
+                'website': 'https://corporate.lastminute.com/wp-admin/admin-ajax.php?action=lm_careers_search',
+                'type': 'jobs'
+            }
         ]
     },
     {
         'id': 'lametro',
         'name': 'LA Metro',
         'socials': {
-            'linkedin': 'Los Angeles Metro',
+            'linkedin': {
+                'name': 'Los Angeles Metro',
+                'id': 'urn:li:organization:245312'
+            }
         },
         'image': 'https://www.publicissapient.com/content/dam/ps-rebrand/work/la-metros-boundary-less-fare-cards/Promo_GOV_LA-Metro-Tap.jpg',
         'scrapers': [
-                {
-                    'scrape_function': la_metro_jobs,
-                    'requests': {
-                        "request_type": get_response
-                    },
-                    'website': 'https://jobs.metro.net/jobsearch.aspx',
-                    'type': 'jobs'
-                }
+            {
+                'scrape_function': la_metro_jobs,
+                'requests': {
+                    "request_type": get_response
+                },
+                'website': 'https://jobs.metro.net/jobsearch.aspx',
+                'type': 'jobs'
+            }
         ]
     },
     {
         'id': 'rpa',
         'name': 'Regional Plan Association',
         'socials': {
-            'linkedin': False,
+            "linkedin": {
+                "name": 'Regional Plan Association',
+                "id": "urn:li:organization:36583"
+            },
         },
         'image': 'https://upload.wikimedia.org/wikipedia/en/0/05/Regional_Plan_Association_logo.png',
         'scrapers': [
-                {
-                    'scrape_function': rpa_parser,
-                    'requests': {
-                        "request_type": get_response
-                    },
-                    'website': 'https://rpa.org/latest',
-                    'type': 'articles'
-                },
             {
-                    'scrape_function': rpa_jobs,
-                    'requests': {
-                        "request_type": get_response
-                    },
-                    'website': 'https://rpa.org/about/join',
-                    'type': 'jobs'
+                'scrape_function': rpa_parser,
+                'requests': {
+                    "request_type": get_response
+                },
+                'website': 'https://rpa.org/latest',
+                'type': 'articles'
+            },
+            {
+                'scrape_function': rpa_jobs,
+                'requests': {
+                    "request_type": get_response
+                },
+                'website': 'https://rpa.org/about/join',
+                'type': 'jobs'
             }
         ]
     },
@@ -1034,18 +1121,21 @@ website_info = [
         'id': 'lyft',
         'name': 'Lyft',
         'socials': {
-            'linkedin': False,
+            "linkedin": {
+                "name": 'Lyft',
+                "id": "urn:li:organization:2620735"
+            },
         },
         'image': 'https://image.careerpuck.com/_TnoAqcr/_TnoAqcr.300.png',
         'scrapers': [
-                {
-                    'scrape_function': lyft_jobs,
-                    'requests': {
-                        "request_type": get_response
-                    },
-                    'website': 'https://api.careerpuck.com/v1/public/job-boards/lyft',
-                    'type': 'jobs'
-                }
+            {
+                'scrape_function': lyft_jobs,
+                'requests': {
+                    "request_type": get_response
+                },
+                'website': 'https://api.careerpuck.com/v1/public/job-boards/lyft',
+                'type': 'jobs'
+            }
         ]
     },
     {
@@ -1067,36 +1157,42 @@ website_info = [
         'id': 'transitapp',
         'name': 'Transit App',
         'socials': {
-            'linkedin': 'Transit',
+            'linkedin': {
+                'name': 'Transit',
+                'id': 'urn:li:organization:5087708'
+            }
         },
         'image': 'https://upload.wikimedia.org/wikipedia/en/thumb/f/f9/Transit_App_icon.png/300px-Transit_App_icon.png',
         'scrapers': [
-                {
-                    'scrape_function': transit_jobs,
-                    'requests': {
-                        "request_type": get_response
-                    },
-                    'website': 'https://manifesto.transitapp.com/jobs',
-                    'type': 'jobs'
-                }
+            {
+                'scrape_function': transit_jobs,
+                'requests': {
+                    "request_type": get_response
+                },
+                'website': 'https://manifesto.transitapp.com/jobs',
+                'type': 'jobs'
+            }
         ]
     },
     {
         'id': 'spare',
         'name': 'Spare',
         'socials': {
-            'linkedin': False,
+            "linkedin": {
+                "name": 'Spare',
+                "id": "urn:li:organization:10129077"
+            },
         },
         'image': 'https://app.pinpointhq.com/rails/active_storage/representations/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBL1RjSnc9PSIsImV4cCI6bnVsbCwicHVyIjoiYmxvYl9pZCJ9fQ==--5d0af3b2ab4d0240ffa1d59a987009d6d3ef5f93/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCam9MY21WemFYcGxTU0lRTkRRd0xqQjRNVEF3TGpBR09nWkZWQT09IiwiZXhwIjpudWxsLCJwdXIiOiJ2YXJpYXRpb24ifX0=--5fd990b5737f041b8b006e0f6f8b9bd3043c9631/spare-logo.png',
         'scrapers': [
-                {
-                    'scrape_function': spare_jobs,
-                    'requests': {
-                        "request_type": get_response
-                    },
-                    'website': 'https://sparelabs.pinpointhq.com/en/postings.json',
-                    'type': 'jobs'
-                }
+            {
+                'scrape_function': spare_jobs,
+                'requests': {
+                    "request_type": get_response
+                },
+                'website': 'https://sparelabs.pinpointhq.com/en/postings.json',
+                'type': 'jobs'
+            }
         ]
     },
     {
@@ -1148,28 +1244,31 @@ website_info = [
         'id': 'the-mobility-house',
         'name': 'The Mobility House',
         'socials': {
-            'linkedin': False,
+            "linkedin": {
+                "name": 'The Mobility House',
+                "id": "urn:li:organization:1980416"
+            },
         },
         'image': 'https://cdn.theorg.com/cd0c0e7e-3df6-4f96-96e6-4421e9d887fc_medium.jpg',
         'scrapers': [
-                {
-                    'scrape_function': workable_jobs,
-                    'requests': {
-                        "request_type": get_post_response,
-                        'header': {
-                            'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3)'
-                            'AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.61 '
-                            'Safari/537.36',
-                            'content-type': 'application/json',
-                        },
-                        'payload': {
-                            "query": "", "location": [], "department": [
-                            ], "worktype": [], "remote": [], "workplace": []
-                        }
+            {
+                'scrape_function': workable_jobs,
+                'requests': {
+                    "request_type": get_post_response,
+                    'header': {
+                        'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3)'
+                        'AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.61 '
+                        'Safari/537.36',
+                        'content-type': 'application/json',
                     },
-                    'website': 'https://apply.workable.com/api/v3/accounts/the-mobility-house/jobs',
-                    'type': 'jobs'
-                }
+                    'payload': {
+                        "query": "", "location": [], "department": [
+                        ], "worktype": [], "remote": [], "workplace": []
+                    }
+                },
+                'website': 'https://apply.workable.com/api/v3/accounts/the-mobility-house/jobs',
+                'type': 'jobs'
+            }
         ]
     },
     {
@@ -1234,27 +1333,30 @@ website_info = [
     },
     {
         'id': 'gvshp',
-        'name': 'NYC Village Preservation',
+        'name': 'Village Preservation (GVSHP)',
         'socials': {
-            'linkedin': 'Village Preservation (GVSHP)',
+            'linkedin': {
+                'name': 'Village Preservation (GVSHP)',
+                'id': 'urn:li:organization:28558724'
+            }
         },
         'image': 'https://upload.wikimedia.org/wikipedia/commons/4/4d/Village_Preservation_Logo.png',
         'scrapers': [
-                {
-                    'scrape_function': gvshp_parser,
-                    'requests': {
-                        "request_type": get_response_header
-                    },
-                    'website': 'https://www.villagepreservation.org/blog/',
-                    'type': 'blog'
-                },
             {
-                    'scrape_function': gvshp_jobs,
-                    'requests': {
-                        "request_type": get_response_header
-                    },
-                    'website': 'https://www.villagepreservation.org/employment-internships/',
-                    'type': 'jobs'
+                'scrape_function': gvshp_parser,
+                'requests': {
+                    "request_type": get_response_header
+                },
+                'website': 'https://www.villagepreservation.org/blog/',
+                'type': 'blog'
+            },
+            {
+                'scrape_function': gvshp_jobs,
+                'requests': {
+                    "request_type": get_response_header
+                },
+                'website': 'https://www.villagepreservation.org/employment-internships/',
+                'type': 'jobs'
             }
         ]
     },
@@ -1292,18 +1394,21 @@ website_info = [
         'id': 'urbandesignforum',
         'name': 'Urban Design Forum',
         'socials': {
-            'linkedin': False,
+            "linkedin": {
+                "name": 'Urban Design Forum',
+                "id": "urn:li:organization:3053334"
+            },
         },
         'image': 'https://upload.wikimedia.org/wikipedia/commons/thumb/b/b1/Urbandesingforumlogo.jpg/440px-Urbandesingforumlogo.jpg',
         'scrapers': [
-                {
-                    'scrape_function': urbandesignforum_parser,
-                    'requests': {
-                        "request_type": get_response
-                    },
-                    'website': 'https://urbandesignforum.org/join/opportunities/',
-                    'type': 'jobs'
-                }
+            {
+                'scrape_function': urbandesignforum_parser,
+                'requests': {
+                    "request_type": get_response
+                },
+                'website': 'https://urbandesignforum.org/join/opportunities/',
+                'type': 'jobs'
+            }
         ]
     },
     {
@@ -1385,36 +1490,42 @@ website_info = [
         'id': 'zencity',
         'name': 'Zencity',
         'socials': {
-            'linkedin': False,
+            "linkedin": {
+                "name": 'Zencity',
+                "id": "urn:li:organization:9180416"
+            },
         },
         'image': 'https://pbs.twimg.com/profile_images/1704493064499191808/hdEuPhlV_400x400.png',
         'scrapers': [
-                {
-                    'scrape_function': zencity_jobs,
-                    'requests': {
-                        "request_type": get_response_header
-                    },
-                    'website': 'https://zencity.io/careers/',
-                    'type': 'jobs'
-                }
+            {
+                'scrape_function': zencity_jobs,
+                'requests': {
+                    "request_type": get_response_header
+                },
+                'website': 'https://zencity.io/careers/',
+                'type': 'jobs'
+            }
         ]
     },
     {
         'id': 'nava',
         'name': 'Nava',
         'socials': {
-            'linkedin': False,
+            "linkedin": {
+                "name": "Nava",
+                "id": "urn:li:organization:10522900"
+            },
         },
         'image': 'https://www.navapbc.com/favicon.svg',
         'scrapers': [
-                {
-                    'scrape_function': lever_jobs,
-                    'requests': {
-                        "request_type": get_response
-                    },
-                    'website': 'https://jobs.lever.co/nava/',
-                    'type': 'jobs'
-                }
+            {
+                'scrape_function': lever_jobs,
+                'requests': {
+                    "request_type": get_response
+                },
+                'website': 'https://jobs.lever.co/nava/',
+                'type': 'jobs'
+            }
         ]
     },
     {
@@ -1481,248 +1592,287 @@ website_info = [
         'id': 'electricera',
         'name': 'Electric Era',
         'socials': {
-            'linkedin': False,
+            "linkedin": {
+                "name": "Electric Era",
+                "id": "urn:li:organization:67084002"
+            },
         },
         'image': 'https://pbs.twimg.com/profile_images/1863655693972291584/lnUdeakc_400x400.jpg',
         'scrapers': [
-                {
-                    'scrape_function': electricera_jobs,
-                    'requests': {
-                        "request_type": get_response
-                    },
-                    'website': 'https://electriceratechnologies.com/careers',
-                    'type': 'jobs'
-                }
+            {
+                'scrape_function': electricera_jobs,
+                'requests': {
+                    "request_type": get_response
+                },
+                'website': 'https://electriceratechnologies.com/careers',
+                'type': 'jobs'
+            }
         ]
     },
     {
         'id': 'parkmobile',
         'name': 'Park Mobile',
         'socials': {
-            'linkedin': 'ParkMobile, LLC',
+            'linkedin': {
+                'name': 'ParkMobile, LLC',
+                'id': 'urn:li:organization:307592'
+            }
         },
         'image': 'https://www.parking.net/Upload/Industry/00-New-HD-Logos/parkmobile-company-logo-480px_main.jpg',
         'scrapers': [
-                {
-                    'scrape_function': parkmobile_jobs,
-                    'requests': {
-                        "request_type": get_response
-                    },
-                    'website': 'https://careers.parkmobile.io/jobs',
-                    'type': 'jobs'
-                }
+            {
+                'scrape_function': parkmobile_jobs,
+                'requests': {
+                    "request_type": get_response
+                },
+                'website': 'https://careers.parkmobile.io/jobs',
+                'type': 'jobs'
+            }
         ]
     },
     {
         'id': 'inspirationMobility',
         'name': 'Inspiration Mobility',
         'socials': {
-            'linkedin': False,
+            "linkedin": {
+                "name": 'Inspiration Mobility',
+                "id": "urn:li:organization:73219898"
+            },
         },
         'image': 'https://lever-client-logos.s3.us-west-2.amazonaws.com/f446fc6e-6ae0-456d-a9c2-f847132abef2-1640978230903.png',
         'scrapers': [
-                {
-                    'scrape_function': lever_jobs,
-                    'requests': {
-                        "request_type": get_response
-                    },
-                    'website': 'https://jobs.lever.co/inspiration-mobility',
-                    'type': 'jobs'
-                }
+            {
+                'scrape_function': lever_jobs,
+                'requests': {
+                    "request_type": get_response
+                },
+                'website': 'https://jobs.lever.co/inspiration-mobility',
+                'type': 'jobs'
+            }
         ]
     },
     {
         'id': 'fleet',
         'name': 'Fleet',
         'socials': {
-            'linkedin': 'Fleet',
+            'linkedin': {
+                'name': 'Fleet',
+                'id': 'urn:li:organization:70022186'
+            }
         },
         'image': 'https://cdn.prod.website-files.com/60c7f12862eab431c781bc24/669a82ea31e72031ec334bdf_Group%2010122572.avif',
         'scrapers': [
-                {
-                    'scrape_function': fleet_jobs,
-                    'requests': {
-                        "request_type": get_response
-                    },
-                    'website': 'https://www.movewithfleet.com/about-us',
-                    'type': 'jobs'
-                }
+            {
+                'scrape_function': fleet_jobs,
+                'requests': {
+                    "request_type": get_response
+                },
+                'website': 'https://www.movewithfleet.com/about-us',
+                'type': 'jobs'
+            }
         ]
     },
     {
         'id': 'vivacitylabs',
-        'name': 'Vivacity Labs',
+        'name': 'VivaCity Labs',
         'socials': {
-            'linkedin': 'Vivacity',
+            'linkedin': {
+                'name': 'VivaCity',
+                'id': 'urn:li:organization:10554031'
+            }
         },
         'image': 'https://lever-client-logos.s3.us-west-2.amazonaws.com/e0200f8d-63da-4b74-b3d6-f9fe20007388-1656683474532.png',
         'scrapers': [
-                {
-                    'scrape_function': lever_jobs,
-                    'requests': {
-                        "request_type": get_response
-                    },
-                    'website': 'https://jobs.lever.co/vivacitylabs/',
-                    'type': 'jobs'
-                }
+            {
+                'scrape_function': lever_jobs,
+                'requests': {
+                    "request_type": get_response
+                },
+                'website': 'https://jobs.lever.co/vivacitylabs/',
+                'type': 'jobs'
+            }
         ]
     },
     {
         'id': 'nplan',
         'name': 'nPlan',
         'socials': {
-            'linkedin': False,
+            "linkedin": {
+                "name": 'nPlan',
+                "id": "urn:li:organization:27106547"
+            },
         },
         'image': 'https://gallery-cdn.breezy.hr/e99e7f5f-8b57-4a28-b172-2ef7f1d58ff2/nPlan_logo_blue.png',
         'scrapers': [
-                {
-                    'scrape_function': nplan_jobs,
-                    'requests': {
-                        "request_type": get_response
-                    },
-                    'website': 'https://nplan.breezy.hr/',
-                    'type': 'jobs'
-                }
+            {
+                'scrape_function': nplan_jobs,
+                'requests': {
+                    "request_type": get_response
+                },
+                'website': 'https://nplan.breezy.hr/',
+                'type': 'jobs'
+            }
         ]
     },
     {
         'id': 'bloomworks',
         'name': 'Bloomworks',
         'socials': {
-            'linkedin': 'Bloom Works Public Benefit LLC',
+            'linkedin': {
+                'name': 'Bloom Works Public Benefit LLC',
+                'id': 'urn:li:organization:18657533'
+            }
         },
         'image': 'https://s7-recruiting.cdn.greenhouse.io/external_greenhouse_job_boards/logos/400/165/600/resized/bw-green.png?1686168632',
         'scrapers': [
-                {
-                    'scrape_function': greenhouse_older_jobs,
-                    'requests': {
-                        "request_type": get_response
-                    },
-                    'website': 'https://boards.greenhouse.io/bloomworks',
-                    'type': 'jobs'
-                }
+            {
+                'scrape_function': greenhouse_older_jobs,
+                'requests': {
+                    "request_type": get_response
+                },
+                'website': 'https://boards.greenhouse.io/bloomworks',
+                'type': 'jobs'
+            }
         ]
     },
     {
         'id': 'arcadis',
         'name': 'Arcadis',
         'socials': {
-            'linkedin': False,
+            "linkedin": {
+                "name": 'Arcadis',
+                "id": "urn:li:organization:5840"
+            },
         },
         'image': 'https://c.smartrecruiters.com/sr-company-logo-prod-aws-dc5/57e9b7bbe4b0b6fa1a859b8d/huge?r=s3-eu-central-1&_1702069078823',
         'scrapers': [
-                {
-                    'scrape_function': arcadis_jobs,
-                    'requests': {
-                        "request_type": get_multi_responses,
-                        "end_points": [
-                            'page=1', 'page=2', 'page=3', 'page=4',
-                            'page=5', 'page=6', 'page=7'
-                        ]
-                    },
-                    'website': 'https://careers.smartrecruiters.com/IBIGroup/api/groups?',
-                    'type': 'jobs'
-                }
+            {
+                'scrape_function': arcadis_jobs,
+                'requests': {
+                    "request_type": get_multi_responses,
+                    "end_points": [
+                        'page=1', 'page=2', 'page=3', 'page=4',
+                        'page=5', 'page=6', 'page=7'
+                    ]
+                },
+                'website': 'https://careers.smartrecruiters.com/IBIGroup/api/groups?',
+                'type': 'jobs'
+            }
         ]
     },
     {
         'id': 'metropolis',
         'name': 'Metropolis',
         'socials': {
-            'linkedin': 'Metropolis Technologies',
+            'linkedin': {
+                'name': 'Metropolis Technologies',
+                'id': 'urn:li:organization:18851732'
+            },
         },
         'image': 'https://s3-recruiting.cdn.greenhouse.io/external_greenhouse_job_boards/logos/400/053/300/original/mark.png?1578956035',
         'scrapers': [
-                {
-                    'scrape_function': greenhouse_jobs,
-                    'requests': {
-                        "request_type": get_response,
-                    },
-                    'website': 'https://job-boards.greenhouse.io/metropolis',
-                    'type': 'jobs'
-                }
+            {
+                'scrape_function': greenhouse_jobs,
+                'requests': {
+                    "request_type": get_response,
+                },
+                'website': 'https://job-boards.greenhouse.io/metropolis',
+                'type': 'jobs'
+            }
         ]
     },
     {
         'id': 'gridwise',
         'name': 'Gridwise',
         'socials': {
-            'linkedin': False,
+            "linkedin": {
+                "name": 'Gridwise',
+                "id": "urn:li:organization:10880145"
+            },
         },
         'image': 'https://gridwise.io/wp-content/uploads/2021/09/logo.svg',
         'scrapers': [
-                {
-                    'scrape_function': gridwise_jobs,
-                    'requests': {
-                        "request_type": get_response,
-                    },
-                    'website': 'https://jobs.ashbyhq.com/gridwise?embed=js',
-                    'type': 'jobs'
-                }
+            {
+                'scrape_function': gridwise_jobs,
+                'requests': {
+                    "request_type": get_response,
+                },
+                'website': 'https://jobs.ashbyhq.com/gridwise?embed=js',
+                'type': 'jobs'
+            }
         ]
     },
     {
         'id': 'papayadash',
         'name': 'Papaya Dash',
         'socials': {
-            'linkedin': False,
+            "linkedin": {
+                "name": 'Papaya Dash',
+                "id": "urn:li:organization:82959366"
+            },
         },
         'image': 'https://workable-application-form.s3.amazonaws.com/advanced/production/628ced9a7d26824e5742d0d5/9a161780-a02c-9947-ac23-563a862f1016',
         'scrapers': [
-                {
-                    'scrape_function': workable_jobs,
-                    'requests': {
-                        "request_type": get_post_response,
-                        'header': {
-                            'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3)'
-                            'AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.61 '
-                            'Safari/537.36',
-                            'content-type': 'application/json',
-                        },
-                        'payload': {
-                            "query": "", "location": [], "department": [
-                            ], "worktype": [], "remote": [], "workplace": []
-                        }
+            {
+                'scrape_function': workable_jobs,
+                'requests': {
+                    "request_type": get_post_response,
+                    'header': {
+                        'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3)'
+                        'AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.61 '
+                        'Safari/537.36',
+                        'content-type': 'application/json',
                     },
-                    'website': 'https://apply.workable.com/api/v3/accounts/papayadash/jobs',
-                    'type': 'jobs'
-                }
+                    'payload': {
+                        "query": "", "location": [], "department": [
+                        ], "worktype": [], "remote": [], "workplace": []
+                    }
+                },
+                'website': 'https://apply.workable.com/api/v3/accounts/papayadash/jobs',
+                'type': 'jobs'
+            }
         ]
     },
     {
         'id': 'foursquareItp',
         'name': 'Foursquare ITP',
         'socials': {
-            'linkedin': False,
+            "linkedin": {
+                "name": 'Foursquare ITP',
+                "id": "urn:li:organization:1799149"
+            },
         },
         'image': 'https://s3.amazonaws.com/resumator/customer_20200514151826_0OI7MI4QLNBYFWYO/logos/20230831160450_Full_Color_CMYK.jpg',
         'scrapers': [
-                {
-                    'scrape_function': foursquareitp_jobs,
-                    'requests': {
-                        "request_type": get_response,
-                    },
-                    'website': 'https://foursquareitp.applytojob.com/',
-                    'type': 'jobs'
-                }
+            {
+                'scrape_function': foursquareitp_jobs,
+                'requests': {
+                    "request_type": get_response,
+                },
+                'website': 'https://foursquareitp.applytojob.com/',
+                'type': 'jobs'
+            }
         ]
     },
     {
         'id': 'inrix',
         'name': 'Inrix',
         'socials': {
-            'linkedin': False,
+            "linkedin": {
+                "name": 'INRIX',
+                "id": "urn:li:organization:36295"
+            },
         },
         'image': 'https://mma.prnewswire.com/media/2446738/INRIX_Logo.jpg',
         'scrapers': [
-                {
-                    'scrape_function': inrix_jobs,
-                    'requests': {
-                        "request_type": get_response,
-                    },
-                    'website': 'https://jobs.jobvite.com/careers/inrix/jobs?__jvst=Job%20Board&__jvsd=Career_Site',
-                    'type': 'jobs'
-                }
+            {
+                'scrape_function': inrix_jobs,
+                'requests': {
+                    "request_type": get_response,
+                },
+                'website': 'https://jobs.jobvite.com/careers/inrix/jobs?__jvst=Job%20Board&__jvsd=Career_Site',
+                'type': 'jobs'
+            }
         ]
     },
     {
@@ -1774,54 +1924,63 @@ website_info = [
         'id': 'rebel',
         'name': 'Rebel',
         'socials': {
-            'linkedin': False,
+            "linkedin": {
+                "name": 'Rebel',
+                "id": "urn:li:organization:43064"
+            },
         },
         'image': 'https://www.stichtingfresh.nl/wp-content/uploads/2020/02/rebel.png',
         'scrapers': [
-                {
-                    'scrape_function': rebel_job_parser,
-                    'requests': {
-                        "request_type": get_response,
-                    },
-                    'website': 'https://rebelgroup.com/en/career/',
-                    'type': 'jobs'
-                }
+            {
+                'scrape_function': rebel_job_parser,
+                'requests': {
+                    "request_type": get_response,
+                },
+                'website': 'https://rebelgroup.com/en/career/',
+                'type': 'jobs'
+            }
         ]
     },
     {
         'id': 'haydenai',
         'name': 'Hayden AI',
         'socials': {
-            'linkedin': False,
+            "linkedin": {
+                "name": 'Hayden AI',
+                "id": "urn:li:organization:19031767"
+            },
         },
         'image': 'https://logowik.com/content/uploads/images/haydenai8139.logowik.com.webp',
         'scrapers': [
-                {
-                    "scrape_function": haydenai_parser,
-                    "requests": {
-                        "request_type": get_post_response,
-                        "header": {
-                            "content-type": "application/json",
-                            "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3)"
-                        },
-                        "payload": {
-                            "operationName": "ApiJobBoardWithTeams",
-                            "variables": {
-                                "organizationHostedJobsPageName": "haydenai"
-                            },
-                            "query": "query ApiJobBoardWithTeams($organizationHostedJobsPageName: String!) {\n  jobBoard: jobBoardWithTeams(\n    organizationHostedJobsPageName: $organizationHostedJobsPageName\n  ) {\n    teams {\n      id\n      name\n      parentTeamId\n      __typename\n    }\n    jobPostings {\n      id\n      title\n      teamId\n      locationId\n      locationName\n      employmentType\n      secondaryLocations {\n        ...JobPostingSecondaryLocationParts\n        __typename\n      }\n      compensationTierSummary\n      __typename\n    }\n    __typename\n  }\n}\n\nfragment JobPostingSecondaryLocationParts on JobPostingSecondaryLocation {\n  locationId\n  locationName\n  __typename\n}"
-                        }
+            {
+                "scrape_function": haydenai_parser,
+                "requests": {
+                    "request_type": get_post_response,
+                    "header": {
+                        "content-type": "application/json",
+                        "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3)"
                     },
-                    "website": "https://jobs.ashbyhq.com/api/non-user-graphql?op=ApiJobBoardWithTeams",
-                    "type": "jobs"
-                }
+                    "payload": {
+                        "operationName": "ApiJobBoardWithTeams",
+                        "variables": {
+                            "organizationHostedJobsPageName": "haydenai"
+                        },
+                        "query": "query ApiJobBoardWithTeams($organizationHostedJobsPageName: String!) {\n  jobBoard: jobBoardWithTeams(\n    organizationHostedJobsPageName: $organizationHostedJobsPageName\n  ) {\n    teams {\n      id\n      name\n      parentTeamId\n      __typename\n    }\n    jobPostings {\n      id\n      title\n      teamId\n      locationId\n      locationName\n      employmentType\n      secondaryLocations {\n        ...JobPostingSecondaryLocationParts\n        __typename\n      }\n      compensationTierSummary\n      __typename\n    }\n    __typename\n  }\n}\n\nfragment JobPostingSecondaryLocationParts on JobPostingSecondaryLocation {\n  locationId\n  locationName\n  __typename\n}"
+                    }
+                },
+                "website": "https://jobs.ashbyhq.com/api/non-user-graphql?op=ApiJobBoardWithTeams",
+                "type": "jobs"
+            }
         ]
     },
     {
         "id": "masabi",
         "name": "Masabi",
         "socials": {
-            "linkedin": False,
+            "linkedin": {
+                "name": "Masabi",
+                "id": "urn:li:organization:104661"
+            },
         },
         "image": "https://careers.masabi.com/wp-content/uploads/2023/01/06-red-black-1024x576.png",
         "scrapers": [
@@ -1850,125 +2009,146 @@ website_info = [
         'id': 'roadie',
         'name': 'Roadie',
         'socials': {
-            'linkedin': False,
+            "linkedin": {
+                "name": 'Roadie',
+                "id": "urn:li:organization:4872236"
+            },
         },
         'image': 'https://s2-recruiting.cdn.greenhouse.io/external_greenhouse_job_boards/logos/400/587/300/original/Roadie_UPS_Logo_Stack_BROWN.png?1648056516',
         'scrapers': [
-                {
-                    'scrape_function': greenhouse_jobs,
-                    'requests': {
-                        "request_type": get_response
-                    },
-                    'website': 'https://job-boards.greenhouse.io/roadie',
-                    'type': 'jobs'
-                }
+            {
+                'scrape_function': greenhouse_jobs,
+                'requests': {
+                    "request_type": get_response
+                },
+                'website': 'https://job-boards.greenhouse.io/roadie',
+                'type': 'jobs'
+            }
         ]
     },
     {
         'id': 'goodtraffic',
         'name': 'Good Traffic',
         'socials': {
-            'linkedin': 'Brad Biehl',
+            'linkedin': {
+                'name': 'Brad Biehl',
+                'id': 'urn:li:profile:ACoAAAMJe1gBQ5VA6B2JG37JeWk3ZXP01QWpi5g'
+            },
         },
         'image': 'https://is1-ssl.mzstatic.com/image/thumb/Podcasts211/v4/b8/56/4b/b8564ba8-f066-7a26-c7ca-3db49914ffe7/mza_4128940626188746453.jpg/600x600bb.webp',
         'scrapers': [
-                {
-                    'scrape_function': apple_parser,
-                    'requests': {
-                        "request_type": get_response
-                    },
-                    'website': 'https://podcasts.apple.com/us/podcast/good-traffic/id1707603110',
-                    'type': 'podcast'
-                }
+            {
+                'scrape_function': apple_parser,
+                'requests': {
+                    "request_type": get_response
+                },
+                'website': 'https://podcasts.apple.com/us/podcast/good-traffic/id1707603110',
+                'type': 'podcast'
+            }
         ]
     },
     {
         'id': 'cabify',
         'name': 'Cabify',
         'socials': {
-            'linkedin': False,
+            "linkedin": {
+                "name": 'Cabify',
+                "id": "urn:li:organization:2394728"
+            },
         },
         'image': 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Cabify-Logo-Moradul-RGB.png/440px-Cabify-Logo-Moradul-RGB.png',
         'scrapers': [
-                {
-                    'scrape_function': cabify_jobs,
-                    'requests': {
-                        "request_type": get_response
-                    },
-                    'website': 'https://cabify.careers/en/jobs?search=&office=&department=',
-                    'type': 'jobs'
-                }
+            {
+                'scrape_function': cabify_jobs,
+                'requests': {
+                    "request_type": get_response
+                },
+                'website': 'https://cabify.careers/en/jobs?search=&office=&department=',
+                'type': 'jobs'
+            }
         ]
     },
     {
         'id': 'autofleet',
         'name': 'Autofleet',
         'socials': {
-            'linkedin': False,
+            "linkedin": {
+                "name": 'Autofleet',
+                "id": "urn:li:organization:11456468"
+            },
         },
         'image': 'https://workablehr.s3.amazonaws.com/uploads/account/logo/445657/logo',
         'scrapers': [
-                {
-                    'scrape_function': workable_jobs,
-                    'requests': {
-                        "request_type": get_post_response,
-                        'header': {
-                            'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3)'
-                            'AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.61 '
-                            'Safari/537.36',
-                            'content-type': 'application/json',
-                        },
-                        'payload': {
-                            "query": "", "location": [], "department": [
-                            ], "worktype": [], "remote": [], "workplace": []
-                        }
+            {
+                'scrape_function': workable_jobs,
+                'requests': {
+                    "request_type": get_post_response,
+                    'header': {
+                        'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3)'
+                        'AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.61 '
+                        'Safari/537.36',
+                        'content-type': 'application/json',
                     },
-                    'website': 'https://apply.workable.com/api/v3/accounts/autofleet/jobs',
-                    'type': 'jobs'
-                }
+                    'payload': {
+                        "query": "", "location": [], "department": [
+                        ], "worktype": [], "remote": [], "workplace": []
+                    }
+                },
+                'website': 'https://apply.workable.com/api/v3/accounts/autofleet/jobs',
+                'type': 'jobs'
+            }
         ]
     },
     {
         'id': 'spacespodcast',
         'name': 'Spaces Podcast',
         'socials': {
-            'linkedin': 'Gābl Media Group, Inc.',
+            'linkedin': {
+                'name': 'Gābl Media Group, Inc.',
+                'id': "urn:li:organization:66919601"
+            }
         },
         'image': 'https://is1-ssl.mzstatic.com/image/thumb/Podcasts221/v4/db/30/54/db305462-8eb8-b6d5-eab3-abd1935751e1/mza_2839107751596279306.png/600x600bb.webp',
         'scrapers': [
-                {
-                    'scrape_function': apple_parser,
-                    'requests': {
-                        "request_type": get_response
-                    },
-                    'website': 'https://podcasts.apple.com/us/podcast/spaces-podcast/id1326670085',
-                    'type': 'podcast'
-                }
+            {
+                'scrape_function': apple_parser,
+                'requests': {
+                    "request_type": get_response
+                },
+                'website': 'https://podcasts.apple.com/us/podcast/spaces-podcast/id1326670085',
+                'type': 'podcast'
+            }
         ]
     },
     {
         'id': 'cyvlai',
-        'name': 'Cyvl Ai',
+        'name': 'Cyvl',
         'socials': {
-            'linkedin': 'Cyvl',
+            'linkedin': {
+                'name': 'Cyvl',
+                'id': 'urn:li:organization:67496084'
+            }
         },
         'image': 'https://lever-client-logos.s3.us-west-2.amazonaws.com/50c872b0-4a13-4b4b-964f-d211908916c5-1719259337206.png',
         'scrapers': [
-                {
-                    'scrape_function': lever_jobs,
-                    'requests': {
-                        "request_type": get_response
-                    },
-                    'website': 'https://jobs.lever.co/cyvl-ai',
-                    'type': 'jobs'
-                }
+            {
+                'scrape_function': lever_jobs,
+                'requests': {
+                    "request_type": get_response
+                },
+                'website': 'https://jobs.lever.co/cyvl-ai',
+                'type': 'jobs'
+            }
         ]
     },
     {
         'id': 'procureai',
         'name': 'Procure Ai',
         'socials': {
-            "linkedin": False
+            "linkedin": {
+                "name": 'Procure Ai',
+                "id": "urn:li:organization:42460522"
+            }
         },
         'image': 'https://workable-application-form.s3.amazonaws.com/advanced/production/602fa2bc3e0ec0b348d61f16/6a4ba8ba-9859-9635-8e15-d4a8a13dd8e5',
         'scrapers': [
@@ -1996,77 +2176,89 @@ website_info = [
         'id': 'podaris',
         'name': 'Podaris',
         'socials': {
-            "linkedin": False
+            "linkedin": {
+                "name": 'Podaris',
+                "id": "urn:li:organization:3040643"
+            }
         },
         'image': 'https://cdn.prod.website-files.com/627130c0c6ca7661fa206333/627130c0c6ca76825e2064d1_podaris_logo.svg',
         'scrapers': [
-                {
-                    'scrape_function': podaris_jobs,
-                    'requests': {
-                        "request_type": get_response
-                    },
-                    'website': 'https://embed.homerun.co/nqcgqjpfb0xkutoxamvm/widget-en.html?t=1734964836330',
-                    'type': 'jobs'
-                }
+            {
+                'scrape_function': podaris_jobs,
+                'requests': {
+                    "request_type": get_response
+                },
+                'website': 'https://embed.homerun.co/nqcgqjpfb0xkutoxamvm/widget-en.html?t=1734964836330',
+                'type': 'jobs'
+            }
         ]
     },
     {
         'id': 'coforma',
         'name': 'Coforma',
         'socials': {
-            "linkedin": False
+            "linkedin": {
+                "name": 'Coforma',
+                "id": "urn:li:organization:33317094"
+            }
         },
         'image': 'https://lever-client-logos.s3.us-west-2.amazonaws.com/d469341d-d7d9-43b5-9b93-e82d5792eae7-1602006045141.png',
         'scrapers': [
-                {
-                    'scrape_function': lever_jobs,
-                    'requests': {
-                        "request_type": get_response
-                    },
-                    'website': 'https://jobs.lever.co/coforma',
-                    'type': 'jobs'
-                }
+            {
+                'scrape_function': lever_jobs,
+                'requests': {
+                    "request_type": get_response
+                },
+                'website': 'https://jobs.lever.co/coforma',
+                'type': 'jobs'
+            }
         ]
     },
     {
         'id': 'kpler',
         'name': 'Kpler',
         'socials': {
-            "linkedin": False
+            "linkedin": {
+                "name": 'Kpler',
+                "id": "urn:li:organization:3210691"
+            }
         },
         'image': 'https://lever-client-logos.s3.us-west-2.amazonaws.com/d4685f4a-7242-49a3-9ab4-59a1df71b65e-1697541493548.png',
         'scrapers': [
-                {
-                    'scrape_function': lever_jobs,
-                    'requests': {
-                        "request_type": get_response
-                    },
-                    'website': 'https://jobs.lever.co/kpler',
-                    'type': 'jobs'
-                }
+            {
+                'scrape_function': lever_jobs,
+                'requests': {
+                    "request_type": get_response
+                },
+                'website': 'https://jobs.lever.co/kpler',
+                'type': 'jobs'
+            }
         ]
     },
     {
         'id': 'newpublic',
         'name': 'New_ Public',
         'socials': {
-            "linkedin": False
+            "linkedin": {
+                "name": "New_ Public",
+                "id": "urn:li:organization:68339971"
+            }
         },
         'image': 'https://newpublic.org/dist/cs-logo.dca58721.svg',
         'scrapers': [
-                {
-                    'scrape_function': newpublic_jobs,
-                    'requests': {
-                        "request_type": get_post_response,
-                        'header': {
-                            'Content-Type': 'application/json',
-                            'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) '
-                            'AppleWebKit/537.36 (KHTML, like Gecko) '
-                            'Chrome/131.0.0.0 Safari/537.36'
-                        },
-                        'payload': [
-                            {
-                                "query": """
+            {
+                'scrape_function': newpublic_jobs,
+                'requests': {
+                    "request_type": get_post_response,
+                    'header': {
+                        'Content-Type': 'application/json',
+                        'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) '
+                        'AppleWebKit/537.36 (KHTML, like Gecko) '
+                        'Chrome/131.0.0.0 Safari/537.36'
+                    },
+                    'payload': [
+                        {
+                            "query": """
                                     {
                                     page(id: 1851, idType: DATABASE_ID) {
                                         acf: acf_generic {
@@ -2084,13 +2276,13 @@ website_info = [
                                     }
                                     }
                                     """,
-                                "variables": {}
-                            }
-                        ]
-                    },
-                    'website': 'https://newpublic.org/cms/graphql',
-                    'type': 'jobs'
-                }
+                            "variables": {}
+                        }
+                    ]
+                },
+                'website': 'https://newpublic.org/cms/graphql',
+                'type': 'jobs'
+            }
         ]
     }
 ]
