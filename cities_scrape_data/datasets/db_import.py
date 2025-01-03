@@ -22,7 +22,7 @@ def ensure_list(value):
 
 def db_import(max_threads=5, chunks=25):
     scrape_objects = get_scrape_objects(max_threads=max_threads)
-    database_url = os.getenv('DATABASE_URL')
+    database_url = os.getenv('DATABASE_PUBLIC_URL')
 
     try:
         conn = psycopg2.connect(database_url)
